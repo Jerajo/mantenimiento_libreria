@@ -26,11 +26,11 @@ namespace libreria.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=DBLibreria;Integrated Security" +
-            "=True")]
-        public string DBLibreriaConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\LibreriaHC.md" +
+            "f;Integrated Security=True;Connect Timeout=30")]
+        public string LibreriaHCConnectionString {
             get {
-                return ((string)(this["DBLibreriaConnectionString"]));
+                return ((string)(this["LibreriaHCConnectionString"]));
             }
         }
     }

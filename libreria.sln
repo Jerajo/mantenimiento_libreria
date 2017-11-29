@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2006
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libreria", "libreria\libreria.csproj", "{A6845ACB-5B2C-4AA0-BB26-0FC18B622862}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webLibreria", "webLibreria\webLibreria.csproj", "{EEC633A2-F6C8-47CB-B58D-5BD87A5D3D67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{A6845ACB-5B2C-4AA0-BB26-0FC18B622862}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6845ACB-5B2C-4AA0-BB26-0FC18B622862}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6845ACB-5B2C-4AA0-BB26-0FC18B622862}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEC633A2-F6C8-47CB-B58D-5BD87A5D3D67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEC633A2-F6C8-47CB-B58D-5BD87A5D3D67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEC633A2-F6C8-47CB-B58D-5BD87A5D3D67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEC633A2-F6C8-47CB-B58D-5BD87A5D3D67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
