@@ -70,14 +70,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Busquedas\SchLibros.cs">
+    <Compile Include="forms\SchLibros.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="conexión\CEstudiante.cs" />
     <Compile Include="conexión\CLibros.cs" />
     <Compile Include="conexión\FDBHelper.cs" />
-    <Compile Include="Controles\Libro.cs" />
-    <Compile Include="Controles\Libro.Designer.cs">
+    <Compile Include="conexión\Libro.cs" />
+    <Compile Include="conexión\Libro.Designer.cs">
       <DependentUpon>Libro.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseCon.cs" />
@@ -112,19 +112,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LibreriaHCDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Mantenimientos\Generos.cs">
+    <Compile Include="forms\Generos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Mantenimientos\Generos.Designer.cs">
+    <Compile Include="forms\Generos.Designer.cs">
       <DependentUpon>Generos.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
-    <EmbeddedResource Include="Busquedas\SchLibros.resx">
+    <EmbeddedResource Include="forms\SchLibros.resx">
       <DependentUpon>SchLibros.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controles\Libro.resx">
+    <EmbeddedResource Include="conexión\Libro.resx">
       <DependentUpon>Libro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\Box.resx">
@@ -139,7 +139,7 @@
     <EmbeddedResource Include="forms\MDIParent.resx">
       <DependentUpon>MDIParent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mantenimientos\Generos.resx">
+    <EmbeddedResource Include="forms\Generos.resx">
       <DependentUpon>Generos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
