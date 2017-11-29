@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Libreria" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="LibreriaContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CrendencialesSet" EntityType="Libreria.Crendenciales" />
+    <EntitySet Name="LibrosSet" EntityType="Libreria.Libros" />
+    <EntitySet Name="LibroAutorSet" EntityType="Libreria.LibroAutor" />
+    <AssociationSet Name="LibrosLibroAutor" Association="Libreria.LibrosLibroAutor">
+      <End Role="Libros" EntitySet="LibrosSet" />
+      <End Role="LibroAutor" EntitySet="LibroAutorSet" />
+    </AssociationSet>
+    <AssociationSet Name="AutoresLibroAutor" Association="Libreria.AutoresLibroAutor">
+      <End Role="Autores" EntitySet="AutoresSet" />
+      <End Role="LibroAutor" EntitySet="LibroAutorSet" />
+    </AssociationSet>
+    <EntitySet Name="CategoriaSet" EntityType="Libreria.Categoria" />
+    <AssociationSet Name="CategoriaLibros" Association="Libreria.CategoriaLibros">
+      <End Role="Categoria" EntitySet="CategoriaSet" />
+      <End Role="Libros" EntitySet="LibrosSet" />
+    </AssociationSet>
+    <EntitySet Name="VariablesSet" EntityType="Libreria.Variables" />
+    <EntitySet Name="Historial_PrestamoSet" EntityType="Libreria.Historial_Prestamo" />
+    <EntitySet Name="LibroEjemplarSet" EntityType="Libreria.LibroEjemplar" />
+    <AssociationSet Name="LibrosLibroEjemplar" Association="Libreria.LibrosLibroEjemplar">
+      <End Role="Libros" EntitySet="LibrosSet" />
+      <End Role="LibroEjemplar" EntitySet="LibroEjemplarSet" />
+    </AssociationSet>
+    <EntitySet Name="ClientesSet" EntityType="Libreria.Clientes" />
+    <AssociationSet Name="ClientesHistorial_Prestamo" Association="Libreria.ClientesHistorial_Prestamo">
+      <End Role="Clientes" EntitySet="ClientesSet" />
+      <End Role="Historial_Prestamo" EntitySet="Historial_PrestamoSet" />
+    </AssociationSet>
+    <EntitySet Name="DireccionSet" EntityType="Libreria.Direccion" />
+    <AssociationSet Name="ClientesDireccion" Association="Libreria.ClientesDireccion">
+      <End Role="Clientes" EntitySet="ClientesSet" />
+      <End Role="Direccion" EntitySet="DireccionSet" />
+    </AssociationSet>
+    <AssociationSet Name="LibroEjemplarHistorial_Prestamo" Association="Libreria.LibroEjemplarHistorial_Prestamo">
+      <End Role="LibroEjemplar" EntitySet="LibroEjemplarSet" />
+      <End Role="Historial_Prestamo" EntitySet="Historial_PrestamoSet" />
+    </AssociationSet>
+    <EntitySet Name="AutoresSet" EntityType="Libreria.Autores" />
+  </EntityContainer>
+  <EntityType Name="Crendenciales">
+    <Key>
+      <PropertyRef Name="Codigo" />
+      <PropertyRef Name="Nombre" />
+    </Key>
+    <Property Name="Codigo" Type="String" Nullable="false" annotation:StoreGeneratedPattern="Identity" cg:SetterAccess="Private" />
+    <Property Name="Nombre" Type="String" Nullable="false" cg:SetterAccess="Private" />
+    <Property Name="Contraseña" Type="String" Nullable="false" cg:SetterAccess="Private" />
+  </EntityType>
+  <EntityType Name="Libros">
+    <Key>
+      <PropertyRef Name="ISBN" />
+    </Key>
+    <Property Name="ISBN" Type="String" Nullable="false" annotation:StoreGeneratedPattern="Identity" cg:SetterAccess="Private" />
+    <Property Name="Titulo" Type="String" Nullable="false" />
+    <Property Name="Editorial" Type="String" Nullable="false" />
+    <Property Name="Pais" Type="String" Nullable="false" />
+    <Property Name="ID_Categoria" Type="Int32" Nullable="false" />
+    <Property Name="Stock" Type="String" Nullable="false" />
+    <NavigationProperty Name="LibroAutor" Relationship="Libreria.LibrosLibroAutor" FromRole="Libros" ToRole="LibroAutor" />
+    <NavigationProperty Name="Categoria" Relationship="Libreria.CategoriaLibros" FromRole="Libros" ToRole="Categoria" />
+    <NavigationProperty Name="LibroEjemplar" Relationship="Libreria.LibrosLibroEjemplar" FromRole="Libros" ToRole="LibroEjemplar" />
+  </EntityType>
+  <EntityType Name="Autores">
+    <Property Name="Codigo" Type="String" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" />
+    <Property Name="Apellido" Type="String" Nullable="false" />
+    <NavigationProperty Name="LibroAutor" Relationship="Libreria.AutoresLibroAutor" FromRole="Autores" ToRole="LibroAutor" />
+  </EntityType>
+  <EntityType Name="LibroAutor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LibroID" Type="String" Nullable="false" />
+    <Property Name="AutorID" Type="String" Nullable="false" />
+    <NavigationProperty Name="Libros" Relationship="Libreria.LibrosLibroAutor" FromRole="LibroAutor" ToRole="Libros" />
+    <NavigationProperty Name="Autores" Relationship="Libreria.AutoresLibroAutor" FromRole="LibroAutor" ToRole="Autores" />
+  </EntityType>
+  <Association Name="LibrosLibroAutor">
+    <End Type="Libreria.Libros" Role="Libros" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Libreria.LibroAutor" Role="LibroAutor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Libros">
+        <PropertyRef Name="ISBN" />
+      </Principal>
+      <Dependent Role="LibroAutor">
+        <PropertyRef Name="LibroID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AutoresLibroAutor">
+    <End Type="Libreria.Autores" Role="Autores" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Libreria.LibroAutor" Role="LibroAutor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Autores" />
+      <Dependent Role="LibroAutor" />
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Genero" Type="String" Nullable="false" />
+    <NavigationProperty Name="Libros" Relationship="Libreria.CategoriaLibros" FromRole="Categoria" ToRole="Libros" />
+  </EntityType>
+  <Association Name="CategoriaLibros">
+    <Documentation>
+      <Summary>CategoriaLibro</Summary>
+      <LongDescription>CategoriaLibro</LongDescription>
+    </Documentation>
+    <End Type="Libreria.Categoria" Role="Categoria" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Libreria.Libros" Role="Libros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Libros">
+        <PropertyRef Name="ID_Categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Variables">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" />
+    <Property Name="Valor" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Historial_Prestamo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cod_Libro" Type="String" Nullable="false" />
+    <Property Name="Cod_Cliente" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_Ini" Type="DateTime" Nullable="false" />
+    <Property Name="Fecha_Fin" Type="DateTime" Nullable="false" />
+    <Property Name="Estado" Type="Libreria.Estado" Nullable="false" />
+    <NavigationProperty Name="Clientes" Relationship="Libreria.ClientesHistorial_Prestamo" FromRole="Historial_Prestamo" ToRole="Clientes" />
+    <NavigationProperty Name="LibroEjemplar" Relationship="Libreria.LibroEjemplarHistorial_Prestamo" FromRole="Historial_Prestamo" ToRole="LibroEjemplar" />
+  </EntityType>
+  <EnumType Name="Estado">
+    <Member Name="Devuelto" />
+    <Member Name="Por_devolver" />
+    <Member Name="Dañado" />
+  </EnumType>
+  <EntityType Name="LibroEjemplar">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Name="NumEjemplar" Type="String" Nullable="false" />
+    <Property Name="ISBN" Type="String" Nullable="false" />
+    <NavigationProperty Name="Libros" Relationship="Libreria.LibrosLibroEjemplar" FromRole="LibroEjemplar" ToRole="Libros" />
+    <NavigationProperty Name="Historial_Prestamo" Relationship="Libreria.LibroEjemplarHistorial_Prestamo" FromRole="LibroEjemplar" ToRole="Historial_Prestamo" />
+  </EntityType>
+  <Association Name="LibrosLibroEjemplar">
+    <End Type="Libreria.Libros" Role="Libros" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Libreria.LibroEjemplar" Role="LibroEjemplar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Libros">
+        <PropertyRef Name="ISBN" />
+      </Principal>
+      <Dependent Role="LibroEjemplar">
+        <PropertyRef Name="ISBN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Historial_Prestamo" Relationship="Libreria.ClientesHistorial_Prestamo" FromRole="Clientes" ToRole="Historial_Prestamo" />
+    <Property Name="Nombre" Type="String" Nullable="false" />
+    <Property Name="Apellido" Type="String" Nullable="false" />
+    <Property Name="Telefono" Type="String" Nullable="false" />
+    <Property Name="Correo" Type="String" Nullable="false" />
+    <NavigationProperty Name="Direccion" Relationship="Libreria.ClientesDireccion" FromRole="Clientes" ToRole="Direccion" />
+  </EntityType>
+  <Association Name="ClientesHistorial_Prestamo">
+    <End Type="Libreria.Clientes" Role="Clientes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Libreria.Historial_Prestamo" Role="Historial_Prestamo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Historial_Prestamo">
+        <PropertyRef Name="Cod_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Direccion">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="ClienteID" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClienteID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Clientes" Relationship="Libreria.ClientesDireccion" FromRole="Direccion" ToRole="Clientes" />
+    <Property Name="Calle" Type="String" Nullable="false" />
+    <Property Name="Numero" Type="String" Nullable="false" />
+    <Property Name="Provincia" Type="String" Nullable="false" />
+    <Property Name="Pais" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="ClientesDireccion">
+    <End Type="Libreria.Clientes" Role="Clientes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Libreria.Direccion" Role="Direccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Direccion">
+        <PropertyRef Name="ClienteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LibroEjemplarHistorial_Prestamo">
+    <End Type="Libreria.LibroEjemplar" Role="LibroEjemplar" Multiplicity="1" />
+    <End Type="Libreria.Historial_Prestamo" Role="Historial_Prestamo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LibroEjemplar">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="Historial_Prestamo">
+        <PropertyRef Name="Cod_Libro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
