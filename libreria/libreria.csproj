@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,22 +46,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="conexión\CLibros.cs" />
+    <Compile Include="conexión\CEstudiante.cs" />
+    <Compile Include="conexión\FDBHelper.cs" />
+    <Compile Include="entidades\Libros.cs" />
+    <Compile Include="entidades\Estudiante.cs" />
+    <Compile Include="forms\FrmLibros.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="forms\FrmLibros.Designer.cs">
+      <DependentUpon>FrmLibros.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\login.cs">
+    <Compile Include="forms\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\login.Designer.cs">
-      <DependentUpon>login.cs</DependentUpon>
+    <Compile Include="forms\FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\MDIParent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\MDIParent.Designer.cs">
+      <DependentUpon>MDIParent.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="forms\login.resx">
-      <DependentUpon>login.cs</DependentUpon>
+    <EmbeddedResource Include="forms\FrmLibros.resx">
+      <DependentUpon>FrmLibros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\MDIParent.resx">
+      <DependentUpon>MDIParent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -70,6 +88,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -83,6 +102,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="resources\images1.jpg" />
+    <Content Include="resources\images4PL4CU1M.jpg" />
+    <Content Include="resources\Llgbv_s-200x150.gif" />
+    <Content Include="resources\untitled14.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
