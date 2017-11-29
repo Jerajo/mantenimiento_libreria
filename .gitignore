@@ -285,6 +285,9 @@ UpgradeLog*.htm
 *.ldf
 *.ndf
 
+# Cache files
+.cache
+
 # Business Intelligence projects
 *.rdl.data
 *.bim.layout
