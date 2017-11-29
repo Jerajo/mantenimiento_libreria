@@ -1,6 +1,6 @@
 ﻿namespace libreria.forms
 {
-    partial class login
+    partial class FrmLogin
     {
         /// <summary>
         /// Required designer variable.
