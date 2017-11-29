@@ -8,49 +8,24 @@ namespace Sistema_de_punto_de_ventas.Entidades
 {
     public class Libros
     {
-        private int _id, _dni;
-        private string _nombre, _apellido, _telefono, _direccion;
-
+        private int _stock, _categoriaId;
+        private string _ISBN, _titulo, _pais, _editorial;
         public Libros() {}
-        public Libros(int id, string nombre, string apellido, string dirrecion, string telefono, int dni)
+        public Libros(string ISBN, string titulo, int stock, string pais, string editorial, int categoriaId)
         {
-            this._id = id;
-            this._nombre = nombre;
-            this._apellido = apellido;
-            this._direccion = dirrecion;
-            this._telefono = telefono;
-            this._dni = dni;
+            this._ISBN = ISBN;         
+            this._titulo = titulo;
+            this._pais = pais;
+            this._stock = stock;
+            this._editorial = editorial;
+            this._categoriaId = categoriaId;
         }
 
-        public int ID
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
-        public int DNI
-        {
-            get { return _dni; }
-            set { _dni = value; }
-        }
-        public string Nombre
-        {
-            get { return _nombre; }
-            set { _nombre = value; }
-        }
-        public string Apellido
-        {
-            get { return _apellido; }
-            set { _apellido = value; }
-        }
-        public string Direccion
-        {
-            get { return _direccion; }
-            set { _direccion = value; }
-        }
-        public string Telefono
-        {
-            get { return _telefono; }
-            set { _telefono = value; }
-        }
+        public int Stock { get => _stock; set => _stock = value; }
+        public int CategoriaId { get => _categoriaId; set => _categoriaId = value; }
+        public string ISBN { get => _ISBN; set => _ISBN = value; }
+        public string Titulo { get => _titulo; set => _titulo = value; }
+        public string Pais { get => _pais; set => _pais = value; }
+        public string Editorial { get => _editorial; set => _editorial = value; }
     }
 }
