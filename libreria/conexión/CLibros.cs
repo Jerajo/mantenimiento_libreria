@@ -22,11 +22,12 @@ namespace Sistema_de_punto_de_ventas.Datos
         {
             SqlParameter[] dbParams = new SqlParameter[]
                 {
-                    FDBHelper.MakeParam("@Nombre",SqlDbType.VarChar, 0, libros.Nombre),
-                    FDBHelper.MakeParam("@Apellido",SqlDbType.VarChar, 0, libros.Apellido),
-                    FDBHelper.MakeParam("@DNI",SqlDbType.Int, 0, libros.DNI),
-                    FDBHelper.MakeParam("@Direccion",SqlDbType.VarChar, 0, libros.Direccion),
-                    FDBHelper.MakeParam("@Telefono",SqlDbType.VarChar, 0, libros.Telefono),                
+                    //, Titulo, Pais, Stock, Editorial, CategoriaId
+                    FDBHelper.MakeParam("@ISBN",SqlDbType.VarChar, 0, libros.ISBN),
+                    FDBHelper.MakeParam("@Pais",SqlDbType.VarChar, 0, libros.Pais),
+                    FDBHelper.MakeParam("@Stock",SqlDbType.Int, 0, libros.Stock),
+                    FDBHelper.MakeParam("@Editorial",SqlDbType.VarChar, 0, libros.Editorial),
+                    FDBHelper.MakeParam("@CategoriaId",SqlDbType.Int, 0, libros.CategoriaId),                
                 };
             return Convert.ToInt32(FDBHelper.ExecuteScalar("usp_Data_FLibros_Insertar", dbParams));
         }
@@ -35,12 +36,11 @@ namespace Sistema_de_punto_de_ventas.Datos
         {
             SqlParameter[] dbParams = new SqlParameter[]
                 {
-                    FDBHelper.MakeParam("@ID",SqlDbType.Int, 0, libros.ID),
-                    FDBHelper.MakeParam("@Nombre",SqlDbType.VarChar, 0, libros.Nombre),
-                    FDBHelper.MakeParam("@Apellido",SqlDbType.VarChar, 0, libros.Apellido),
-                    FDBHelper.MakeParam("@DNI",SqlDbType.Int, 0, libros.DNI),
-                    FDBHelper.MakeParam("@Direccion",SqlDbType.VarChar, 0, libros.Direccion),
-                    FDBHelper.MakeParam("@Telefono",SqlDbType.VarChar, 0, libros.Telefono),
+                    FDBHelper.MakeParam("@ISBN",SqlDbType.VarChar, 0, libros.ISBN),
+                    FDBHelper.MakeParam("@Pais",SqlDbType.VarChar, 0, libros.Pais),
+                    FDBHelper.MakeParam("@Stock",SqlDbType.Int, 0, libros.Stock),
+                    FDBHelper.MakeParam("@Editorial",SqlDbType.VarChar, 0, libros.Editorial),
+                    FDBHelper.MakeParam("@CategoriaId",SqlDbType.Int, 0, libros.CategoriaId),
                 };
             return Convert.ToInt32(FDBHelper.ExecuteScalar("usp_Data_FLibros_Actualizar", dbParams));
         }
@@ -49,18 +49,18 @@ namespace Sistema_de_punto_de_ventas.Datos
         {
             SqlParameter[] dbParams = new SqlParameter[]
                 {
-                    FDBHelper.MakeParam("@ID",SqlDbType.Int, 0, libros.ID),
+                    FDBHelper.MakeParam("@ISBN",SqlDbType.VarChar, 0, libros.ISBN),
                 };
             return Convert.ToInt32(FDBHelper.ExecuteScalar("usp_Data_FLibros_Eliminar", dbParams));
         }
 
-        public static int VerificarDNI(int dni)
+        public static int VerificarStock(int dni)
         {
             SqlParameter[] dbParams = new SqlParameter[]
                 {
-                    FDBHelper.MakeParam("@DNI",SqlDbType.Int, 0, dni),
+                    FDBHelper.MakeParam("@Stock",SqlDbType.Int, 0, dni),
                 };
-            return Convert.ToInt32(FDBHelper.ExecuteScalar("usp_Data_FLibros_VerificarDNI", dbParams));
+            return Convert.ToInt32(FDBHelper.ExecuteScalar("usp_Data_FLibros_VerificarStock", dbParams));
         }
 
     } 
