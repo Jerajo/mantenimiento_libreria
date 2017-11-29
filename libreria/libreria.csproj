@@ -73,26 +73,23 @@
     <Compile Include="Busquedas\SchLibros.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="conexión\CEstudiante.cs" />
+    <Compile Include="conexión\CLibros.cs" />
+    <Compile Include="conexión\FDBHelper.cs" />
     <Compile Include="Controles\Libro.cs" />
     <Compile Include="Controles\Libro.Designer.cs">
       <DependentUpon>Libro.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseCon.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
+    <Compile Include="entidades\Estudiante.cs" />
+    <Compile Include="entidades\Libros.cs" />
     <Compile Include="forms\Box.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\Box.Designer.cs">
       <DependentUpon>Box.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\login.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\login.cs" />
     <Compile Include="forms\login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
     </Compile>
@@ -170,6 +167,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="LibreriaModel.edmx.sql" />
+    <Content Include="resources\images1.jpg" />
+    <Content Include="resources\images4PL4CU1M.jpg" />
+    <Content Include="resources\Llgbv_s-200x150.gif" />
+    <Content Include="resources\untitled14.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
