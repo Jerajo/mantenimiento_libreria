@@ -96,6 +96,11 @@
     <Compile Include="forms\login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
     </Compile>
+    <Compile Include="LibreriaHCDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibreriaHCDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Mantenimientos\Generos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +135,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="ClassDiagram1.cd" />
+    <None Include="LibreriaHCDataSet.xsc">
+      <DependentUpon>LibreriaHCDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="LibreriaHCDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LibreriaHCDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="LibreriaHCDataSet.xss">
+      <DependentUpon>LibreriaHCDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -146,6 +162,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="LibreriaHC.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LibreriaHC_log.ldf">
+      <DependentUpon>LibreriaHC.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="LibreriaModel.edmx.sql" />
   </ItemGroup>
   <ItemGroup>

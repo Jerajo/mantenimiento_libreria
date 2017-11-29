@@ -343,6 +343,12 @@ CREATE VIEW vwGenerosLibrosCount
 	group by c.Id, c.Genero;
 	go
 -----------
+----
+CREATE VIEW vwListadoLibrosNormal
+	AS 
+
+	Select ISBN, Titulo, Genero From LibrosSet lb inner join CategoriasSet C on lb.CategoriaId = C.Id;
+	go
 
 
 
@@ -353,7 +359,7 @@ Insert into CategoriasSet(Genero) values ('Drama')
 ;
 go
 ------INSERTANDO Libros
-exec spInsertLibro '978-84-8441-755-2', 'La Piramide Roja, Las Cronicas de Kane Vol. 1', 'España', 5, 'Montena', 1
+exec spInsertLibro '9788484417552', 'La Piramide Roja, Las Cronicas de Kane Vol. 1', 'España', 5, 'Montena', 1
 
 
 

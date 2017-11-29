@@ -47,7 +47,7 @@ namespace libreria.Mantenimientos
 
         private void FillDataGrid()
         {
-            Listado1.DataSource = DatabaseCon.Instancia.GetData("select * from vw_GenerosLibrosCount");
+            Listado1.DataSource = DatabaseCon.Instancia.GetData("select * from vwGenerosLibrosCount");
             
         }
 
