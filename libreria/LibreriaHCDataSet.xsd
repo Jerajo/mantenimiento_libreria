@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="LibreriaHCDataSet" targetNamespace="http://tempuri.org/LibreriaHCDataSet.xsd" xmlns:mstns="http://tempuri.org/LibreriaHCDataSet.xsd" xmlns="http://tempuri.org/LibreriaHCDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="LibreriaHCConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="LibreriaHCConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.libreria.Properties.Settings.GlobalReference.Default.LibreriaHCConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vwListadoLibrosNormalTableAdapter" GeneratorDataComponentClassName="vwListadoLibrosNormalTableAdapter" Name="vwListadoLibrosNormal" UserDataComponentName="vwListadoLibrosNormalTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="LibreriaHCConnectionString (Settings)" DbObjectName="dbo.vwListadoLibrosNormal" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ISBN, Titulo, Genero FROM dbo.vwListadoLibrosNormal</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ISBN" DataSetColumn="ISBN" />
+              <Mapping SourceColumn="Titulo" DataSetColumn="Titulo" />
+              <Mapping SourceColumn="Genero" DataSetColumn="Genero" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="LibreriaHCDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="LibreriaHCDataSet" msprop:Generator_UserDSName="LibreriaHCDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vwListadoLibrosNormal" msprop:Generator_TableClassName="vwListadoLibrosNormalDataTable" msprop:Generator_TableVarName="tablevwListadoLibrosNormal" msprop:Generator_TablePropName="vwListadoLibrosNormal" msprop:Generator_RowDeletingName="vwListadoLibrosNormalRowDeleting" msprop:Generator_RowChangingName="vwListadoLibrosNormalRowChanging" msprop:Generator_RowEvHandlerName="vwListadoLibrosNormalRowChangeEventHandler" msprop:Generator_RowDeletedName="vwListadoLibrosNormalRowDeleted" msprop:Generator_UserTableName="vwListadoLibrosNormal" msprop:Generator_RowChangedName="vwListadoLibrosNormalRowChanged" msprop:Generator_RowEvArgName="vwListadoLibrosNormalRowChangeEvent" msprop:Generator_RowClassName="vwListadoLibrosNormalRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ISBN" msprop:Generator_ColumnVarNameInTable="columnISBN" msprop:Generator_ColumnPropNameInRow="ISBN" msprop:Generator_ColumnPropNameInTable="ISBNColumn" msprop:Generator_UserColumnName="ISBN">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Titulo" msprop:Generator_ColumnVarNameInTable="columnTitulo" msprop:Generator_ColumnPropNameInRow="Titulo" msprop:Generator_ColumnPropNameInTable="TituloColumn" msprop:Generator_UserColumnName="Titulo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Genero" msprop:Generator_ColumnVarNameInTable="columnGenero" msprop:Generator_ColumnPropNameInRow="Genero" msprop:Generator_ColumnPropNameInTable="GeneroColumn" msprop:Generator_UserColumnName="Genero">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vwListadoLibrosNormal" />
+      <xs:field xpath="mstns:ISBN" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
