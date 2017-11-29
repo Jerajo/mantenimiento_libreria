@@ -150,11 +150,65 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="AutoresSet.cs">
+      <DependentUpon>lbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AutoresSetsController.cs" />
+    <Compile Include="CategoriasSet.cs">
+      <DependentUpon>lbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CategoriasSetsController.cs" />
+    <Compile Include="ClientesSet.cs">
+      <DependentUpon>lbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ClientesSetsController.cs" />
+    <Compile Include="Controllers\GenerosLibrosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="CredencialesSet.cs">
+      <DependentUpon>lbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CredencialesSetsController.cs" />
+    <Compile Include="DireccionSet.cs">
+      <DependentUpon>lbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HistorialPrestamoSet.cs">
+      <DependentUpon>lbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="lbModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>lbModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="lbModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>lbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="lbModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>lbModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="LibroAutorSet.cs">
+      <DependentUpon>lbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LibroEjemplarSet.cs">
+      <DependentUpon>lbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LibrosSet.cs">
+      <DependentUpon>lbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\LibrosSetsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VariablesSet.cs">
+      <DependentUpon>lbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwGenerosLibrosCount.cs">
+      <DependentUpon>lbModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\LibHC.mdf" />
@@ -167,10 +221,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="lbModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>lbModel.edmx</DependentUpon>
+      <LastGenOutput>lbModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="lbModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>lbModel.edmx</DependentUpon>
+      <LastGenOutput>lbModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="lbModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>lbModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="lbModel.edmx.diagram">
+      <DependentUpon>lbModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -197,6 +268,36 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\AutoresSets\Create.cshtml" />
+    <Content Include="Views\AutoresSets\Delete.cshtml" />
+    <Content Include="Views\AutoresSets\Details.cshtml" />
+    <Content Include="Views\AutoresSets\Edit.cshtml" />
+    <Content Include="Views\AutoresSets\Index.cshtml" />
+    <Content Include="Views\CategoriasSets\Create.cshtml" />
+    <Content Include="Views\CategoriasSets\Delete.cshtml" />
+    <Content Include="Views\CategoriasSets\Details.cshtml" />
+    <Content Include="Views\CategoriasSets\Edit.cshtml" />
+    <Content Include="Views\CategoriasSets\Index.cshtml" />
+    <Content Include="Views\ClientesSets\Create.cshtml" />
+    <Content Include="Views\ClientesSets\Delete.cshtml" />
+    <Content Include="Views\ClientesSets\Details.cshtml" />
+    <Content Include="Views\ClientesSets\Edit.cshtml" />
+    <Content Include="Views\ClientesSets\Index.cshtml" />
+    <Content Include="Views\CredencialesSets\Create.cshtml" />
+    <Content Include="Views\CredencialesSets\Delete.cshtml" />
+    <Content Include="Views\CredencialesSets\Details.cshtml" />
+    <Content Include="Views\CredencialesSets\Edit.cshtml" />
+    <Content Include="Views\CredencialesSets\Index.cshtml" />
+    <Content Include="Views\LibrosSets\Create.cshtml" />
+    <Content Include="Views\LibrosSets\Delete.cshtml" />
+    <Content Include="Views\LibrosSets\Details.cshtml" />
+    <Content Include="Views\LibrosSets\Edit.cshtml" />
+    <Content Include="Views\LibrosSets\Index.cshtml" />
+    <Content Include="Views\GenerosLibros\Create.cshtml" />
+    <Content Include="Views\GenerosLibros\Delete.cshtml" />
+    <Content Include="Views\GenerosLibros\Details.cshtml" />
+    <Content Include="Views\GenerosLibros\Edit.cshtml" />
+    <Content Include="Views\GenerosLibros\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

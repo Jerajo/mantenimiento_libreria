@@ -1,0 +1,693 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LibHCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AutoresSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategoriasSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Genero" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientesSet">
+          <Key>
+            <PropertyRef Name="Identificacion" />
+          </Key>
+          <Property Name="Identificacion" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CredencialesSet">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DireccionSet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="ClienteID" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClienteID" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Sector" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pais" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Calle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Provincia" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HistorialPrestamoSet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="LibroEjemplarCodigo" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LibroEjemplarCodigo" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ClientesIdentificacion" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Fecha_Ini" Type="datetime" />
+          <Property Name="Fecha_Fin" Type="datetime" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LibroAutorSet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="LibroISBN" />
+            <PropertyRef Name="AutorId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LibroISBN" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="AutorId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LibroEjemplarSet">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="LibroISBN" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Numero" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LibrosSet">
+          <Key>
+            <PropertyRef Name="ISBN" />
+          </Key>
+          <Property Name="ISBN" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Titulo" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Pais" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Stock" Type="int" Nullable="false" />
+          <Property Name="Editorial" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="CategoriaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VariablesSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Valor" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\MASTER\DOCUMENTS\VISUAL STUDIO 2017\PROJECTS\PRUEBA\MANTENIMIENTO_LIBRERIA\MVCLIBRERIA\APP_DATA\LIBHC.MDF.dbo.vwGenerosLibrosCount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwGenerosLibrosCount">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Genero" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Genero" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Total_Libros" Type="int" />
+        </EntityType>
+        <Association Name="FK_AutoresLibroAutor">
+          <End Role="AutoresSet" Type="Self.AutoresSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LibroAutorSet" Type="Self.LibroAutorSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutoresSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LibroAutorSet">
+              <PropertyRef Name="AutorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoriaLibro">
+          <End Role="CategoriasSet" Type="Self.CategoriasSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LibrosSet" Type="Self.LibrosSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriasSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LibrosSet">
+              <PropertyRef Name="CategoriaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientesHistorialPrestamo">
+          <End Role="ClientesSet" Type="Self.ClientesSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HistorialPrestamoSet" Type="Self.HistorialPrestamoSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientesSet">
+              <PropertyRef Name="Identificacion" />
+            </Principal>
+            <Dependent Role="HistorialPrestamoSet">
+              <PropertyRef Name="ClientesIdentificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DireccionCliente">
+          <End Role="ClientesSet" Type="Self.ClientesSet" Multiplicity="1" />
+          <End Role="DireccionSet" Type="Self.DireccionSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientesSet">
+              <PropertyRef Name="Identificacion" />
+            </Principal>
+            <Dependent Role="DireccionSet">
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LibroEjemplarHistorialPrestamo">
+          <End Role="LibroEjemplarSet" Type="Self.LibroEjemplarSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HistorialPrestamoSet" Type="Self.HistorialPrestamoSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LibroEjemplarSet">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="HistorialPrestamoSet">
+              <PropertyRef Name="LibroEjemplarCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LibrosLibroAutor">
+          <End Role="LibrosSet" Type="Self.LibrosSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LibroAutorSet" Type="Self.LibroAutorSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LibrosSet">
+              <PropertyRef Name="ISBN" />
+            </Principal>
+            <Dependent Role="LibroAutorSet">
+              <PropertyRef Name="LibroISBN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LibrosLibroEjemplar">
+          <End Role="LibrosSet" Type="Self.LibrosSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LibroEjemplarSet" Type="Self.LibroEjemplarSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LibrosSet">
+              <PropertyRef Name="ISBN" />
+            </Principal>
+            <Dependent Role="LibroEjemplarSet">
+              <PropertyRef Name="LibroISBN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spDeleteGenero" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spInsertLibro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="isbn" Type="nvarchar" Mode="In" />
+          <Parameter Name="titulo" Type="nvarchar" Mode="In" />
+          <Parameter Name="pais" Type="nvarchar" Mode="In" />
+          <Parameter Name="Stock" Type="int" Mode="In" />
+          <Parameter Name="Editorial" Type="nvarchar" Mode="In" />
+          <Parameter Name="Genero" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spNewGenero" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spUpdateGenre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="LibHCModelStoreContainer">
+          <EntitySet Name="AutoresSet" EntityType="Self.AutoresSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoriasSet" EntityType="Self.CategoriasSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientesSet" EntityType="Self.ClientesSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CredencialesSet" EntityType="Self.CredencialesSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DireccionSet" EntityType="Self.DireccionSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HistorialPrestamoSet" EntityType="Self.HistorialPrestamoSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LibroAutorSet" EntityType="Self.LibroAutorSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LibroEjemplarSet" EntityType="Self.LibroEjemplarSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LibrosSet" EntityType="Self.LibrosSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VariablesSet" EntityType="Self.VariablesSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vwGenerosLibrosCount" EntityType="Self.vwGenerosLibrosCount" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwGenerosLibrosCount].[Id] AS [Id], 
+    [vwGenerosLibrosCount].[Genero] AS [Genero], 
+    [vwGenerosLibrosCount].[Total_Libros] AS [Total_Libros]
+    FROM [dbo].[vwGenerosLibrosCount] AS [vwGenerosLibrosCount]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_AutoresLibroAutor" Association="Self.FK_AutoresLibroAutor">
+            <End Role="AutoresSet" EntitySet="AutoresSet" />
+            <End Role="LibroAutorSet" EntitySet="LibroAutorSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoriaLibro" Association="Self.FK_CategoriaLibro">
+            <End Role="CategoriasSet" EntitySet="CategoriasSet" />
+            <End Role="LibrosSet" EntitySet="LibrosSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientesHistorialPrestamo" Association="Self.FK_ClientesHistorialPrestamo">
+            <End Role="ClientesSet" EntitySet="ClientesSet" />
+            <End Role="HistorialPrestamoSet" EntitySet="HistorialPrestamoSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DireccionCliente" Association="Self.FK_DireccionCliente">
+            <End Role="ClientesSet" EntitySet="ClientesSet" />
+            <End Role="DireccionSet" EntitySet="DireccionSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LibroEjemplarHistorialPrestamo" Association="Self.FK_LibroEjemplarHistorialPrestamo">
+            <End Role="LibroEjemplarSet" EntitySet="LibroEjemplarSet" />
+            <End Role="HistorialPrestamoSet" EntitySet="HistorialPrestamoSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LibrosLibroAutor" Association="Self.FK_LibrosLibroAutor">
+            <End Role="LibrosSet" EntitySet="LibrosSet" />
+            <End Role="LibroAutorSet" EntitySet="LibroAutorSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LibrosLibroEjemplar" Association="Self.FK_LibrosLibroEjemplar">
+            <End Role="LibrosSet" EntitySet="LibrosSet" />
+            <End Role="LibroEjemplarSet" EntitySet="LibroEjemplarSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LibHCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AutoresSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="LibroAutorSets" Relationship="Self.FK_AutoresLibroAutor" FromRole="AutoresSet" ToRole="LibroAutorSet" />
+        </EntityType>
+        <EntityType Name="CategoriasSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Genero" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="LibrosSets" Relationship="Self.FK_CategoriaLibro" FromRole="CategoriasSet" ToRole="LibrosSet" />
+        </EntityType>
+        <EntityType Name="ClientesSet">
+          <Key>
+            <PropertyRef Name="Identificacion" />
+          </Key>
+          <Property Name="Identificacion" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="HistorialPrestamoSets" Relationship="Self.FK_ClientesHistorialPrestamo" FromRole="ClientesSet" ToRole="HistorialPrestamoSet" />
+          <NavigationProperty Name="DireccionSets" Relationship="Self.FK_DireccionCliente" FromRole="ClientesSet" ToRole="DireccionSet" />
+        </EntityType>
+        <EntityType Name="CredencialesSet">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DireccionSet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="ClienteID" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClienteID" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sector" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Calle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Provincia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ClientesSet" Relationship="Self.FK_DireccionCliente" FromRole="DireccionSet" ToRole="ClientesSet" />
+        </EntityType>
+        <EntityType Name="HistorialPrestamoSet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="LibroEjemplarCodigo" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LibroEjemplarCodigo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientesIdentificacion" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fecha_Ini" Type="DateTime" Precision="3" />
+          <Property Name="Fecha_Fin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ClientesSet" Relationship="Self.FK_ClientesHistorialPrestamo" FromRole="HistorialPrestamoSet" ToRole="ClientesSet" />
+          <NavigationProperty Name="LibroEjemplarSet" Relationship="Self.FK_LibroEjemplarHistorialPrestamo" FromRole="HistorialPrestamoSet" ToRole="LibroEjemplarSet" />
+        </EntityType>
+        <EntityType Name="LibroAutorSet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="LibroISBN" />
+            <PropertyRef Name="AutorId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LibroISBN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AutorId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AutoresSet" Relationship="Self.FK_AutoresLibroAutor" FromRole="LibroAutorSet" ToRole="AutoresSet" />
+          <NavigationProperty Name="LibrosSet" Relationship="Self.FK_LibrosLibroAutor" FromRole="LibroAutorSet" ToRole="LibrosSet" />
+        </EntityType>
+        <EntityType Name="LibroEjemplarSet">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LibroISBN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Numero" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="HistorialPrestamoSets" Relationship="Self.FK_LibroEjemplarHistorialPrestamo" FromRole="LibroEjemplarSet" ToRole="HistorialPrestamoSet" />
+          <NavigationProperty Name="LibrosSet" Relationship="Self.FK_LibrosLibroEjemplar" FromRole="LibroEjemplarSet" ToRole="LibrosSet" />
+        </EntityType>
+        <EntityType Name="LibrosSet">
+          <Key>
+            <PropertyRef Name="ISBN" />
+          </Key>
+          <Property Name="ISBN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Titulo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pais" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Stock" Type="Int32" Nullable="false" />
+          <Property Name="Editorial" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CategoriaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CategoriasSet" Relationship="Self.FK_CategoriaLibro" FromRole="LibrosSet" ToRole="CategoriasSet" />
+          <NavigationProperty Name="LibroAutorSets" Relationship="Self.FK_LibrosLibroAutor" FromRole="LibrosSet" ToRole="LibroAutorSet" />
+          <NavigationProperty Name="LibroEjemplarSets" Relationship="Self.FK_LibrosLibroEjemplar" FromRole="LibrosSet" ToRole="LibroEjemplarSet" />
+        </EntityType>
+        <EntityType Name="VariablesSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Valor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwGenerosLibrosCount">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Genero" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Genero" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Total_Libros" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_AutoresLibroAutor">
+          <End Role="AutoresSet" Type="Self.AutoresSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LibroAutorSet" Type="Self.LibroAutorSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutoresSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LibroAutorSet">
+              <PropertyRef Name="AutorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoriaLibro">
+          <End Role="CategoriasSet" Type="Self.CategoriasSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LibrosSet" Type="Self.LibrosSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriasSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LibrosSet">
+              <PropertyRef Name="CategoriaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientesHistorialPrestamo">
+          <End Role="ClientesSet" Type="Self.ClientesSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HistorialPrestamoSet" Type="Self.HistorialPrestamoSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientesSet">
+              <PropertyRef Name="Identificacion" />
+            </Principal>
+            <Dependent Role="HistorialPrestamoSet">
+              <PropertyRef Name="ClientesIdentificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DireccionCliente">
+          <End Role="ClientesSet" Type="Self.ClientesSet" Multiplicity="1" />
+          <End Role="DireccionSet" Type="Self.DireccionSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientesSet">
+              <PropertyRef Name="Identificacion" />
+            </Principal>
+            <Dependent Role="DireccionSet">
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LibroEjemplarHistorialPrestamo">
+          <End Role="LibroEjemplarSet" Type="Self.LibroEjemplarSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HistorialPrestamoSet" Type="Self.HistorialPrestamoSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LibroEjemplarSet">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="HistorialPrestamoSet">
+              <PropertyRef Name="LibroEjemplarCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LibrosLibroAutor">
+          <End Role="LibrosSet" Type="Self.LibrosSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LibroAutorSet" Type="Self.LibroAutorSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LibrosSet">
+              <PropertyRef Name="ISBN" />
+            </Principal>
+            <Dependent Role="LibroAutorSet">
+              <PropertyRef Name="LibroISBN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LibrosLibroEjemplar">
+          <End Role="LibrosSet" Type="Self.LibrosSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LibroEjemplarSet" Type="Self.LibroEjemplarSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LibrosSet">
+              <PropertyRef Name="ISBN" />
+            </Principal>
+            <Dependent Role="LibroEjemplarSet">
+              <PropertyRef Name="LibroISBN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LibHCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AutoresSets" EntityType="Self.AutoresSet" />
+          <EntitySet Name="CategoriasSets" EntityType="Self.CategoriasSet" />
+          <EntitySet Name="ClientesSets" EntityType="Self.ClientesSet" />
+          <EntitySet Name="CredencialesSets" EntityType="Self.CredencialesSet" />
+          <EntitySet Name="DireccionSets" EntityType="Self.DireccionSet" />
+          <EntitySet Name="HistorialPrestamoSets" EntityType="Self.HistorialPrestamoSet" />
+          <EntitySet Name="LibroAutorSets" EntityType="Self.LibroAutorSet" />
+          <EntitySet Name="LibroEjemplarSets" EntityType="Self.LibroEjemplarSet" />
+          <EntitySet Name="LibrosSets" EntityType="Self.LibrosSet" />
+          <EntitySet Name="VariablesSets" EntityType="Self.VariablesSet" />
+          <EntitySet Name="vwGenerosLibrosCounts" EntityType="Self.vwGenerosLibrosCount" />
+          <AssociationSet Name="FK_AutoresLibroAutor" Association="Self.FK_AutoresLibroAutor">
+            <End Role="AutoresSet" EntitySet="AutoresSets" />
+            <End Role="LibroAutorSet" EntitySet="LibroAutorSets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoriaLibro" Association="Self.FK_CategoriaLibro">
+            <End Role="CategoriasSet" EntitySet="CategoriasSets" />
+            <End Role="LibrosSet" EntitySet="LibrosSets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientesHistorialPrestamo" Association="Self.FK_ClientesHistorialPrestamo">
+            <End Role="ClientesSet" EntitySet="ClientesSets" />
+            <End Role="HistorialPrestamoSet" EntitySet="HistorialPrestamoSets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DireccionCliente" Association="Self.FK_DireccionCliente">
+            <End Role="ClientesSet" EntitySet="ClientesSets" />
+            <End Role="DireccionSet" EntitySet="DireccionSets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LibroEjemplarHistorialPrestamo" Association="Self.FK_LibroEjemplarHistorialPrestamo">
+            <End Role="LibroEjemplarSet" EntitySet="LibroEjemplarSets" />
+            <End Role="HistorialPrestamoSet" EntitySet="HistorialPrestamoSets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LibrosLibroAutor" Association="Self.FK_LibrosLibroAutor">
+            <End Role="LibrosSet" EntitySet="LibrosSets" />
+            <End Role="LibroAutorSet" EntitySet="LibroAutorSets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LibrosLibroEjemplar" Association="Self.FK_LibrosLibroEjemplar">
+            <End Role="LibrosSet" EntitySet="LibrosSets" />
+            <End Role="LibroEjemplarSet" EntitySet="LibroEjemplarSets" />
+          </AssociationSet>
+          <FunctionImport Name="spDeleteGenero">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertLibro">
+            <Parameter Name="isbn" Mode="In" Type="String" />
+            <Parameter Name="titulo" Mode="In" Type="String" />
+            <Parameter Name="pais" Mode="In" Type="String" />
+            <Parameter Name="Stock" Mode="In" Type="Int32" />
+            <Parameter Name="Editorial" Mode="In" Type="String" />
+            <Parameter Name="Genero" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spNewGenero">
+            <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spUpdateGenre">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LibHCModelStoreContainer" CdmEntityContainer="LibHCEntities">
+          <EntitySetMapping Name="AutoresSets">
+            <EntityTypeMapping TypeName="LibHCModel.AutoresSet">
+              <MappingFragment StoreEntitySet="AutoresSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoriasSets">
+            <EntityTypeMapping TypeName="LibHCModel.CategoriasSet">
+              <MappingFragment StoreEntitySet="CategoriasSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientesSets">
+            <EntityTypeMapping TypeName="LibHCModel.ClientesSet">
+              <MappingFragment StoreEntitySet="ClientesSet">
+                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CredencialesSets">
+            <EntityTypeMapping TypeName="LibHCModel.CredencialesSet">
+              <MappingFragment StoreEntitySet="CredencialesSet">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DireccionSets">
+            <EntityTypeMapping TypeName="LibHCModel.DireccionSet">
+              <MappingFragment StoreEntitySet="DireccionSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="Sector" ColumnName="Sector" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Calle" ColumnName="Calle" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistorialPrestamoSets">
+            <EntityTypeMapping TypeName="LibHCModel.HistorialPrestamoSet">
+              <MappingFragment StoreEntitySet="HistorialPrestamoSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LibroEjemplarCodigo" ColumnName="LibroEjemplarCodigo" />
+                <ScalarProperty Name="ClientesIdentificacion" ColumnName="ClientesIdentificacion" />
+                <ScalarProperty Name="Fecha_Ini" ColumnName="Fecha_Ini" />
+                <ScalarProperty Name="Fecha_Fin" ColumnName="Fecha_Fin" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LibroAutorSets">
+            <EntityTypeMapping TypeName="LibHCModel.LibroAutorSet">
+              <MappingFragment StoreEntitySet="LibroAutorSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LibroISBN" ColumnName="LibroISBN" />
+                <ScalarProperty Name="AutorId" ColumnName="AutorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LibroEjemplarSets">
+            <EntityTypeMapping TypeName="LibHCModel.LibroEjemplarSet">
+              <MappingFragment StoreEntitySet="LibroEjemplarSet">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="LibroISBN" ColumnName="LibroISBN" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LibrosSets">
+            <EntityTypeMapping TypeName="LibHCModel.LibrosSet">
+              <MappingFragment StoreEntitySet="LibrosSet">
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Editorial" ColumnName="Editorial" />
+                <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VariablesSets">
+            <EntityTypeMapping TypeName="LibHCModel.VariablesSet">
+              <MappingFragment StoreEntitySet="VariablesSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwGenerosLibrosCounts">
+            <EntityTypeMapping TypeName="LibHCModel.vwGenerosLibrosCount">
+              <MappingFragment StoreEntitySet="vwGenerosLibrosCount">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Total_Libros" ColumnName="Total_Libros" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spDeleteGenero" FunctionName="LibHCModel.Store.spDeleteGenero" />
+          <FunctionImportMapping FunctionImportName="spInsertLibro" FunctionName="LibHCModel.Store.spInsertLibro" />
+          <FunctionImportMapping FunctionImportName="spNewGenero" FunctionName="LibHCModel.Store.spNewGenero" />
+          <FunctionImportMapping FunctionImportName="spUpdateGenre" FunctionName="LibHCModel.Store.spUpdateGenre" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
