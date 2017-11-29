@@ -285,6 +285,9 @@ UpgradeLog*.htm
 *.ldf
 *.ndf
 
+# Cache files
+.cache
+
 # Business Intelligence projects
 *.rdl.data
 *.bim.layout
@@ -356,3 +359,10 @@ __pycache__/
 # should be stored in the .pubxml.user file.
 
 
+*.cache
+*.cache
+libreria/obj/Debug/DesignTimeResolveAssemblyReferences.cache
+*.cache
+libreria/obj/Debug/libreria.csproj.CoreCompileInputs.cache
+libreria/Properties/Settings.Designer.cs
+libreria/Properties/Settings.settings
