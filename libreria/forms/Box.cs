@@ -40,5 +40,19 @@ namespace libreria
             Box.MdiParent = this;
             Box.Show();
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var Box = new forms.FrmLibros();
+            Box.MdiParent = this;
+            Box.Show();
+        }
+
+        private void autorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var Box = forms.FrmAutor.Instance;
+            Box.MdiParent = this;
+            Box.Show();
+        }
     }
 }

@@ -93,6 +93,22 @@ public class DatabaseCon
 		return result;
 	}
 
+	public void ExecCommand(string query)
+	{
+		SqlCommand comando = new SqlCommand(query, Connection);
+		try
+			{
+				Connection.Open();
+				comando.ExecuteNonQuery();
+				Connection.Close();
+			}
+			catch (Exception ex)
+			{
+
+				MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+			}
+	}
+
 	public void ExecProcedure(string procedure, ICollection parametros = null)
 	{
 		SqlCommand comando = new SqlCommand(procedure, Connection);
