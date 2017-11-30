@@ -369,3 +369,6 @@ libreria/obj/Debug/libreria.csproj.CoreCompileInputs.cache
 libreria/Properties/Settings.Designer.cs
 libreria/Properties/Settings.settings
 /libreria/obj
+obj
+Debug
+*.cache
