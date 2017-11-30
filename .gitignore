@@ -5,6 +5,8 @@ ehthumbs.db
 # Folder config file
 Desktop.ini
 prepros-6.config
+App.config
+**/obj
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
@@ -366,3 +368,4 @@ libreria/obj/Debug/DesignTimeResolveAssemblyReferences.cache
 libreria/obj/Debug/libreria.csproj.CoreCompileInputs.cache
 libreria/Properties/Settings.Designer.cs
 libreria/Properties/Settings.settings
+/libreria/obj
