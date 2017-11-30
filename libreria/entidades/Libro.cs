@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Sistema_de_punto_de_ventas.Entidades
 {
-    public class Libros
+    public class Libro
     {
         private int _stock, _categoriaId;
         private string _ISBN, _titulo, _pais, _editorial;
-        public Libros() {}
-        public Libros(string ISBN, string titulo, int stock, string pais, string editorial, int categoriaId)
+        public Libro() {}
+        public Libro(string ISBN, string titulo, int stock, string pais, string editorial, int categoriaId)
         {
             this._ISBN = ISBN;         
             this._titulo = titulo;
