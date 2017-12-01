@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -38,14 +39,14 @@ namespace libreria.forms
         private void RowCellClick(object sender, DataGridViewCellEventArgs e)
         {
             var CR = dgvAutores.CurrentRow;
-            if ( CR != null)
+            if (CR != null)
             {
                 txtApellidoNew.Clear();
                 txtNombreNew.Clear();
                 txtNameEdit.Text = CR.Cells["Nombre"].Value.ToString();
                 txtApellidoEdit.Text = CR.Cells["Apellido"].Value.ToString();
                 ID_Autor = (int)CR.Cells["Id"].Value;
-                CargarDropDown();
+
                 CargarListView();
                 BtnShow(false);
             }
@@ -54,29 +55,20 @@ namespace libreria.forms
         private void CargarListView()
         {
             listView1.Items.Clear();
-            var Data = DatabaseCon.Instancia.GetData($"Select lb.ISBN as ISBN, lb.Titulo as Titulo from LibrosSet as lb inner join LibroAutorSet on AutorID = {ID_Autor}");
+            var Data = DatabaseCon.Instancia.GetDataByProcedure("spGetLibrosPorAutor",
+                new List<SqlParameter>() {
+                    new SqlParameter() { ParameterName="@IdAutor", SqlDbType=SqlDbType.Int, Value=ID_Autor}
+                });
+
             foreach (DataRow item in Data.Rows)
             {
                 ListViewItem itm = new ListViewItem(item.Field<string>("ISBN"));
                 itm.SubItems.Add(new ListViewItem.ListViewSubItem(itm, item.Field<string>("Titulo")));
                 listView1.Items.Add(itm);
             }
+            
         }
 
-        private void CargarDropDown()
-        {
-
-            //comboBox1.Items.Clear();
-            comboBox1.DataSource = null;
-            comboBox1.ValueMember = null ;
-            comboBox1.DisplayMember = null;
-            if (ID_Autor == null)
-                return;
-            string query = $"Select Distinct Lb.ISBN As ISBN, Lb.Titulo as Titulo from LibrosSet as Lb inner join (select * from LibroAutorSet where AutorId <> {ID_Autor}) as LaS on Lb.ISBN = LaS.LibroISBN";
-            comboBox1.DataSource = DatabaseCon.Instancia.GetData(query);
-            comboBox1.ValueMember = "ISBN";
-            comboBox1.DisplayMember = "Titulo";
-        }
 
         public void BtnShow(bool Value)
         {
@@ -132,14 +124,10 @@ namespace libreria.forms
 
         private void btnADD_Click(object sender, EventArgs e)
         {
-            if (comboBox1.Items.Count > 0)
-            {
-                string Val = comboBox1.SelectedValue.ToString();
+            var Lb = new PopUp.LibroToAutor(ID_Autor);
+            Lb.ShowDialog();
 
-                DatabaseCon.Instancia.ExecCommand($"Insert into LibroAutorSet values ( '{Val}', {ID_Autor})");
-                CargarDropDown();
-                CargarListView();
-            }
+            CargarListView();
 
         }
     }

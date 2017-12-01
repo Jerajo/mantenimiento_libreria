@@ -139,10 +139,10 @@ ADD CONSTRAINT [PK_AutoresSet]
 	PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'LibroAutorSet'
+-- Creating primary key on [LibroISBN], [AutorId] in table 'LibroAutorSet'
 ALTER TABLE [dbo].[LibroAutorSet]
 ADD CONSTRAINT [PK_LibroAutorSet]
-	PRIMARY KEY CLUSTERED ([Id] ASC,[LibroISBN], [AutorId]);
+	PRIMARY KEY CLUSTERED ([LibroISBN], [AutorId]);
 GO
 
 -- Creating primary key on [Codigo] in table 'LibroEjemplarSet'
@@ -332,7 +332,32 @@ AS
 
 	Delete from CategoriasSet where Id = @ID;
 go
+--- Libros POr autor
+CREATE PROCEDURE spGetLibrosPorAutor
+	@IdAutor int
+AS
+	select distinct  lb.ISBN, lb.Titulo from LibrosSet as Lb  
+	inner join  LibroAutorSet as la on lb.ISBN = la.LibroISBN
+	inner join AutoresSet as a on la.AutorId = a.Id
+	where a.Id = @IdAutor;
+go
+--Libros sin Autor Especificando
+CREATE PROCEDURE spGetLibrosSinAutor
+	@IdAutor int
+AS
+	select ISBN, Titulo from LibrosSet
+
+	except
+
+	select distinct  lb.ISBN, lb.Titulo from LibrosSet as Lb  
+	inner join  LibroAutorSet as la on lb.ISBN = la.LibroISBN
+	inner join AutoresSet as a on la.AutorId = a.Id
+	where a.Id = @IdAutor;
+go
+
+
 		
+
 
 -------Vistas
 ---Vista Generos con total de libros

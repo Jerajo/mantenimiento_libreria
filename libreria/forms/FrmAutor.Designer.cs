@@ -29,29 +29,27 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnSaveNew = new System.Windows.Forms.Button();
-            this.btnClearNew = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtNombreNew = new System.Windows.Forms.TextBox();
             this.txtApellidoNew = new System.Windows.Forms.TextBox();
+            this.txtNombreNew = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnClearNew = new System.Windows.Forms.Button();
+            this.btnSaveNew = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnADD = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.ISBNCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.NameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.btnADD = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtNameEdit = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtApellidoEdit = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
+            this.txtApellidoEdit = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtNameEdit = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.dgvAutores = new System.Windows.Forms.DataGridView();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.dgvAutores = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -75,15 +73,37 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nuevo Autor";
             // 
-            // btnSaveNew
+            // txtApellidoNew
             // 
-            this.btnSaveNew.Location = new System.Drawing.Point(51, 150);
-            this.btnSaveNew.Name = "btnSaveNew";
-            this.btnSaveNew.Size = new System.Drawing.Size(95, 32);
-            this.btnSaveNew.TabIndex = 0;
-            this.btnSaveNew.Text = "Guardar";
-            this.btnSaveNew.UseVisualStyleBackColor = true;
-            this.btnSaveNew.Click += new System.EventHandler(this.btnSaveNew_Click);
+            this.txtApellidoNew.Location = new System.Drawing.Point(99, 117);
+            this.txtApellidoNew.Name = "txtApellidoNew";
+            this.txtApellidoNew.Size = new System.Drawing.Size(213, 26);
+            this.txtApellidoNew.TabIndex = 5;
+            // 
+            // txtNombreNew
+            // 
+            this.txtNombreNew.Location = new System.Drawing.Point(99, 44);
+            this.txtNombreNew.Name = "txtNombreNew";
+            this.txtNombreNew.Size = new System.Drawing.Size(213, 26);
+            this.txtNombreNew.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(28, 94);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 20);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Apellidos";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(28, 31);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 20);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Nombre";
             // 
             // btnClearNew
             // 
@@ -95,43 +115,19 @@
             this.btnClearNew.UseVisualStyleBackColor = true;
             this.btnClearNew.Click += new System.EventHandler(this.btnClearNew_Click);
             // 
-            // label1
+            // btnSaveNew
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Nombre";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 94);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 20);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Apellidos";
-            // 
-            // txtNombreNew
-            // 
-            this.txtNombreNew.Location = new System.Drawing.Point(99, 44);
-            this.txtNombreNew.Name = "txtNombreNew";
-            this.txtNombreNew.Size = new System.Drawing.Size(213, 26);
-            this.txtNombreNew.TabIndex = 4;
-            // 
-            // txtApellidoNew
-            // 
-            this.txtApellidoNew.Location = new System.Drawing.Point(99, 117);
-            this.txtApellidoNew.Name = "txtApellidoNew";
-            this.txtApellidoNew.Size = new System.Drawing.Size(213, 26);
-            this.txtApellidoNew.TabIndex = 5;
+            this.btnSaveNew.Location = new System.Drawing.Point(51, 150);
+            this.btnSaveNew.Name = "btnSaveNew";
+            this.btnSaveNew.Size = new System.Drawing.Size(95, 32);
+            this.btnSaveNew.TabIndex = 0;
+            this.btnSaveNew.Text = "Guardar";
+            this.btnSaveNew.UseVisualStyleBackColor = true;
+            this.btnSaveNew.Click += new System.EventHandler(this.btnSaveNew_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnADD);
-            this.groupBox2.Controls.Add(this.comboBox1);
-            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.listView1);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(20, 231);
@@ -140,6 +136,17 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Listado de Libros";
+            // 
+            // btnADD
+            // 
+            this.btnADD.Location = new System.Drawing.Point(285, 62);
+            this.btnADD.Name = "btnADD";
+            this.btnADD.Size = new System.Drawing.Size(121, 160);
+            this.btnADD.TabIndex = 3;
+            this.btnADD.Text = "Agregar Libro al autor";
+            this.btnADD.UseVisualStyleBackColor = true;
+            this.btnADD.Visible = false;
+            this.btnADD.Click += new System.EventHandler(this.btnADD_Click);
             // 
             // listView1
             // 
@@ -164,34 +171,6 @@
             this.NameCol.Text = "Titulo";
             this.NameCol.Width = 129;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(281, 41);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 20);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Libros";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(285, 75);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(124, 28);
-            this.comboBox1.TabIndex = 2;
-            // 
-            // btnADD
-            // 
-            this.btnADD.Location = new System.Drawing.Point(285, 142);
-            this.btnADD.Name = "btnADD";
-            this.btnADD.Size = new System.Drawing.Size(121, 70);
-            this.btnADD.TabIndex = 3;
-            this.btnADD.Text = "Agregar al autor";
-            this.btnADD.UseVisualStyleBackColor = true;
-            this.btnADD.Visible = false;
-            this.btnADD.Click += new System.EventHandler(this.btnADD_Click);
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnCancel);
@@ -207,38 +186,6 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Autor a Editar";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 40);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 20);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Nombre";
-            // 
-            // txtNameEdit
-            // 
-            this.txtNameEdit.Location = new System.Drawing.Point(114, 34);
-            this.txtNameEdit.Name = "txtNameEdit";
-            this.txtNameEdit.Size = new System.Drawing.Size(213, 26);
-            this.txtNameEdit.TabIndex = 6;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 87);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 20);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Apellidos";
-            // 
-            // txtApellidoEdit
-            // 
-            this.txtApellidoEdit.Location = new System.Drawing.Point(114, 87);
-            this.txtApellidoEdit.Name = "txtApellidoEdit";
-            this.txtApellidoEdit.Size = new System.Drawing.Size(213, 26);
-            this.txtApellidoEdit.TabIndex = 8;
             // 
             // btnCancel
             // 
@@ -261,6 +208,38 @@
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Visible = false;
             // 
+            // txtApellidoEdit
+            // 
+            this.txtApellidoEdit.Location = new System.Drawing.Point(114, 87);
+            this.txtApellidoEdit.Name = "txtApellidoEdit";
+            this.txtApellidoEdit.Size = new System.Drawing.Size(213, 26);
+            this.txtApellidoEdit.TabIndex = 8;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 87);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(73, 20);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Apellidos";
+            // 
+            // txtNameEdit
+            // 
+            this.txtNameEdit.Location = new System.Drawing.Point(114, 34);
+            this.txtNameEdit.Name = "txtNameEdit";
+            this.txtNameEdit.Size = new System.Drawing.Size(213, 26);
+            this.txtNameEdit.TabIndex = 6;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 40);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 20);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Nombre";
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.btnDelete);
@@ -271,6 +250,15 @@
             this.groupBox4.Size = new System.Drawing.Size(473, 254);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(358, 216);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(95, 32);
+            this.btnDelete.TabIndex = 7;
+            this.btnDelete.Text = "Eliminar";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // dgvAutores
             // 
@@ -287,15 +275,6 @@
             this.dgvAutores.TabIndex = 0;
             this.dgvAutores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RowCellClick);
             // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(358, 216);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(95, 32);
-            this.btnDelete.TabIndex = 7;
-            this.btnDelete.Text = "Eliminar";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            // 
             // FrmAutor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -311,7 +290,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -331,8 +309,6 @@
         private System.Windows.Forms.Button btnSaveNew;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnADD;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader ISBNCol;
         private System.Windows.Forms.ColumnHeader NameCol;
