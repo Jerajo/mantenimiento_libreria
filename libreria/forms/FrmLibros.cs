@@ -272,7 +272,7 @@ namespace libreria.forms
                 DataView dv = new DataView(dt.Copy());
                 if (cbxFiltrar.Text != "Stock" && cbxFiltrar.Text != "CategoriaId")
                 {
-                    dv.RowFilter = cbxFiltrar.Text + " LIKE '" + txtFiltrar.Text + "%'";
+                    dv.RowFilter = cbxFiltrar.Text + " LIKE '%" + txtFiltrar.Text + "%'";
                 }
                 else if (txtFiltrar.Text != "")
                 {
@@ -323,6 +323,6 @@ namespace libreria.forms
         {
             var regexItem = new Regex("^[a-zA-Z0-9 ()-_.,#]*$");
             if (!regexItem.IsMatch(Convert.ToString(e.KeyChar)) && !(e.KeyChar == '\b')) e.Handled = true;
-        }        
+        }
     }
 }

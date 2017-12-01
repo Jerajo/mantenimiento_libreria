@@ -119,7 +119,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Turquoise;
-            this.button1.Location = new System.Drawing.Point(685, 291);
+            this.button1.Location = new System.Drawing.Point(685, 290);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(121, 53);
             this.button1.TabIndex = 4;
@@ -276,7 +276,7 @@
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.Red;
-            this.btnCancelar.Location = new System.Drawing.Point(205, 384);
+            this.btnCancelar.Location = new System.Drawing.Point(205, 383);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(93, 53);
             this.btnCancelar.TabIndex = 7;
@@ -288,7 +288,7 @@
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.LawnGreen;
-            this.btnGuardar.Location = new System.Drawing.Point(80, 383);
+            this.btnGuardar.Location = new System.Drawing.Point(80, 384);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(93, 53);
             this.btnGuardar.TabIndex = 6;
@@ -371,6 +371,7 @@
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(279, 29);
             this.txtStock.TabIndex = 5;
+            this.txtStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress_Only_Numbers);
             // 
             // txtPais
             // 
