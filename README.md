@@ -20,12 +20,12 @@
 **Mantenimientos/Formularios**
 * [ ] Login `Yerlin`
 * [ ] Mantenimiento Libros `Jesse`
-* [ ] Mantenimiento Genero `Jesus`
+* [X] Mantenimiento Genero `Jesus`
 * [ ] Mantenimiento Usuarios `Yerlin`
-* [ ] Mantenimiento Ejemplares `Jesse`
+* [ ] Mantenimiento Ejemplares `Jesse` Este es Opcional
 * [ ] Mantenimiento Estudiantes `Jesus`
-* [ ] Mantenimiento Prestamo/Devolución `Yerlin`
-* [ ] Mantenimiento Autores 'Jesus'
+* [ ] Mantenimiento Prestamo/Devolución `Jesus`
+* [X] Mantenimiento Autores `Jesus`
 
 **Busquedas/Estored procedures**
 * [ ] Historial Prestamos/Devoluciones `Jesus`
