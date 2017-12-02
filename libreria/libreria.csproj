@@ -86,11 +86,13 @@
     <Compile Include="forms\PopUp\LibroToAutor.Designer.cs">
       <DependentUpon>LibroToAutor.cs</DependentUpon>
     </Compile>
+    <Compile Include="conexión\CCategoria.cs" />
+    <Compile Include="entidades\Categoria.cs" />
     <Compile Include="forms\SchLibros.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="conexión\CEstudiante.cs" />
-    <Compile Include="conexión\CLibros.cs" />
+    <Compile Include="conexión\CLibro.cs" />
     <Compile Include="conexión\FDBHelper.cs" />
     <Compile Include="conexión\Libro.cs" />
     <Compile Include="conexión\Libro.Designer.cs">
@@ -98,7 +100,7 @@
     </Compile>
     <Compile Include="conexión\DatabaseCon.cs" />
     <Compile Include="entidades\Estudiante.cs" />
-    <Compile Include="entidades\Libros.cs" />
+    <Compile Include="entidades\Libro.cs" />
     <Compile Include="forms\Box.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,9 +147,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\SchLibros.resx">
       <DependentUpon>SchLibros.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="conexión\Libro.resx">
-      <DependentUpon>Libro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\Box.resx">
       <DependentUpon>Box.cs</DependentUpon>

@@ -32,6 +32,7 @@
             this.lblDatosNoEncontrados = new System.Windows.Forms.Label();
             this.ckbPrestados = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.dgvDBR = new System.Windows.Forms.DataGridView();
             this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -62,7 +63,6 @@
             this.cbxFiltrar = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtFiltrar = new System.Windows.Forms.TextBox();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDBR)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -76,6 +76,7 @@
             this.groupBox1.Controls.Add(this.lblDatosNoEncontrados);
             this.groupBox1.Controls.Add(this.ckbPrestados);
             this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.dgvDBR);
             this.groupBox1.Controls.Add(this.btnEliminar);
             this.groupBox1.Location = new System.Drawing.Point(419, 108);
@@ -115,6 +116,18 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Lista de Libros";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Turquoise;
+            this.button1.Location = new System.Drawing.Point(685, 290);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(121, 53);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Seleccionar";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.btnSeleccionar_Click);
+            // 
             // dgvDBR
             // 
             this.dgvDBR.AllowUserToAddRows = false;
@@ -133,6 +146,8 @@
             this.dgvDBR.Size = new System.Drawing.Size(796, 244);
             this.dgvDBR.TabIndex = 5;
             this.dgvDBR.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDBR_CellClick);
+            this.dgvDBR.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDBR_CellContentClick);
+            this.dgvDBR.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDBR_CellContentDoubleClick);
             // 
             // Eliminar
             // 
@@ -144,12 +159,13 @@
             // btnEliminar
             // 
             this.btnEliminar.BackColor = System.Drawing.Color.Red;
-            this.btnEliminar.Location = new System.Drawing.Point(713, 290);
+            this.btnEliminar.Location = new System.Drawing.Point(685, 291);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(93, 53);
+            this.btnEliminar.Size = new System.Drawing.Size(121, 53);
             this.btnEliminar.TabIndex = 4;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Visible = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // groupBox2
@@ -211,6 +227,7 @@
             this.cbxGenero.Name = "cbxGenero";
             this.cbxGenero.Size = new System.Drawing.Size(199, 32);
             this.cbxGenero.TabIndex = 3;
+            this.cbxGenero.SelectedIndexChanged += new System.EventHandler(this.cbxGenero_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -263,7 +280,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(205, 383);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(93, 53);
-            this.btnCancelar.TabIndex = 4;
+            this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Visible = false;
@@ -272,10 +289,10 @@
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.LawnGreen;
-            this.btnGuardar.Location = new System.Drawing.Point(80, 383);
+            this.btnGuardar.Location = new System.Drawing.Point(80, 384);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(93, 53);
-            this.btnGuardar.TabIndex = 4;
+            this.btnGuardar.TabIndex = 6;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Visible = false;
@@ -354,7 +371,8 @@
             this.txtStock.Location = new System.Drawing.Point(99, 335);
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(279, 29);
-            this.txtStock.TabIndex = 0;
+            this.txtStock.TabIndex = 5;
+            this.txtStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress_Only_Numbers);
             // 
             // txtPais
             // 
@@ -362,7 +380,7 @@
             this.txtPais.Location = new System.Drawing.Point(99, 287);
             this.txtPais.Name = "txtPais";
             this.txtPais.Size = new System.Drawing.Size(279, 29);
-            this.txtPais.TabIndex = 0;
+            this.txtPais.TabIndex = 4;
             // 
             // txtEditorial
             // 
@@ -370,7 +388,7 @@
             this.txtEditorial.Location = new System.Drawing.Point(99, 128);
             this.txtEditorial.Name = "txtEditorial";
             this.txtEditorial.Size = new System.Drawing.Size(279, 29);
-            this.txtEditorial.TabIndex = 0;
+            this.txtEditorial.TabIndex = 2;
             // 
             // txtTitulo
             // 
@@ -378,7 +396,7 @@
             this.txtTitulo.Location = new System.Drawing.Point(99, 83);
             this.txtTitulo.Name = "txtTitulo";
             this.txtTitulo.Size = new System.Drawing.Size(279, 29);
-            this.txtTitulo.TabIndex = 0;
+            this.txtTitulo.TabIndex = 1;
             // 
             // txtISBN
             // 
@@ -393,7 +411,6 @@
             this.groupBox3.Controls.Add(this.cbxFiltrar);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.txtFiltrar);
-            this.groupBox3.Controls.Add(this.btnBuscar);
             this.groupBox3.Location = new System.Drawing.Point(419, 15);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(815, 84);
@@ -421,19 +438,9 @@
             // 
             this.txtFiltrar.Location = new System.Drawing.Point(283, 35);
             this.txtFiltrar.Name = "txtFiltrar";
-            this.txtFiltrar.Size = new System.Drawing.Size(416, 29);
+            this.txtFiltrar.Size = new System.Drawing.Size(523, 29);
             this.txtFiltrar.TabIndex = 0;
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackColor = System.Drawing.Color.Turquoise;
-            this.btnBuscar.Location = new System.Drawing.Point(716, 21);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(93, 53);
-            this.btnBuscar.TabIndex = 4;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = false;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.txtFiltrar.TextChanged += new System.EventHandler(this.txtFiltrar_TextChanged);
             // 
             // FrmLibros
             // 
@@ -450,7 +457,7 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FrmLibros";
             this.Text = "Mantenimiento de Libros";
-            this.Load += new System.EventHandler(this.Libros_Load);
+            this.Load += new System.EventHandler(this.From_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDBR)).EndInit();
@@ -494,13 +501,13 @@
         private System.Windows.Forms.ComboBox cbxFiltrar;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtFiltrar;
-        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DataGridView dgvDBR;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Eliminar;
         private System.Windows.Forms.Label lblDatosNoEncontrados;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ComboBox cbxGenero;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Eliminar;
+        private System.Windows.Forms.Button button1;
     }
 }
