@@ -261,6 +261,7 @@
             this.txtIdCategoria.Enabled = false;
             this.txtIdCategoria.Location = new System.Drawing.Point(86, 30);
             this.txtIdCategoria.Name = "txtIdCategoria";
+            this.txtIdCategoria.ReadOnly = true;
             this.txtIdCategoria.Size = new System.Drawing.Size(199, 29);
             this.txtIdCategoria.TabIndex = 0;
             // 

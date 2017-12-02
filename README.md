@@ -14,7 +14,7 @@
 **Sistemas/Clases/Entidades**
 * [ ] Cifrado/Descifrado `Yerlin`
 * [X] Conexión DB `Jesse`
-* [ ] Ejemplares, Estudiantes `Jesus`
+* [ ] Ejemplares, Estudiantes, Autores `Jesus`
 * [ ] Libros, Genero, Usuarios `Jesse` 
 
 **Mantenimientos/Formularios**
@@ -25,6 +25,7 @@
 * [ ] Mantenimiento Ejemplares `Jesse`
 * [ ] Mantenimiento Estudiantes `Jesus`
 * [ ] Mantenimiento Prestamo/Devolución `Yerlin`
+* [ ] Mantenimiento Autores 'Jesus'
 
 **Busquedas/Estored procedures**
 * [ ] Historial Prestamos/Devoluciones `Jesus`

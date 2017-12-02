@@ -18,7 +18,7 @@ namespace libreria
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 			//Application.Run(FrmLogin.GetInstance());
-            Application.Run(new FrmLibros());
+            Application.Run(new Box());
             //Application.Run(new Box());
         }
     }
