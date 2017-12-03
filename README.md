@@ -23,7 +23,7 @@
 * [X] Mantenimiento Genero `Jesus`
 * [ ] Mantenimiento Usuarios `Yerlin`
 * [ ] Mantenimiento Ejemplares `Jesse` Este es Opcional
-* [ ] Mantenimiento Estudiantes `Jesus`
+* [X] Mantenimiento Estudiantes `Jesus`
 * [ ] Mantenimiento Prestamo/Devolución `Jesus`
 * [X] Mantenimiento Autores `Jesus`
 
