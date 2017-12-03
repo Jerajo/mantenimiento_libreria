@@ -79,11 +79,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="conexión\Utiliy.cs" />
     <Compile Include="forms\FrmAutor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\FrmAutor.Designer.cs">
       <DependentUpon>FrmAutor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FrnEst.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FrnEst.Designer.cs">
+      <DependentUpon>FrnEst.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\PopUp\LibroToAutor.cs">
       <SubType>Form</SubType>
@@ -93,6 +100,12 @@
     </Compile>
     <Compile Include="conexión\CCategoria.cs" />
     <Compile Include="entidades\Categoria.cs" />
+    <Compile Include="forms\PopUp\PopUpDir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\PopUp\PopUpDir.Designer.cs">
+      <DependentUpon>PopUpDir.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\SchLibros.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,8 +151,14 @@
     <EmbeddedResource Include="forms\FrmAutor.resx">
       <DependentUpon>FrmAutor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\FrnEst.resx">
+      <DependentUpon>FrnEst.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\PopUp\LibroToAutor.resx">
       <DependentUpon>LibroToAutor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\PopUp\PopUpDir.resx">
+      <DependentUpon>PopUpDir.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\SchLibros.resx">
       <DependentUpon>SchLibros.cs</DependentUpon>
@@ -169,7 +188,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -213,6 +231,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

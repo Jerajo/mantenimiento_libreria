@@ -8,6 +8,14 @@ namespace Sistema_de_punto_de_ventas.Datos
 {
     public class CCategoria
     {
+        public CLibro CLibro
+        {
+            get => default(CLibro);
+            set
+            {
+            }
+        }
+
         public static DataSet GetAll()
         {
             SqlParameter[] dbParams = new SqlParameter[]

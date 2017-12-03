@@ -145,5 +145,31 @@ public class DatabaseCon
             Connection.Close();
         }
 
+
+
     }
+
+
+    public static SqlParameter MakeParam(string paramName, SqlDbType dbType,  object objValue)
+    {
+        SqlParameter param;
+
+        param = new SqlParameter(paramName, dbType);
+
+        param.Value = objValue;
+
+        return param;
+    }
+
+    public static SqlParameter MakeParamOutput(string paramName, SqlDbType dbType)
+    {
+        SqlParameter param;
+
+        param = new SqlParameter(paramName, dbType);
+
+        param.Direction = ParameterDirection.Output;
+
+        return param;
+    }
+
 }

@@ -354,7 +354,59 @@ AS
 	inner join AutoresSet as a on la.AutorId = a.Id
 	where a.Id = @IdAutor;
 go
+----Manejo de Direcciones
+-----I = insertar, U = update, D = Delete
+CREATE PROCEDURE spDirecciones
+	@Calle varchar(25) = '',
+	@Prov varchar(25) = '',
+	@Sect varchar(25) = '',
+	@Pais varchar(25) = '',
+	@ClientID varchar(25) = '',
+	@Accion varchar(2) = 'I'
+	
+AS
 
+	if @Accion = 'I'
+		begin
+			insert into  DireccionSet(Calle,Pais,Provincia, Sector, ClienteID) 
+			values (@Calle, @Pais, @Prov, @Sect, @ClientID)
+		end
+	else 
+	if @Accion = 'U'
+	 begin
+		 update DireccionSet 
+		 set Pais = @Pais, Calle = @Calle, Provincia = @Prov, Sector= @Sect
+		 where ClienteID = @ClientID
+		end
+	else 
+	if @Accion = 'D'
+	begin
+		delete from DireccionSet where ClienteID = @ClientID
+	end
+	;
+	go
+-----Manejo de Clientes / Estudiantes
+CREATE PROCEDURE spEstudiantes
+	@IDE varchar(25) = '',
+	@Name varchar(25) = '',
+	@Ape varchar(25) = '',
+	@Tel varchar(25) = '',
+	@Cor varchar(25) = '',
+	@Accion varchar(2) = 'I'
+as
+
+if @Accion = 'I'
+	insert into ClientesSet values(@IDE, @Name, @Ape, @Tel,@Cor)
+else
+if @Accion = 'U'
+	update ClientesSet set
+	Nombre = @Name, Apellido = @Ape, Telefono =@Tel, Correo = @Cor
+	where Identificacion = @Ide
+else
+if @Accion = 'D'
+	delete from ClientesSet where Identificacion = @IDE
+;
+go
 
 		
 
