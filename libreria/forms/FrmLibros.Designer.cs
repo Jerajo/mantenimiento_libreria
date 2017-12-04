@@ -40,10 +40,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cbxGenero = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtIdCategoria = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
@@ -63,6 +61,7 @@
             this.cbxFiltrar = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtFiltrar = new System.Windows.Forms.TextBox();
+            this.txtIdCategoria = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDBR)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -76,6 +75,7 @@
             this.groupBox1.Controls.Add(this.lblDatosNoEncontrados);
             this.groupBox1.Controls.Add(this.ckbPrestados);
             this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.txtIdCategoria);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.dgvDBR);
             this.groupBox1.Controls.Add(this.btnEliminar);
@@ -198,7 +198,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::libreria.Properties.Resources.untitled14;
-            this.pictureBox1.Location = new System.Drawing.Point(314, 201);
+            this.pictureBox1.Location = new System.Drawing.Point(314, 182);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(63, 62);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -209,13 +209,11 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.cbxGenero);
-            this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Controls.Add(this.txtIdCategoria);
             this.groupBox4.Location = new System.Drawing.Point(13, 163);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(295, 118);
+            this.groupBox4.Size = new System.Drawing.Size(295, 86);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
             // 
@@ -223,20 +221,11 @@
             // 
             this.cbxGenero.Enabled = false;
             this.cbxGenero.FormattingEnabled = true;
-            this.cbxGenero.Location = new System.Drawing.Point(86, 73);
+            this.cbxGenero.Location = new System.Drawing.Point(90, 38);
             this.cbxGenero.Name = "cbxGenero";
             this.cbxGenero.Size = new System.Drawing.Size(199, 32);
             this.cbxGenero.TabIndex = 3;
             this.cbxGenero.SelectedIndexChanged += new System.EventHandler(this.cbxGenero_SelectedIndexChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 33);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(27, 24);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "ID";
             // 
             // label11
             // 
@@ -250,20 +239,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 76);
+            this.label4.Location = new System.Drawing.Point(6, 41);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 24);
             this.label4.TabIndex = 2;
             this.label4.Text = "Genero";
-            // 
-            // txtIdCategoria
-            // 
-            this.txtIdCategoria.Enabled = false;
-            this.txtIdCategoria.Location = new System.Drawing.Point(86, 30);
-            this.txtIdCategoria.Name = "txtIdCategoria";
-            this.txtIdCategoria.ReadOnly = true;
-            this.txtIdCategoria.Size = new System.Drawing.Size(199, 29);
-            this.txtIdCategoria.TabIndex = 0;
             // 
             // label9
             // 
@@ -277,7 +257,7 @@
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.Red;
-            this.btnCancelar.Location = new System.Drawing.Point(205, 383);
+            this.btnCancelar.Location = new System.Drawing.Point(205, 371);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(93, 53);
             this.btnCancelar.TabIndex = 7;
@@ -289,7 +269,7 @@
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.LawnGreen;
-            this.btnGuardar.Location = new System.Drawing.Point(80, 384);
+            this.btnGuardar.Location = new System.Drawing.Point(80, 372);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(93, 53);
             this.btnGuardar.TabIndex = 6;
@@ -301,7 +281,7 @@
             // btnEditar
             // 
             this.btnEditar.BackColor = System.Drawing.Color.Turquoise;
-            this.btnEditar.Location = new System.Drawing.Point(205, 384);
+            this.btnEditar.Location = new System.Drawing.Point(205, 372);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(93, 53);
             this.btnEditar.TabIndex = 4;
@@ -312,7 +292,7 @@
             // btnNuevo
             // 
             this.btnNuevo.BackColor = System.Drawing.Color.LawnGreen;
-            this.btnNuevo.Location = new System.Drawing.Point(80, 383);
+            this.btnNuevo.Location = new System.Drawing.Point(80, 371);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(93, 53);
             this.btnNuevo.TabIndex = 4;
@@ -323,7 +303,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 293);
+            this.label6.Location = new System.Drawing.Point(9, 275);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(45, 24);
             this.label6.TabIndex = 2;
@@ -332,7 +312,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 340);
+            this.label7.Location = new System.Drawing.Point(9, 322);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 24);
             this.label7.TabIndex = 2;
@@ -368,7 +348,7 @@
             // txtStock
             // 
             this.txtStock.Enabled = false;
-            this.txtStock.Location = new System.Drawing.Point(99, 335);
+            this.txtStock.Location = new System.Drawing.Point(99, 317);
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(279, 29);
             this.txtStock.TabIndex = 5;
@@ -377,7 +357,7 @@
             // txtPais
             // 
             this.txtPais.Enabled = false;
-            this.txtPais.Location = new System.Drawing.Point(99, 287);
+            this.txtPais.Location = new System.Drawing.Point(99, 269);
             this.txtPais.Name = "txtPais";
             this.txtPais.Size = new System.Drawing.Size(279, 29);
             this.txtPais.TabIndex = 4;
@@ -442,6 +422,16 @@
             this.txtFiltrar.TabIndex = 0;
             this.txtFiltrar.TextChanged += new System.EventHandler(this.txtFiltrar_TextChanged);
             // 
+            // txtIdCategoria
+            // 
+            this.txtIdCategoria.Enabled = false;
+            this.txtIdCategoria.Location = new System.Drawing.Point(283, 301);
+            this.txtIdCategoria.Name = "txtIdCategoria";
+            this.txtIdCategoria.ReadOnly = true;
+            this.txtIdCategoria.Size = new System.Drawing.Size(199, 29);
+            this.txtIdCategoria.TabIndex = 0;
+            this.txtIdCategoria.Visible = false;
+            // 
             // FrmLibros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -457,7 +447,7 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FrmLibros";
             this.Text = "Mantenimiento de Libros";
-            this.Load += new System.EventHandler(this.From_Load);
+            this.Load += new System.EventHandler(this.Form_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDBR)).EndInit();
@@ -481,9 +471,7 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnNuevo;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtIdCategoria;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
@@ -509,5 +497,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Eliminar;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtIdCategoria;
     }
 }

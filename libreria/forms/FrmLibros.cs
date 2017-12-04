@@ -21,7 +21,7 @@ namespace libreria.forms
             InitializeComponent();
         }
 
-        private void From_Load(object sender, EventArgs e)
+        private void Form_Load(object sender, EventArgs e)
         {
             try
             {
@@ -87,7 +87,7 @@ namespace libreria.forms
                         if (CLibro.Actualizar(libro) > 0)
                         {
                             MessageBox.Show("Datos Actualizados Correctamente");
-                            From_Load(null, null);
+                            Form_Load(null, null);
                         }//*/MessageBox.Show("Actualizado " + dgvDBR.CurrentRow);
                     }
                     else //Nuevo registro
@@ -105,7 +105,7 @@ namespace libreria.forms
                         if (n > 0)
                         {
                             MessageBox.Show("Datos Insertados Correctamente");
-                            From_Load(null, null);
+                            Form_Load(null, null);
                         }//*/MessageBox.Show("Insertado");
                     }
                 }
@@ -242,7 +242,7 @@ namespace libreria.forms
                             }
                         }
                     }
-                    From_Load(null, null);
+                    Form_Load(null, null);
                 }
                 else if (!verificarFilasSeleccionada()) MessageBox.Show("Debe selecionar un Registro primero",
                   "Eliminacion de Registro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
