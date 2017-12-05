@@ -8,11 +8,10 @@ namespace libreria.entidades
 {
     public static class Usuarios
     {
-        private static string _username;
-        private static int _password;
+        private static string _username, _password;
 
         public static string Username { get => _username; set => _username = value; }
-        public static int Password { get => _password; }
+        public static string Password { get => _password; }
         public static void SetPassword(string value)
         {
 
