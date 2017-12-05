@@ -197,7 +197,6 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::libreria.Properties.Resources.untitled14;
             this.pictureBox1.Location = new System.Drawing.Point(314, 201);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(63, 62);
@@ -416,6 +415,7 @@
             this.groupBox3.Size = new System.Drawing.Size(815, 84);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // cbxFiltrar
             // 

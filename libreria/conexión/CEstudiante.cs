@@ -1,4 +1,5 @@
 ﻿using Sistema_de_punto_de_ventas.Entidades;
+using libreria;
 using SisVenttas.Datos;
 using System;
 using System.Data;
@@ -25,7 +26,7 @@ namespace Sistema_de_punto_de_ventas.Datos
                     FDBHelper.MakeParam("@Nombre",SqlDbType.VarChar, 0, estudiante.Nombre),
                     FDBHelper.MakeParam("@Apellido",SqlDbType.VarChar, 0, estudiante.Apellido),
                     FDBHelper.MakeParam("@DNI",SqlDbType.Int, 0, estudiante.DNI),
-                    FDBHelper.MakeParam("@Direccion",SqlDbType.VarChar, 0, estudiante.Direccion),
+                    FDBHelper.MakeParam("@Direccion",SqlDbType.VarChar, 0, estudiante.GetDireccion.Calle),
                     FDBHelper.MakeParam("@Telefono",SqlDbType.VarChar, 0, estudiante.Telefono),                
                 };
             return Convert.ToInt32(FDBHelper.ExecuteScalar("usp_Data_FEstudiante_Insertar", dbParams));
@@ -39,7 +40,7 @@ namespace Sistema_de_punto_de_ventas.Datos
                     FDBHelper.MakeParam("@Nombre",SqlDbType.VarChar, 0, estudiante.Nombre),
                     FDBHelper.MakeParam("@Apellido",SqlDbType.VarChar, 0, estudiante.Apellido),
                     FDBHelper.MakeParam("@DNI",SqlDbType.Int, 0, estudiante.DNI),
-                    FDBHelper.MakeParam("@Direccion",SqlDbType.VarChar, 0, estudiante.Direccion),
+                    FDBHelper.MakeParam("@Direccion",SqlDbType.VarChar, 0, estudiante.GetDireccion.Calle),
                     FDBHelper.MakeParam("@Telefono",SqlDbType.VarChar, 0, estudiante.Telefono),
                 };
             return Convert.ToInt32(FDBHelper.ExecuteScalar("usp_Data_FEstudiante_Actualizar", dbParams));

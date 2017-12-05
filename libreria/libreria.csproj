@@ -58,11 +58,14 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -76,11 +79,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="conexión\Utiliy.cs" />
     <Compile Include="forms\FrmAutor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\FrmAutor.Designer.cs">
       <DependentUpon>FrmAutor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FrnEst.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FrnEst.Designer.cs">
+      <DependentUpon>FrnEst.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\PopUp\LibroToAutor.cs">
       <SubType>Form</SubType>
@@ -90,6 +100,12 @@
     </Compile>
     <Compile Include="conexión\CCategoria.cs" />
     <Compile Include="entidades\Categoria.cs" />
+    <Compile Include="forms\PopUp\PopUpDir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\PopUp\PopUpDir.Designer.cs">
+      <DependentUpon>PopUpDir.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\SchLibros.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,11 +139,6 @@
     <Compile Include="forms\MDIParent.Designer.cs">
       <DependentUpon>MDIParent.cs</DependentUpon>
     </Compile>
-    <Compile Include="LibreriaHCDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LibreriaHCDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="forms\Generos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,8 +151,14 @@
     <EmbeddedResource Include="forms\FrmAutor.resx">
       <DependentUpon>FrmAutor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\FrnEst.resx">
+      <DependentUpon>FrnEst.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\PopUp\LibroToAutor.resx">
       <DependentUpon>LibroToAutor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\PopUp\PopUpDir.resx">
+      <DependentUpon>PopUpDir.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\SchLibros.resx">
       <DependentUpon>SchLibros.cs</DependentUpon>
@@ -171,18 +188,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="LibreriaHCDataSet.xsc">
-      <DependentUpon>LibreriaHCDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="LibreriaHCDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>LibreriaHCDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="LibreriaHCDataSet.xss">
-      <DependentUpon>LibreriaHCDataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -223,6 +228,10 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
