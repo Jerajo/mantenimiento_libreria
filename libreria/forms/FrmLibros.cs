@@ -324,10 +324,5 @@ namespace libreria.forms
             var regexItem = new Regex("^[a-zA-Z0-9 ()-_.,#]*$");
             if (!regexItem.IsMatch(Convert.ToString(e.KeyChar)) && !(e.KeyChar == '\b')) e.Handled = true;
         }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
     }
 }
