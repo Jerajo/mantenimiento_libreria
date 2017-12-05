@@ -54,5 +54,13 @@ namespace libreria
             Box.MdiParent = this;
             Box.Show();
         }
+
+        private void estudiantesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var Box = forms.FrnEst.Instance;
+            Box.MdiParent = this;
+            Box.Show();
+
+        }
     }
 }
