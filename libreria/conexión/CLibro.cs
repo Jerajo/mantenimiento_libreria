@@ -11,13 +11,16 @@ namespace Sistema_de_punto_de_ventas.Datos
         public static DataSet GetAll()
         {
             SqlParameter[] dbParams = new SqlParameter[]{};
-            return FDBHelper.ExecuteDataSet("usp_Data_CLibro_GetAll", dbParams);
+            return DatabaseCon.ExecuteDataSet("usp_Data_CLibro_GetAll", dbParams);
         }
 
         public static DataSet GetColumnNames()
         {
-            SqlParameter[] dbParams = new SqlParameter[]{};
-            return FDBHelper.ExecuteDataSet("usp_Data_CCategoria_GetColumnNames", dbParams);
+            SqlParameter[] dbParams = new SqlParameter[]
+            {
+                DatabaseCon.MakeParam("@tabla",SqlDbType.VarChar, "[dbo].[LibrosSet]")
+            };
+            return DatabaseCon.ExecuteDataSet("usp_Data_CCategoria_GetColumnNames", dbParams);
         }
 
         public static int Insertar(Libro libro)
@@ -25,46 +28,46 @@ namespace Sistema_de_punto_de_ventas.Datos
             SqlParameter[] dbParams = new SqlParameter[]
                 {
                     //, Titulo, Pais, Stock, Editorial, CategoriaId
-                    FDBHelper.MakeParam("@ISBN",SqlDbType.VarChar, 0, libro.ISBN),
-                    FDBHelper.MakeParam("@Titulo",SqlDbType.VarChar, 0, libro.Titulo),
-                    FDBHelper.MakeParam("@Pais",SqlDbType.VarChar, 0, libro.Pais),
-                    FDBHelper.MakeParam("@Stock",SqlDbType.Int, 0, libro.Stock),
-                    FDBHelper.MakeParam("@Editorial",SqlDbType.VarChar, 0, libro.Editorial),
-                    FDBHelper.MakeParam("@CategoriaId",SqlDbType.Int, 0, libro.CategoriaId),                
+                    DatabaseCon.MakeParam("@ISBN",SqlDbType.VarChar, libro.ISBN),
+                    DatabaseCon.MakeParam("@Titulo",SqlDbType.VarChar, libro.Titulo),
+                    DatabaseCon.MakeParam("@Pais",SqlDbType.VarChar, libro.Pais),
+                    DatabaseCon.MakeParam("@Stock",SqlDbType.Int, libro.Stock),
+                    DatabaseCon.MakeParam("@Editorial",SqlDbType.VarChar, libro.Editorial),
+                    DatabaseCon.MakeParam("@CategoriaId",SqlDbType.Int, libro.CategoriaId),                
                 };
-            return Convert.ToInt32(FDBHelper.ExecuteScalar("usp_Data_CLibro_Insertar", dbParams));
+            return Convert.ToInt32(DatabaseCon.ExecuteScalar("usp_Data_CLibro_Insertar", dbParams));
         }
 
         public static int Actualizar(Libro libro)
         {
             SqlParameter[] dbParams = new SqlParameter[]
                 {
-                    FDBHelper.MakeParam("@ISBN",SqlDbType.VarChar, 0, libro.ISBN),
-                    FDBHelper.MakeParam("@Titulo",SqlDbType.VarChar, 0, libro.Titulo),
-                    FDBHelper.MakeParam("@Pais",SqlDbType.VarChar, 0, libro.Pais),
-                    FDBHelper.MakeParam("@Stock",SqlDbType.Int, 0, libro.Stock),
-                    FDBHelper.MakeParam("@Editorial",SqlDbType.VarChar, 0, libro.Editorial),
-                    FDBHelper.MakeParam("@CategoriaId",SqlDbType.Int, 0, libro.CategoriaId),
+                    DatabaseCon.MakeParam("@ISBN",SqlDbType.VarChar, libro.ISBN),
+                    DatabaseCon.MakeParam("@Titulo",SqlDbType.VarChar, libro.Titulo),
+                    DatabaseCon.MakeParam("@Pais",SqlDbType.VarChar, libro.Pais),
+                    DatabaseCon.MakeParam("@Stock",SqlDbType.Int, libro.Stock),
+                    DatabaseCon.MakeParam("@Editorial",SqlDbType.VarChar, libro.Editorial),
+                    DatabaseCon.MakeParam("@CategoriaId",SqlDbType.Int, libro.CategoriaId),
                 };
-            return Convert.ToInt32(FDBHelper.ExecuteScalar("usp_Data_CLibro_Actualizar", dbParams));
+            return Convert.ToInt32(DatabaseCon.ExecuteScalar("usp_Data_CLibro_Actualizar", dbParams));
         }
 
         public static int Eliminar(Libro libro)
         {
             SqlParameter[] dbParams = new SqlParameter[]
                 {
-                    FDBHelper.MakeParam("@ISBN",SqlDbType.VarChar, 0, libro.ISBN),
+                    DatabaseCon.MakeParam("@ISBN",SqlDbType.VarChar, libro.ISBN),
                 };
-            return Convert.ToInt32(FDBHelper.ExecuteScalar("usp_Data_CLibro_Eliminar", dbParams));
+            return Convert.ToInt32(DatabaseCon.ExecuteScalar("usp_Data_CLibro_Eliminar", dbParams));
         }
 
         public static int VerificarStock(int dni)
         {
             SqlParameter[] dbParams = new SqlParameter[]
                 {
-                    FDBHelper.MakeParam("@Stock",SqlDbType.Int, 0, dni),
+                    DatabaseCon.MakeParam("@Stock",SqlDbType.Int, dni),
                 };
-            return Convert.ToInt32(FDBHelper.ExecuteScalar("usp_Data_CLibro_VerificarStock", dbParams));
+            return Convert.ToInt32(DatabaseCon.ExecuteScalar("usp_Data_CLibro_VerificarStock", dbParams));
         }
 
     } 
