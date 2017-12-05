@@ -150,13 +150,13 @@ namespace libreria.forms
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             MostrarBotonesOcultos(true);
-            txtISBN.Text = "";
-            txtTitulo.Text = "";
-            txtEditorial.Text = "";
-            txtIdCategoria.Text = "";
+            txtISBN.Clear();
+            txtTitulo.Clear();
+            txtEditorial.Clear();
+            txtIdCategoria.Clear();
             cbxGenero.Text = "";
-            txtPais.Text = "";
-            txtStock.Text = "";
+            txtPais.Clear();
+            txtStock.Clear();
             //Disable DataGriView
             dgvDBR.ClearSelection();
             dgvDBR.Enabled = false;
