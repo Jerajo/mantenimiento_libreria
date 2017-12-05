@@ -66,5 +66,13 @@ namespace libreria
             Box.Show();
             Box.BringToFront();
         }
+
+        private void ejemplaresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var Box = forms.FrmEjemplares.GetInstance();
+            Box.MdiParent = this;
+            Box.Show();
+            Box.BringToFront();
+        }
     }
 }
