@@ -32,6 +32,7 @@
             this.lblDatosNoEncontrados = new System.Windows.Forms.Label();
             this.ckbPrestados = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.txtIdCategoria = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.dgvDBR = new System.Windows.Forms.DataGridView();
             this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -61,7 +62,6 @@
             this.cbxFiltrar = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtFiltrar = new System.Windows.Forms.TextBox();
-            this.txtIdCategoria = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDBR)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -115,6 +115,16 @@
             this.label10.Size = new System.Drawing.Size(130, 24);
             this.label10.TabIndex = 0;
             this.label10.Text = "Lista de Libros";
+            // 
+            // txtIdCategoria
+            // 
+            this.txtIdCategoria.Enabled = false;
+            this.txtIdCategoria.Location = new System.Drawing.Point(283, 301);
+            this.txtIdCategoria.Name = "txtIdCategoria";
+            this.txtIdCategoria.ReadOnly = true;
+            this.txtIdCategoria.Size = new System.Drawing.Size(199, 29);
+            this.txtIdCategoria.TabIndex = 0;
+            this.txtIdCategoria.Visible = false;
             // 
             // button1
             // 
@@ -422,16 +432,6 @@
             this.txtFiltrar.TabIndex = 0;
             this.txtFiltrar.TextChanged += new System.EventHandler(this.txtFiltrar_TextChanged);
             // 
-            // txtIdCategoria
-            // 
-            this.txtIdCategoria.Enabled = false;
-            this.txtIdCategoria.Location = new System.Drawing.Point(283, 301);
-            this.txtIdCategoria.Name = "txtIdCategoria";
-            this.txtIdCategoria.ReadOnly = true;
-            this.txtIdCategoria.Size = new System.Drawing.Size(199, 29);
-            this.txtIdCategoria.TabIndex = 0;
-            this.txtIdCategoria.Visible = false;
-            // 
             // FrmLibros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -447,6 +447,7 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FrmLibros";
             this.Text = "Mantenimiento de Libros";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmLibros_FormClosing);
             this.Load += new System.EventHandler(this.Form_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

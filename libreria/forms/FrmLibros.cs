@@ -15,10 +15,21 @@ namespace libreria.forms
 {
     public partial class FrmLibros : Form
     {
-        private static DataTable dt = new DataTable();
+        private static DataTable dt = new DataTable();        
         public FrmLibros()
         {
             InitializeComponent();
+        }
+
+        private static FrmLibros _instancia = null;
+        public static FrmLibros GetInstance()
+        {
+            if (_instancia == null) _instancia = new FrmLibros();
+            return _instancia;
+        }
+        private void FrmLibros_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _instancia = null;
         }
 
         private void Form_Load(object sender, EventArgs e)
