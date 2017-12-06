@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using libreria.entidades;
 
 namespace libreria
 {
@@ -19,7 +20,8 @@ namespace libreria
 
         private void Box_Load(object sender, EventArgs e)
         {
-
+            DatabaseCon.Instancia = new DatabaseCon();
+            UPDATE.AllForms(true);
         }
 
         private void generosToolStripMenuItem_Click(object sender, EventArgs e)
