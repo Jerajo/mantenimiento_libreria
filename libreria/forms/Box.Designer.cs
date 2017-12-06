@@ -63,6 +63,7 @@
             this.mantenimientosToolStripMenuItem.Name = "mantenimientosToolStripMenuItem";
             this.mantenimientosToolStripMenuItem.Size = new System.Drawing.Size(106, 20);
             this.mantenimientosToolStripMenuItem.Text = "Mantenimientos";
+            this.mantenimientosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientosToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -114,6 +115,7 @@
             this.prestamosToolStripMenuItem.Name = "prestamosToolStripMenuItem";
             this.prestamosToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.prestamosToolStripMenuItem.Text = "Prestamos";
+            this.prestamosToolStripMenuItem.Click += new System.EventHandler(this.prestamosToolStripMenuItem_Click);
             // 
             // ejemplaresToolStripMenuItem
             // 

@@ -95,9 +95,9 @@ CREATE TABLE [dbo].[HistorialPrestamoSet] (
 	[Id] int IDENTITY(1,1) NOT NULL,
 	[LibroEjemplarCodigo] nvarchar(30)  NOT NULL,
 	[ClientesIdentificacion] nvarchar(25)  NOT NULL,
-	[Fecha_Ini] datetime  default GETDATE(),
+	[Fecha_Ini] datetime NOT NULL default GETDATE(),
 	[Fecha_Fin] datetime  NOT NULL,
-	[Estado] int  NOT NULL
+	[Estado] int NOT NULL default 1
 );
 GO
 
@@ -546,7 +546,32 @@ CREATE VIEW vwListadoLibrosNormal
 
 	Select ISBN, Titulo, Genero From LibrosSet lb inner join CategoriasSet C on lb.CategoriaId = C.Id;
 	go
+-----Prestamos actuales
+CREATE VIEW vwVerPrestamos
+	AS 
+	Select l.Titulo, l.ISBN ,
+'Estado' =
+Case
+	when h.Estado = 1 then 'Pendiente'
+	when h.Estado = 0 then 'Devuelto'
+end,
+h.Fecha_Ini as Fecha_Inicial,
+h.Fecha_Fin as Fecha_Entrega,
+CONCAT(cl.Nombre, ' ', cl.Apellido) as NombreCliente,
+h.Id, le.Numero as Numero_Ejemplar
 
+from LibroEjemplarSet as le inner join LibrosSet as l on le.LibroISBN = l.ISBN
+left join HistorialPrestamoSet as h on h.LibroEjemplarCodigo = le.Codigo
+inner join ClientesSet as cl on cl.Identificacion = h.ClientesIdentificacion
+; go
+
+-----------Libros sin Historial activo
+Create view vwLibrosFaltantes
+as
+select distinct l.ISBN, l.Titulo from LibrosSet as l inner join LibroEjemplarSet as lb on lb.LibroISBN = l.ISBN
+left join HistorialPrestamoSet  on LibroEjemplarCodigo = lb.Codigo
+where Estado is null or estado = 0;
+go
 -- crear vista libros 
 CREATE VIEW view_Libros
 AS
@@ -562,10 +587,24 @@ Insert into CategoriasSet(Genero) values ('Drama')
 ;
 go
 ------INSERTANDO Libros
-exec spInsertLibro '9788484417552', 'La Piramide Roja, Las Cronicas de Kane Vol. 1', 'España', 5, 'Montena', 1
+exec spInsertLibro '9788484417552', 'La Piramide Roja, Las Cronicas de Kane Vol. 1', 'Espaï¿½a', 5, 'Montena', 1
 
 
+;go
 
+-----FUNCIONES-----------
+---Trae ejemplares
+CREATE FUNCTION fxTraeEjemplaresDisponibles
+(
+	@ISBN varchar(30)
+)
+RETURNS TABLE AS RETURN
+(
+	select Numero, Codigo from LibroEjemplarSet le left join HistorialPrestamoSet
+	on LibroEjemplarCodigo = le.Codigo
+	where le.LibroISBN = @ISBN and (Estado is null or Estado = 0)
+)
+;go
 
 -- --------------------------------------------------
 -- Script has ended
