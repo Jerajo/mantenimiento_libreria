@@ -407,8 +407,128 @@ if @Accion = 'D'
 	delete from ClientesSet where Identificacion = @IDE
 ;
 go
+-----getAll from categorias
+CREATE PROCEDURE [dbo].[usp_Data_CCategoria_GetAll]
+	AS
+BEGIN
+	Select Id, Genero from [dbo].[CategoriasSet];
+END
+go
+-----get columns names from categorias
+CREATE PROCEDURE [dbo].[usp_Data_CCategoria_GetColumnNames]
+@tabla varchar(100)
+	AS
+BEGIN
+	SELECT name AS Names FROM sys.columns 
+	WHERE object_id = OBJECT_ID(@tabla);
+END
+go
+----- Actuaizar libros
+CREATE PROCEDURE [dbo].[usp_Data_CLibro_Actualizar]
+	@ISBN nvarchar(20), @Titulo nvarchar(250), @Pais nvarchar(250),
+	@Editorial nvarchar(250), @CategoriaId int
+AS
+	UPDATE [dbo].[LibrosSet] SET Titulo=@Titulo, 
+	Pais=@Pais, Editorial=@Editorial, 
+	CategoriaId=@CategoriaId WHERE ISBN=@ISBN;
 
-		
+	select @@ROWCOUNT as CantidadAfectada
+go
+-----Eliminar libro
+CREATE PROCEDURE [dbo].[usp_Data_CLibro_Eliminar]
+	@ISBN nvarchar(20)
+AS
+BEGIN	
+	delete from [dbo].[LibrosSet] where ISBN=@ISBN
+	select @@ROWCOUNT as CantidadAfectada
+END
+go
+----- get all libros
+CREATE PROCEDURE [dbo].[usp_Data_CLibro_GetAll]
+AS
+BEGIN
+	SELECT * FROM view_Libros;
+END
+go
+-----get libros no disponibles
+Create PROCEDURE [dbo].[usp_Data_CLibro_GetBorrowed]
+AS
+BEGIN
+	SELECT * FROM view_Libros where Stock <= 0;
+END
+go
+-----get libros disponibles
+Create PROCEDURE [dbo].[usp_Data_CLibro_GetStocked]
+AS
+BEGIN
+	SELECT * FROM view_Libros where Stock > 0;
+END
+go
+-----insertar libros
+CREATE PROCEDURE [dbo].[usp_Data_CLibro_Insertar]
+	@ISBN nvarchar(20), @Titulo nvarchar(250), @Pais nvarchar(250),
+	@Stock int = 1, @Editorial nvarchar(250), @CategoriaId int
+AS
+	declare @count int = 0;
+	Set nocount on;
+	insert into LibrosSet 
+	values (@ISBN, @Titulo, @Pais, @Stock, @Editorial, @CategoriaId);
+
+	while @count < @Stock
+	begin
+		set @count = @count + 1;
+		declare @Cod nvarchar(30) = concat(@isbn,'#', @count);
+		insert into LibroEjemplarSet
+		values (@Cod, @isbn, @count);
+	end;
+
+	select 1 as CantidadAfectada
+go
+-----actualizar ejemplares
+Create PROCEDURE usp_Data_Ejemplares_Actualizar
+	@ISBN nvarchar(20), 
+	@Cod nvarchar(30), 
+	@numero int
+AS	
+	UPDATE LibroEjemplarSet SET Codigo=@cod, Numero=@numero where LibroISBN=@ISBN;
+
+	select @@ROWCOUNT as CantidadAfectada;
+go
+-----insertar ejemplares
+CREATE PROCEDURE usp_Data_Ejemplares_Insertar
+	@ISBN nvarchar(20), 
+	@Cod nvarchar(30), 
+	@numero int
+AS
+	declare @stock int
+	declare @count int
+
+	set @stock = (select Stock from LibrosSet where ISBN=@ISBN);
+
+	insert into LibroEjemplarSet
+		values (@Cod, @isbn, @numero);
+	
+	if( @@ROWCOUNT > 0) set @stock = @stock + 1
+	
+	UPDATE [dbo].[LibrosSet] SET Stock=@Stock;
+
+	select @@ROWCOUNT as CantidadAfectada
+go
+-----Eliminar ejemplares
+--not yet
+go
+-----get colunms names para cualquier tabla
+create PROCEDURE [dbo].[usp_Data_GetColumnNames]
+@tabla varchar(50)
+	AS
+BEGIN
+	SELECT name AS Names FROM sys.columns 
+	WHERE object_id = OBJECT_ID(@tabla);
+END
+go
+-----
+
+go
 
 
 -------Vistas
@@ -420,7 +540,7 @@ CREATE VIEW vwGenerosLibrosCount
 	group by c.Id, c.Genero;
 	go
 -----------
-----
+---- crear vista libros normal
 CREATE VIEW vwListadoLibrosNormal
 	AS 
 
@@ -447,12 +567,17 @@ inner join ClientesSet as cl on cl.Identificacion = h.ClientesIdentificacion
 
 -----------Libros sin Historial activo
 Create view vwLibrosFaltantes
-
 as
-
 select distinct l.ISBN, l.Titulo from LibrosSet as l inner join LibroEjemplarSet as lb on lb.LibroISBN = l.ISBN
 left join HistorialPrestamoSet  on LibroEjemplarCodigo = lb.Codigo
 where Estado is null or estado = 0;
+go
+-- crear vista libros 
+CREATE VIEW view_Libros
+AS
+SELECT        dbo.LibrosSet.ISBN, dbo.LibrosSet.Titulo, dbo.LibrosSet.Pais, dbo.LibrosSet.Stock, dbo.LibrosSet.Editorial, dbo.LibrosSet.CategoriaId, dbo.CategoriasSet.Genero
+FROM            dbo.CategoriasSet INNER JOIN
+                         dbo.LibrosSet ON dbo.CategoriasSet.Id = dbo.LibrosSet.CategoriaId
 go
 
 ----Inserte Categorias
@@ -462,7 +587,7 @@ Insert into CategoriasSet(Genero) values ('Drama')
 ;
 go
 ------INSERTANDO Libros
-exec spInsertLibro '9788484417552', 'La Piramide Roja, Las Cronicas de Kane Vol. 1', 'España', 5, 'Montena', 1
+exec spInsertLibro '9788484417552', 'La Piramide Roja, Las Cronicas de Kane Vol. 1', 'Espaï¿½a', 5, 'Montena', 1
 
 
 ;go

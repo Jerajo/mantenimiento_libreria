@@ -79,7 +79,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="conexión\CEjemplares.cs" />
     <Compile Include="conexión\Utiliy.cs" />
+    <Compile Include="entidades\Ejemplares.cs" />
+    <Compile Include="entidades\Usuarios.cs" />
     <Compile Include="forms\FrmAutor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +94,11 @@
     </Compile>
     <Compile Include="forms\FrmPrestamo.Designer.cs">
       <DependentUpon>FrmPrestamo.cs</DependentUpon>
+    <Compile Include="forms\FrmEjemplares.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FrmEjemplares.Designer.cs">
+      <DependentUpon>FrmEjemplares.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\FrnEst.cs">
       <SubType>Form</SubType>
@@ -159,6 +167,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\FrmPrestamo.resx">
       <DependentUpon>FrmPrestamo.cs</DependentUpon>
+    <EmbeddedResource Include="forms\FrmEjemplares.resx">
+      <DependentUpon>FrmEjemplares.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\FrnEst.resx">
       <DependentUpon>FrnEst.cs</DependentUpon>

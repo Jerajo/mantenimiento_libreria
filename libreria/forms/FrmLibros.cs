@@ -15,13 +15,24 @@ namespace libreria.forms
 {
     public partial class FrmLibros : Form
     {
-        private static DataTable dt = new DataTable();
+        private static DataTable dt = new DataTable();        
         public FrmLibros()
         {
             InitializeComponent();
         }
 
-        private void From_Load(object sender, EventArgs e)
+        private static FrmLibros _instancia = null;
+        public static FrmLibros GetInstance()
+        {
+            if (_instancia == null) _instancia = new FrmLibros();
+            return _instancia;
+        }
+        private void FrmLibros_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _instancia = null;
+        }
+
+        private void Form_Load(object sender, EventArgs e)
         {
             try
             {
@@ -82,12 +93,12 @@ namespace libreria.forms
                         libro.Editorial = txtEditorial.Text;
                         libro.CategoriaId = Convert.ToInt32(txtIdCategoria.Text);
                         libro.Pais = txtPais.Text;
-                        libro.Stock = Convert.ToInt32(txtStock.Text);
+                        libro.Stock = Convert.ToInt32(nudStock.Text);
                         
                         if (CLibro.Actualizar(libro) > 0)
                         {
                             MessageBox.Show("Datos Actualizados Correctamente");
-                            From_Load(null, null);
+                            Form_Load(null, null);
                         }//*/MessageBox.Show("Actualizado " + dgvDBR.CurrentRow);
                     }
                     else //Nuevo registro
@@ -98,14 +109,14 @@ namespace libreria.forms
                         libro.Editorial = txtEditorial.Text;
                         libro.CategoriaId = Convert.ToInt32(txtIdCategoria.Text);
                         libro.Pais = txtPais.Text;
-                        libro.Stock = Convert.ToInt32(txtStock.Text);
+                        libro.Stock = Convert.ToInt32(nudStock.Text);
 
                         int n = CLibro.Insertar(libro);
                         MessageBox.Show("Resultado: " + System.Convert.ToString(n));
                         if (n > 0)
                         {
                             MessageBox.Show("Datos Insertados Correctamente");
-                            From_Load(null, null);
+                            Form_Load(null, null);
                         }//*/MessageBox.Show("Insertado");
                     }
                 }
@@ -127,25 +138,20 @@ namespace libreria.forms
             if (txtEditorial.Text == "") resultado += "El campo: Editorial.\n";
             if (txtIdCategoria.Text == "") resultado += "El campo: Categoria.\n";
             if (txtPais.Text == "") resultado += "El campo: Pais.\n";
-            else if ((txtStock.Text == "" || txtStock.Text == "0") &&
-                txtStock.Text != dgvDBR.CurrentRow.Cells["Stock"].Value.ToString())
-            {
-                if (CLibro.VerificarStock(Convert.ToInt32(txtStock.Text)) > 0)
-                    resultado += "El campo: Stock,\n (Stock ya existe) \n";
-            }
+            if (nudStock.Text == "") resultado += "El campo: Stock,\n";
             return resultado;
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             MostrarBotonesOcultos(true);
-            txtISBN.Text = "";
-            txtTitulo.Text = "";
-            txtEditorial.Text = "";
-            txtIdCategoria.Text = "";
+            txtISBN.Clear();
+            txtTitulo.Clear();
+            txtEditorial.Clear();
+            txtIdCategoria.Clear();
             cbxGenero.Text = "";
-            txtPais.Text = "";
-            txtStock.Text = "";
+            txtPais.Clear();
+            nudStock.Value = 1;
             //Disable DataGriView
             dgvDBR.ClearSelection();
             dgvDBR.Enabled = false;
@@ -160,7 +166,7 @@ namespace libreria.forms
         {
             MostrarBotonesOcultos(false);
             dgvDBR_CellClick(null, null);
-            if (dgvDBR.SelectedRows.Count == 0) dgvDBR.Rows[0].Selected = true;
+            if (dt.Rows.Count > 0 && dgvDBR.SelectedRows.Count == 0) dgvDBR.Rows[0].Selected = true;
         }
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
@@ -192,7 +198,7 @@ namespace libreria.forms
             txtEditorial.Enabled = si;
             cbxGenero.Enabled = si;
             txtPais.Enabled = si;
-            txtStock.Enabled = si;
+            nudStock.Enabled = si;
 
             if (si == true) this.ActiveControl = txtISBN;
         }
@@ -207,7 +213,7 @@ namespace libreria.forms
                 cbxGenero.Text = dgvDBR.CurrentRow.Cells["Genero"].Value.ToString();
                 txtEditorial.Text = dgvDBR.CurrentRow.Cells["Editorial"].Value.ToString();         
                 txtPais.Text = dgvDBR.CurrentRow.Cells["Pais"].Value.ToString();
-                txtStock.Text = dgvDBR.CurrentRow.Cells["Stock"].Value.ToString();
+                nudStock.Text = dgvDBR.CurrentRow.Cells["Stock"].Value.ToString();
             }
         }
 
@@ -242,7 +248,7 @@ namespace libreria.forms
                             }
                         }
                     }
-                    From_Load(null, null);
+                    Form_Load(null, null);
                 }
                 else if (!verificarFilasSeleccionada()) MessageBox.Show("Debe selecionar un Registro primero",
                   "Eliminacion de Registro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -325,9 +331,5 @@ namespace libreria.forms
             if (!regexItem.IsMatch(Convert.ToString(e.KeyChar)) && !(e.KeyChar == '\b')) e.Handled = true;
         }
 
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
     }
 }

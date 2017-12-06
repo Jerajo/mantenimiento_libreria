@@ -15,29 +15,22 @@ namespace SisVenttas.Datos
 		public static DataSet ExecuteDataSet(string sqlSpName, SqlParameter[] dbParams)
 		{
 			DataSet ds = null;
-			//try
-			//{
-				ds = new DataSet();
-				SqlConnection cn = new SqlConnection(ConfigurationManager.AppSettings.Get("connectionString"));
-				SqlCommand cmd = new SqlCommand(sqlSpName, cn);
-				cmd.CommandTimeout = 600;
+			ds = new DataSet();
+			SqlConnection cn = new SqlConnection(ConfigurationManager.AppSettings.Get("connectionString"));
+			SqlCommand cmd = new SqlCommand(sqlSpName, cn);
+			cmd.CommandTimeout = 600;
 				
-				cmd.CommandType = CommandType.StoredProcedure;
-				SqlDataAdapter da = new SqlDataAdapter(cmd);
+			cmd.CommandType = CommandType.StoredProcedure;
+			SqlDataAdapter da = new SqlDataAdapter(cmd);
 
-				if (dbParams != null)
+			if (dbParams != null)
+			{
+				foreach (SqlParameter dbParam in dbParams)
 				{
-					foreach (SqlParameter dbParam in dbParams)
-					{
-						da.SelectCommand.Parameters.Add(dbParam);
-					}
+					da.SelectCommand.Parameters.Add(dbParam);
 				}
-				da.Fill(ds);
-			//}
-			//catch (Exception)
-			//{
-			//    throw;
-			//}
+			}
+			da.Fill(ds);
 			return ds;
 		}
 
