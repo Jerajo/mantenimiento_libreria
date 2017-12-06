@@ -62,5 +62,17 @@ namespace libreria
             Box.Show();
 
         }
+
+        private void mantenimientosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void prestamosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var Box = forms.FrmPrestamo.Instance;
+            Box.MdiParent = this;
+            Box.Show();
+        }
     }
 }

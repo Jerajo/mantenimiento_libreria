@@ -33,10 +33,10 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.generosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.autorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.estudiantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.busquedasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.librosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.prestamosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.estudiantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +61,7 @@
             this.mantenimientosToolStripMenuItem.Name = "mantenimientosToolStripMenuItem";
             this.mantenimientosToolStripMenuItem.Size = new System.Drawing.Size(106, 20);
             this.mantenimientosToolStripMenuItem.Text = "Mantenimientos";
+            this.mantenimientosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientosToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -83,6 +84,13 @@
             this.autorToolStripMenuItem.Text = "Autor";
             this.autorToolStripMenuItem.Click += new System.EventHandler(this.autorToolStripMenuItem_Click);
             // 
+            // estudiantesToolStripMenuItem
+            // 
+            this.estudiantesToolStripMenuItem.Name = "estudiantesToolStripMenuItem";
+            this.estudiantesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.estudiantesToolStripMenuItem.Text = "Estudiantes";
+            this.estudiantesToolStripMenuItem.Click += new System.EventHandler(this.estudiantesToolStripMenuItem_Click);
+            // 
             // busquedasToolStripMenuItem
             // 
             this.busquedasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -96,7 +104,7 @@
             // librosToolStripMenuItem
             // 
             this.librosToolStripMenuItem.Name = "librosToolStripMenuItem";
-            this.librosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.librosToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.librosToolStripMenuItem.Text = "Libros";
             this.librosToolStripMenuItem.Click += new System.EventHandler(this.librosToolStripMenuItem_Click);
             // 
@@ -105,13 +113,7 @@
             this.prestamosToolStripMenuItem.Name = "prestamosToolStripMenuItem";
             this.prestamosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.prestamosToolStripMenuItem.Text = "Prestamos";
-            // 
-            // estudiantesToolStripMenuItem
-            // 
-            this.estudiantesToolStripMenuItem.Name = "estudiantesToolStripMenuItem";
-            this.estudiantesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.estudiantesToolStripMenuItem.Text = "Estudiantes";
-            this.estudiantesToolStripMenuItem.Click += new System.EventHandler(this.estudiantesToolStripMenuItem_Click);
+            this.prestamosToolStripMenuItem.Click += new System.EventHandler(this.prestamosToolStripMenuItem_Click);
             // 
             // Box
             // 
