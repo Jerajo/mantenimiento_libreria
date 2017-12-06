@@ -26,6 +26,10 @@ namespace libreria.Busquedas
         private ListView listView1;
         private ColumnHeader columnHeader1;
         private Button button1;
+        private GroupBox gbRB;
+        private RadioButton Todos;
+        private RadioButton NDisponibles;
+        private RadioButton Disponibles;
         private DataTable dt;
         public static SchLibros Instancia
 
@@ -59,8 +63,13 @@ namespace libreria.Busquedas
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
+            this.gbRB = new System.Windows.Forms.GroupBox();
+            this.Todos = new System.Windows.Forms.RadioButton();
+            this.NDisponibles = new System.Windows.Forms.RadioButton();
+            this.Disponibles = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.gbRB.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -125,6 +134,7 @@ namespace libreria.Busquedas
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(520, 255);
             this.dataGridView1.TabIndex = 1;
@@ -149,7 +159,7 @@ namespace libreria.Busquedas
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(279, 415);
+            this.button1.Location = new System.Drawing.Point(567, 415);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(178, 42);
             this.button1.TabIndex = 3;
@@ -157,9 +167,57 @@ namespace libreria.Busquedas
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // gbRB
+            // 
+            this.gbRB.Controls.Add(this.Todos);
+            this.gbRB.Controls.Add(this.NDisponibles);
+            this.gbRB.Controls.Add(this.Disponibles);
+            this.gbRB.Location = new System.Drawing.Point(27, 415);
+            this.gbRB.Name = "gbRB";
+            this.gbRB.Size = new System.Drawing.Size(409, 72);
+            this.gbRB.TabIndex = 10;
+            this.gbRB.TabStop = false;
+            this.gbRB.Text = "Mostrar libros";
+            // 
+            // Todos
+            // 
+            this.Todos.AutoSize = true;
+            this.Todos.Checked = true;
+            this.Todos.Location = new System.Drawing.Point(317, 25);
+            this.Todos.Name = "Todos";
+            this.Todos.Size = new System.Drawing.Size(71, 24);
+            this.Todos.TabIndex = 8;
+            this.Todos.TabStop = true;
+            this.Todos.Text = "Todos";
+            this.Todos.UseVisualStyleBackColor = true;
+            this.Todos.CheckedChanged += new System.EventHandler(this.CheckedChanged);
+            // 
+            // NDisponibles
+            // 
+            this.NDisponibles.AutoSize = true;
+            this.NDisponibles.Location = new System.Drawing.Point(148, 25);
+            this.NDisponibles.Name = "NDisponibles";
+            this.NDisponibles.Size = new System.Drawing.Size(133, 24);
+            this.NDisponibles.TabIndex = 8;
+            this.NDisponibles.Text = "No Disponibles";
+            this.NDisponibles.UseVisualStyleBackColor = true;
+            this.NDisponibles.CheckedChanged += new System.EventHandler(this.CheckedChanged);
+            // 
+            // Disponibles
+            // 
+            this.Disponibles.AutoSize = true;
+            this.Disponibles.Location = new System.Drawing.Point(16, 26);
+            this.Disponibles.Name = "Disponibles";
+            this.Disponibles.Size = new System.Drawing.Size(109, 24);
+            this.Disponibles.TabIndex = 8;
+            this.Disponibles.Text = "Disponibles";
+            this.Disponibles.UseVisualStyleBackColor = true;
+            this.Disponibles.CheckedChanged += new System.EventHandler(this.CheckedChanged);
+            // 
             // SchLibros
             // 
-            this.ClientSize = new System.Drawing.Size(754, 458);
+            this.ClientSize = new System.Drawing.Size(754, 490);
+            this.Controls.Add(this.gbRB);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.dataGridView1);
@@ -170,6 +228,8 @@ namespace libreria.Busquedas
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.gbRB.ResumeLayout(false);
+            this.gbRB.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -178,8 +238,7 @@ namespace libreria.Busquedas
         {
             // TODO: This line of code loads data into the 'libreriaHCDataSet.vwListadoLibrosNormal' table. You can move, or remove it, as needed.
             dt = new DataTable();
-            dt = DatabaseCon.Instancia.GetData("select * from vwListadoLibrosNormal");
-            dataGridView1.DataSource = dt;
+            CheckedChanged(null, null);
             dataGridView1.Columns["Titulo"].Width = 400;
             dataGridView1.Columns["ISBN"].Visible = false;
         }
@@ -196,9 +255,7 @@ namespace libreria.Busquedas
                 else if(rbGen.Checked)
                 {
                     dv.RowFilter = $" Genero like '%{txtFiltro.Text}%'";
-
                 }
-
                 dataGridView1.DataSource = dv;
             }
             catch (Exception ex)
@@ -225,7 +282,6 @@ namespace libreria.Busquedas
             foreach (DataRow item in Data.Rows)
             {
                 ListViewItem itm = new ListViewItem(item.Field<string>("FullName"));
-
                 listView1.Items.Add(itm);
             }
         }
@@ -237,7 +293,25 @@ namespace libreria.Busquedas
 
             }
         }
-    }
-    
 
+        private void CheckedChanged(object sender, EventArgs e)
+        {
+            var checkedButton = gbRB.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+            switch (checkedButton.Name)
+            {
+                case "Disponibles":
+                    dt = DatabaseCon.Instancia.GetData("select * from vwListadoLibrosNormal where Stock > 0");
+                    break;
+                case "NDisponibles":
+                    dt = DatabaseCon.Instancia.GetData("select * from vwListadoLibrosNormal where Stock < 1");
+                    break;
+                case "Todos":
+                default:
+                    dt = DatabaseCon.Instancia.GetData("select * from vwListadoLibrosNormal");
+                    break;
+            }
+            dataGridView1.DataSource = dt;
+        }
+
+    }
 }
