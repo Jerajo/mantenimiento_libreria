@@ -8,10 +8,12 @@ namespace Sistema_de_punto_de_ventas.Datos
 {
     public class CLibro
     {
-        public static DataSet GetAll()
+        public static DataSet GetAll(string procedure = "")
         {
             SqlParameter[] dbParams = new SqlParameter[]{};
-            return DatabaseCon.ExecuteDataSet("usp_Data_CLibro_GetAll", dbParams);
+            if (procedure != "")
+                return FDBHelper.ExecuteDataSet(procedure, dbParams);
+            return FDBHelper.ExecuteDataSet("usp_Data_CLibro_GetAll", dbParams);
         }
 
         public static DataSet GetColumnNames()
@@ -61,7 +63,7 @@ namespace Sistema_de_punto_de_ventas.Datos
             return Convert.ToInt32(DatabaseCon.ExecuteScalar("usp_Data_CLibro_Eliminar", dbParams));
         }
 
-        public static int VerificarStock(int dni)
+        public static int VerificarStock(decimal dni)
         {
             SqlParameter[] dbParams = new SqlParameter[]
                 {

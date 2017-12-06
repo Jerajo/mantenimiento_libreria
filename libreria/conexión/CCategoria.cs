@@ -16,12 +16,14 @@ namespace Sistema_de_punto_de_ventas.Datos
             }
         }
 
-        public static DataSet GetAll()
+        public static DataSet GetAll(string procedure = "")
         {
             SqlParameter[] dbParams = new SqlParameter[]
                 {
 
                 };
+            if (procedure != "")
+                return FDBHelper.ExecuteDataSet(procedure, dbParams);
             return FDBHelper.ExecuteDataSet("usp_Data_CCategoria_GetAll", dbParams);
         }
 
