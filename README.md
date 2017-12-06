@@ -15,21 +15,21 @@
 * [ ] Cifrado/Descifrado `Yerlin`
 * [X] Conexión DB `Jesse`
 * [ ] Ejemplares, Estudiantes, Autores `Jesus`
-* [ ] Libros, Genero, Usuarios `Jesse` 
+* [X] Libros, Genero, Usuarios `Jesse` 
 
 **Mantenimientos/Formularios**
 * [ ] Login `Yerlin`
-* [ ] Mantenimiento Libros `Jesse`
+* [X] Mantenimiento Libros `Jesse`
 * [X] Mantenimiento Genero `Jesus`
 * [ ] Mantenimiento Usuarios `Yerlin`
-* [ ] Mantenimiento Ejemplares `Jesse` Este es Opcional
+* [X] Mantenimiento Ejemplares `Jesse` Este es Opcional
 * [X] Mantenimiento Estudiantes `Jesus`
 * [ ] Mantenimiento Prestamo/Devolución `Jesus`
 * [X] Mantenimiento Autores `Jesus`
 
 **Busquedas/Estored procedures**
 * [ ] Historial Prestamos/Devoluciones `Jesus`
-* [ ] Libros Disponibles `Jesse`
+* [X] Libros Disponibles/No Disponibles `Jesse`
 * [ ] Insertar, Actualizar, Eliminar `Jesse & Jesus`
 
 Si falta algo ponganlo aqui

@@ -30,21 +30,19 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblDatosNoEncontrados = new System.Windows.Forms.Label();
-            this.ckbPrestados = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.dgvDBR = new System.Windows.Forms.DataGridView();
             this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnEliminar = new System.Windows.Forms.Button();
+            this.txtIdCategoria = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.nudStock = new System.Windows.Forms.NumericUpDown();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cbxGenero = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtIdCategoria = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
@@ -54,7 +52,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtStock = new System.Windows.Forms.TextBox();
             this.txtPais = new System.Windows.Forms.TextBox();
             this.txtEditorial = new System.Windows.Forms.TextBox();
             this.txtTitulo = new System.Windows.Forms.TextBox();
@@ -66,6 +63,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDBR)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -74,9 +72,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lblDatosNoEncontrados);
-            this.groupBox1.Controls.Add(this.ckbPrestados);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.dgvDBR);
             this.groupBox1.Controls.Add(this.btnEliminar);
             this.groupBox1.Location = new System.Drawing.Point(419, 108);
@@ -97,16 +93,6 @@
             this.lblDatosNoEncontrados.TabIndex = 7;
             this.lblDatosNoEncontrados.Text = "Datos no Encontrados";
             // 
-            // ckbPrestados
-            // 
-            this.ckbPrestados.AutoSize = true;
-            this.ckbPrestados.Location = new System.Drawing.Point(10, 291);
-            this.ckbPrestados.Name = "ckbPrestados";
-            this.ckbPrestados.Size = new System.Drawing.Size(150, 28);
-            this.ckbPrestados.TabIndex = 6;
-            this.ckbPrestados.Text = "Mostrar Todos";
-            this.ckbPrestados.UseVisualStyleBackColor = true;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -115,18 +101,6 @@
             this.label10.Size = new System.Drawing.Size(130, 24);
             this.label10.TabIndex = 0;
             this.label10.Text = "Lista de Libros";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Turquoise;
-            this.button1.Location = new System.Drawing.Point(685, 290);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 53);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Seleccionar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
             // dgvDBR
             // 
@@ -168,11 +142,23 @@
             this.btnEliminar.Visible = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
+            // txtIdCategoria
+            // 
+            this.txtIdCategoria.Enabled = false;
+            this.txtIdCategoria.Location = new System.Drawing.Point(314, 186);
+            this.txtIdCategoria.Name = "txtIdCategoria";
+            this.txtIdCategoria.ReadOnly = true;
+            this.txtIdCategoria.Size = new System.Drawing.Size(63, 29);
+            this.txtIdCategoria.TabIndex = 0;
+            this.txtIdCategoria.Visible = false;
+            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.nudStock);
             this.groupBox2.Controls.Add(this.pictureBox1);
-            this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.txtIdCategoria);
+            this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.btnCancelar);
             this.groupBox2.Controls.Add(this.btnGuardar);
             this.groupBox2.Controls.Add(this.btnEditar);
@@ -182,7 +168,6 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.txtStock);
             this.groupBox2.Controls.Add(this.txtPais);
             this.groupBox2.Controls.Add(this.txtEditorial);
             this.groupBox2.Controls.Add(this.txtTitulo);
@@ -195,9 +180,17 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
+            // nudStock
+            // 
+            this.nudStock.Location = new System.Drawing.Point(99, 184);
+            this.nudStock.Name = "nudStock";
+            this.nudStock.Size = new System.Drawing.Size(203, 29);
+            this.nudStock.TabIndex = 8;
+            // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(314, 201);
+            this.pictureBox1.Image = global::libreria.Properties.Resources.untitled14;
+            this.pictureBox1.Location = new System.Drawing.Point(314, 297);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(63, 62);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -205,16 +198,23 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(9, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(217, 24);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Mantenimiento de Libros";
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.cbxGenero);
-            this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Controls.Add(this.txtIdCategoria);
-            this.groupBox4.Location = new System.Drawing.Point(13, 163);
+            this.groupBox4.Location = new System.Drawing.Point(13, 278);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(295, 118);
+            this.groupBox4.Size = new System.Drawing.Size(295, 86);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
             // 
@@ -222,20 +222,11 @@
             // 
             this.cbxGenero.Enabled = false;
             this.cbxGenero.FormattingEnabled = true;
-            this.cbxGenero.Location = new System.Drawing.Point(86, 73);
+            this.cbxGenero.Location = new System.Drawing.Point(90, 38);
             this.cbxGenero.Name = "cbxGenero";
             this.cbxGenero.Size = new System.Drawing.Size(199, 32);
             this.cbxGenero.TabIndex = 3;
             this.cbxGenero.SelectedIndexChanged += new System.EventHandler(this.cbxGenero_SelectedIndexChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 33);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(27, 24);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "ID";
             // 
             // label11
             // 
@@ -249,34 +240,16 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 76);
+            this.label4.Location = new System.Drawing.Point(6, 41);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 24);
             this.label4.TabIndex = 2;
             this.label4.Text = "Genero";
             // 
-            // txtIdCategoria
-            // 
-            this.txtIdCategoria.Enabled = false;
-            this.txtIdCategoria.Location = new System.Drawing.Point(86, 30);
-            this.txtIdCategoria.Name = "txtIdCategoria";
-            this.txtIdCategoria.ReadOnly = true;
-            this.txtIdCategoria.Size = new System.Drawing.Size(199, 29);
-            this.txtIdCategoria.TabIndex = 0;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(217, 24);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Mantenimiento de Libros";
-            // 
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.Red;
-            this.btnCancelar.Location = new System.Drawing.Point(205, 383);
+            this.btnCancelar.Location = new System.Drawing.Point(205, 384);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(93, 53);
             this.btnCancelar.TabIndex = 7;
@@ -288,7 +261,7 @@
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.LawnGreen;
-            this.btnGuardar.Location = new System.Drawing.Point(80, 384);
+            this.btnGuardar.Location = new System.Drawing.Point(80, 383);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(93, 53);
             this.btnGuardar.TabIndex = 6;
@@ -322,7 +295,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 293);
+            this.label6.Location = new System.Drawing.Point(9, 139);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(45, 24);
             this.label6.TabIndex = 2;
@@ -331,7 +304,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 340);
+            this.label7.Location = new System.Drawing.Point(9, 186);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 24);
             this.label7.TabIndex = 2;
@@ -340,7 +313,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 133);
+            this.label3.Location = new System.Drawing.Point(8, 239);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 24);
             this.label3.TabIndex = 2;
@@ -364,19 +337,10 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "ISBN";
             // 
-            // txtStock
-            // 
-            this.txtStock.Enabled = false;
-            this.txtStock.Location = new System.Drawing.Point(99, 335);
-            this.txtStock.Name = "txtStock";
-            this.txtStock.Size = new System.Drawing.Size(279, 29);
-            this.txtStock.TabIndex = 5;
-            this.txtStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress_Only_Numbers);
-            // 
             // txtPais
             // 
             this.txtPais.Enabled = false;
-            this.txtPais.Location = new System.Drawing.Point(99, 287);
+            this.txtPais.Location = new System.Drawing.Point(99, 133);
             this.txtPais.Name = "txtPais";
             this.txtPais.Size = new System.Drawing.Size(279, 29);
             this.txtPais.TabIndex = 4;
@@ -384,7 +348,7 @@
             // txtEditorial
             // 
             this.txtEditorial.Enabled = false;
-            this.txtEditorial.Location = new System.Drawing.Point(99, 128);
+            this.txtEditorial.Location = new System.Drawing.Point(98, 234);
             this.txtEditorial.Name = "txtEditorial";
             this.txtEditorial.Size = new System.Drawing.Size(279, 29);
             this.txtEditorial.TabIndex = 2;
@@ -415,7 +379,6 @@
             this.groupBox3.Size = new System.Drawing.Size(815, 84);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // cbxFiltrar
             // 
@@ -457,12 +420,14 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FrmLibros";
             this.Text = "Mantenimiento de Libros";
-            this.Load += new System.EventHandler(this.From_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmLibros_FormClosing);
+            this.Load += new System.EventHandler(this.Form_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDBR)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudStock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
@@ -481,20 +446,16 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnNuevo;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtIdCategoria;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtStock;
         private System.Windows.Forms.TextBox txtPais;
         private System.Windows.Forms.TextBox txtEditorial;
         private System.Windows.Forms.TextBox txtTitulo;
         private System.Windows.Forms.TextBox txtISBN;
-        private System.Windows.Forms.CheckBox ckbPrestados;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -508,6 +469,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Eliminar;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtIdCategoria;
+        private System.Windows.Forms.NumericUpDown nudStock;
     }
 }

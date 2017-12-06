@@ -27,6 +27,7 @@ namespace libreria
             var Box = Mantenimientos.Generos.Instancia;
             Box.MdiParent = this;
             Box.Show();
+            Box.BringToFront();
         }
 
         private void busquedasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -39,13 +40,15 @@ namespace libreria
             var Box = Busquedas.SchLibros.Instancia;
             Box.MdiParent = this;
             Box.Show();
+            Box.BringToFront();
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            var Box = new forms.FrmLibros();
+            var Box = forms.FrmLibros.GetInstance();
             Box.MdiParent = this;
             Box.Show();
+            Box.BringToFront();
         }
 
         private void autorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -53,6 +56,7 @@ namespace libreria
             var Box = forms.FrmAutor.Instance;
             Box.MdiParent = this;
             Box.Show();
+            Box.BringToFront();
         }
 
         private void estudiantesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -60,7 +64,15 @@ namespace libreria
             var Box = forms.FrnEst.Instance;
             Box.MdiParent = this;
             Box.Show();
+            Box.BringToFront();
+        }
 
+        private void ejemplaresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var Box = forms.FrmEjemplares.GetInstance();
+            Box.MdiParent = this;
+            Box.Show();
+            Box.BringToFront();
         }
 
         private void mantenimientosToolStripMenuItem_Click(object sender, EventArgs e)
