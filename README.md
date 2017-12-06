@@ -29,7 +29,7 @@
 
 **Busquedas/Estored procedures**
 * [ ] Historial Prestamos/Devoluciones `Jesus`
-* [ ] Libros Disponibles `Jesse`
+* [X] Libros Disponibles/No Disponibles `Jesse`
 * [ ] Insertar, Actualizar, Eliminar `Jesse & Jesus`
 
 Si falta algo ponganlo aqui
