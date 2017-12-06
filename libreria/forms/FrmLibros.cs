@@ -93,7 +93,7 @@ namespace libreria.forms
                         libro.Editorial = txtEditorial.Text;
                         libro.CategoriaId = Convert.ToInt32(txtIdCategoria.Text);
                         libro.Pais = txtPais.Text;
-                        libro.Stock = Convert.ToInt32(txtStock.Text);
+                        libro.Stock = Convert.ToInt32(nudStock.Text);
                         
                         if (CLibro.Actualizar(libro) > 0)
                         {
@@ -109,7 +109,7 @@ namespace libreria.forms
                         libro.Editorial = txtEditorial.Text;
                         libro.CategoriaId = Convert.ToInt32(txtIdCategoria.Text);
                         libro.Pais = txtPais.Text;
-                        libro.Stock = Convert.ToInt32(txtStock.Text);
+                        libro.Stock = Convert.ToInt32(nudStock.Text);
 
                         int n = CLibro.Insertar(libro);
                         MessageBox.Show("Resultado: " + System.Convert.ToString(n));
@@ -138,12 +138,7 @@ namespace libreria.forms
             if (txtEditorial.Text == "") resultado += "El campo: Editorial.\n";
             if (txtIdCategoria.Text == "") resultado += "El campo: Categoria.\n";
             if (txtPais.Text == "") resultado += "El campo: Pais.\n";
-            else if ((txtStock.Text == "" || txtStock.Text == "0") &&
-                txtStock.Text != dgvDBR.CurrentRow.Cells["Stock"].Value.ToString())
-            {
-                if (CLibro.VerificarStock(Convert.ToInt32(txtStock.Text)) > 0)
-                    resultado += "El campo: Stock,\n (Stock ya existe) \n";
-            }
+            if (nudStock.Text == "") resultado += "El campo: Stock,\n";
             return resultado;
         }
 
@@ -156,7 +151,7 @@ namespace libreria.forms
             txtIdCategoria.Clear();
             cbxGenero.Text = "";
             txtPais.Clear();
-            txtStock.Clear();
+            nudStock.Value = 1;
             //Disable DataGriView
             dgvDBR.ClearSelection();
             dgvDBR.Enabled = false;
@@ -171,7 +166,7 @@ namespace libreria.forms
         {
             MostrarBotonesOcultos(false);
             dgvDBR_CellClick(null, null);
-            if (dgvDBR.SelectedRows.Count == 0) dgvDBR.Rows[0].Selected = true;
+            if (dt.Rows.Count > 0 && dgvDBR.SelectedRows.Count == 0) dgvDBR.Rows[0].Selected = true;
         }
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
@@ -203,7 +198,7 @@ namespace libreria.forms
             txtEditorial.Enabled = si;
             cbxGenero.Enabled = si;
             txtPais.Enabled = si;
-            txtStock.Enabled = si;
+            nudStock.Enabled = si;
 
             if (si == true) this.ActiveControl = txtISBN;
         }
@@ -218,7 +213,7 @@ namespace libreria.forms
                 cbxGenero.Text = dgvDBR.CurrentRow.Cells["Genero"].Value.ToString();
                 txtEditorial.Text = dgvDBR.CurrentRow.Cells["Editorial"].Value.ToString();         
                 txtPais.Text = dgvDBR.CurrentRow.Cells["Pais"].Value.ToString();
-                txtStock.Text = dgvDBR.CurrentRow.Cells["Stock"].Value.ToString();
+                nudStock.Text = dgvDBR.CurrentRow.Cells["Stock"].Value.ToString();
             }
         }
 
@@ -335,5 +330,6 @@ namespace libreria.forms
             var regexItem = new Regex("^[a-zA-Z0-9 ()-_.,#]*$");
             if (!regexItem.IsMatch(Convert.ToString(e.KeyChar)) && !(e.KeyChar == '\b')) e.Handled = true;
         }
+
     }
 }
