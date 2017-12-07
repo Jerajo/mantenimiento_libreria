@@ -37,13 +37,14 @@ namespace libreria.conexión
             return Convert.ToInt32(DatabaseCon.ExecuteScalar("usp_Data_Ejemplares_Insertar", dbParams));
         }
 
-        public static int Actualizar(Ejemplares ejemplares)
+        public static int Actualizar(Ejemplares ejemplares, int oldN)
         {
             SqlParameter[] dbParams = new SqlParameter[]
                 {
                     DatabaseCon.MakeParam("@ISBN",SqlDbType.VarChar, ejemplares.ISBN),
-                    DatabaseCon.MakeParam("@Cod",SqlDbType.VarChar, ejemplares.Codigo),
-                    DatabaseCon.MakeParam("@numero",SqlDbType.Int, ejemplares.Numero)
+                    DatabaseCon.MakeParam("@Cod",SqlDbType.VarChar, ejemplares.Codigo),                    
+                    DatabaseCon.MakeParam("@newN",SqlDbType.Int, ejemplares.Numero),
+                    DatabaseCon.MakeParam("@oldN",SqlDbType.Int, oldN)
                 };
             return Convert.ToInt32(DatabaseCon.ExecuteScalar("usp_Data_Ejemplares_Actualizar", dbParams));
         }
