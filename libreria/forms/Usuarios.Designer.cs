@@ -243,6 +243,7 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Usuarios";
             this.Text = "Mnteniiento de Usuarios";
+            this.Load += new System.EventHandler(this.Form_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

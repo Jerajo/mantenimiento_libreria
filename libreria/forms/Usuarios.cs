@@ -17,6 +17,11 @@ namespace libreria.forms
             InitializeComponent();
         }
 
+        private void Form_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
 
@@ -41,5 +46,6 @@ namespace libreria.forms
         {
 
         }
+        
     }
 }
