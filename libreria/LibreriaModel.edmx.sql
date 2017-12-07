@@ -637,7 +637,16 @@ RETURNS TABLE AS RETURN
 	where le.LibroISBN = @ISBN and (Estado is null or Estado = 0)
 )
 go
-
+----Trae ISBN por Autor
+CREATE FUNCTION fxTraeLibroPorAutor
+(
+	@idAutor int
+)
+RETURNS TABLE AS RETURN
+(
+	select LibroISBN from LibroAutorSet where AutorId = @idAutor
+)
+go
 -- --------------------------------------------------
 -- Script has ended
 -- --------------------------------------------------
