@@ -104,11 +104,11 @@ namespace libreria.forms
         }
         
 
-        private void cbLibros_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var val = (sender as ComboBox).SelectedValue.ToString();            
-            FillCbEjemplares(Value: val);
-        }
+        //private void cbLibros_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    var val = (sender as ComboBox).SelectedValue.ToString();            
+        //    FillCbEjemplares(Value: val);
+        //}
 
         private void FillCbEjemplares(string Value)
         {
@@ -231,5 +231,10 @@ namespace libreria.forms
         private void txtTitulo_TextChanged(object sender, EventArgs e)
         {
                     }
+
+        private void pbAddCliente_Click(object sender, EventArgs e)
+        {
+            FrmLibros.GetInstance().ShowDialog();
+        }
     }
 }

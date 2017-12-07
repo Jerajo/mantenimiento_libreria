@@ -7,8 +7,12 @@
 -- --------------------------------------------------
 
 --SET QUOTED_IDENTIFIER OFF;
---GO
---USE [LibreriaHC];
+--Drop DATABASE [LibreriaHC.mdf]
+--go
+--Create DATABASE [LibreriaHC.mdf]
+--go
+
+--USE [LibreriaHC.mdf];
 --GO
 --IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHE	MA [dbo]');
 --GO
@@ -587,12 +591,12 @@ cl.Identificacion as DNI
 from LibroEjemplarSet as le inner join LibrosSet as l on le.LibroISBN = l.ISBN
 left join HistorialPrestamoSet as h on h.LibroEjemplarCodigo = le.Codigo
 inner join ClientesSet as cl on cl.Identificacion = h.ClientesIdentificacion
-; go
+go
 
 -----------Libros sin Historial activo
-Create view vwLibrosFaltantes
-as
-select distinct l.ISBN, l.Titulo from LibrosSet as l inner join LibroEjemplarSet as lb on lb.LibroISBN = l.ISBN
+CREATE VIEW vwLibrosFaltantes
+	as
+select  l.ISBN, l.Titulo, Count(*) as Disponibles from LibrosSet as l inner join LibroEjemplarSet as lb on lb.LibroISBN = l.ISBN
 left join HistorialPrestamoSet  on LibroEjemplarCodigo = lb.Codigo
 
 where Estado is null or Estado = 0
@@ -610,13 +614,15 @@ go
 Insert into CategoriasSet(Genero) values ('Ficcion')
 Insert into CategoriasSet(Genero) values ('Aventuras')
 Insert into CategoriasSet(Genero) values ('Drama')
-;
+Insert into CategoriasSet(Genero) values ('Programacion')
+
 go
 ------INSERTANDO Libros
 exec spInsertLibro '9788484417552', 'La Piramide Roja, Las Cronicas de Kane Vol. 1', 'España', 5, 'Montena', 1
-
-
-;go
+exec spInsertLibro N'0470277947', N'LINQ for Dummies', N'Estados Unidos', 2, N'Wiley Publishing, Inc.', 1
+insert into AutoresSet values (N'John Paul', N'Mueller');
+insert into AutoresSet values (N'Rick', N'Riordan');
+go
 
 -----FUNCIONES-----------
 ---Trae ejemplares
@@ -630,7 +636,7 @@ RETURNS TABLE AS RETURN
 	on LibroEjemplarCodigo = le.Codigo
 	where le.LibroISBN = @ISBN and (Estado is null or Estado = 0)
 )
-;go
+go
 
 -- --------------------------------------------------
 -- Script has ended

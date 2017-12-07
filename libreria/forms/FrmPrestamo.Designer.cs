@@ -35,7 +35,6 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnSelect = new System.Windows.Forms.Button();
             this.lbFecha = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnFC = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cbCliente = new System.Windows.Forms.ComboBox();
@@ -45,9 +44,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbEjemplares = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.pbAddCliente = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnFC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAddCliente)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvList
@@ -71,6 +73,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.pbAddCliente);
             this.groupBox1.Controls.Add(this.btnUpd);
             this.groupBox1.Controls.Add(this.btnClear);
             this.groupBox1.Controls.Add(this.btnGuardar);
@@ -143,17 +146,6 @@
             this.lbFecha.Name = "lbFecha";
             this.lbFecha.Size = new System.Drawing.Size(0, 20);
             this.lbFecha.TabIndex = 11;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(631, 241);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 44);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Aceptar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.btnPrestar_Click);
             // 
             // btnFC
             // 
@@ -238,6 +230,28 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Titulo del Libro";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(631, 241);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(87, 44);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Aceptar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.btnPrestar_Click);
+            // 
+            // pbAddCliente
+            // 
+            this.pbAddCliente.Image = global::libreria.Properties.Resources.untitled14;
+            this.pbAddCliente.Location = new System.Drawing.Point(177, 60);
+            this.pbAddCliente.Name = "pbAddCliente";
+            this.pbAddCliente.Size = new System.Drawing.Size(37, 28);
+            this.pbAddCliente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbAddCliente.TabIndex = 16;
+            this.pbAddCliente.TabStop = false;
+            this.pbAddCliente.Click += new System.EventHandler(this.pbAddCliente_Click);
+            // 
             // FrmPrestamo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -257,6 +271,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnFC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAddCliente)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -280,5 +295,6 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnUpd;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pbAddCliente;
     }
 }

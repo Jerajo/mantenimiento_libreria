@@ -15,10 +15,11 @@ namespace libreria.forms
     public partial class FrmEjemplares : Form
     {
         private static DataTable dt = new DataTable();
-        private static DataSet DS = DatabaseCon.GetColumnNames("[dbo].[LibroEjemplarSet]");
-        public FrmEjemplares()
+        private static DataSet DS;
+        private FrmEjemplares()
         {
             InitializeComponent();
+            DS = DatabaseCon.Instancia.GetColumnNames("[dbo].[LibroEjemplarSet]");
         }
 
         private void Form_Load(object sender, EventArgs e)
@@ -115,7 +116,7 @@ namespace libreria.forms
             if (cbxISBN.Text == "") resultado += "El campo: ISBN.\n";
             string[] campos = { "Numero", "LibroISBN" };
             string[] valores = { nudNumero.Text, cbxISBN.Text };
-            resultado += DatabaseCon.VerificarSiExiste("[dbo].[LibroEjemplarSet]", campos, valores);
+            resultado += DatabaseCon.Instancia.VerificarSiExiste("[dbo].[LibroEjemplarSet]", campos, valores);
             foreach(DataRowView iten in cbxISBN.Items)
             {
                 if (cbxISBN.Text != iten.Row[0].ToString()) continue;
