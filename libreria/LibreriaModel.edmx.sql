@@ -114,11 +114,16 @@ CREATE TABLE [dbo].[VariablesSet] (
 GO
 
 -- Creating table 'CredencialesSet'
-CREATE TABLE [dbo].[CredencialesSet] (
-	[Codigo] nvarchar(50)  NOT NULL,
-	[Nombre] nvarchar(50)  NOT NULL,
-	[Password] nvarchar(250)  NOT NULL
-);
+CREATE TABLE [dbo].[CredencialesSet](
+	[Codigo] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](10) NOT NULL,
+	[Password] [varchar](100) NOT NULL,
+ CONSTRAINT [PK_CredencialSet] PRIMARY KEY CLUSTERED 
+(
+	[Codigo] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
 GO
 
 -- --------------------------------------------------
