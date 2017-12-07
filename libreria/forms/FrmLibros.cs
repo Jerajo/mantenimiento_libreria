@@ -1,4 +1,5 @@
 ﻿using libreria.entidades;
+using libreria.Mantenimientos;
 using Sistema_de_punto_de_ventas.Datos;
 using Sistema_de_punto_de_ventas.Entidades;
 using System;
@@ -38,34 +39,12 @@ namespace libreria.forms
             UPDATE.State(this.Name, true);
             try
             {
-                //Carga los libros de la db                
-                dt = DatabaseCon.Instancia.GetData($"Select * from view_Libros");
-                //var ds = CLibro.GetAll();                
-                //dt = ds.Tables[0];
-                dgvDBR.DataSource = dt;
+                RefreshData();
                 //Carga los nombres de las colugnas de la db
                 var ds2 = CLibro.GetColumnNames();
                 DataView dv = ds2.Tables[0].DefaultView;
                 cbxFiltrar.DataSource = dv;
-                cbxFiltrar.DisplayMember = "Names";
-                //Carga las categorias de la db
-                var ds3 = CCategoria.GetAll();
-                dv = ds3.Tables[0].DefaultView;
-                cbxGenero.DataSource = dv;
-                cbxGenero.ValueMember = "Id";
-                cbxGenero.DisplayMember = "Genero";
-                //Oculta algunos controles al empleado
-                //if (txtFlag.Text == "") btnSeleccionar.Visible = false;
-                if (dt.Rows.Count > 0) //Muesta u oculta el label de la grilla
-                {
-                    dgvDBR.ForeColor = Color.Black;
-                    dgvDBR.Columns["ISBN"].Width = 200;
-                    dgvDBR.Columns["Titulo"].Width = 300;
-                    dgvDBR.Columns["CategoriaId"].Visible = false;
-                    lblDatosNoEncontrados.Visible = false;
-                    dgvDBR_CellClick(null, null);
-                }
-                else lblDatosNoEncontrados.Visible = true;
+                cbxFiltrar.DisplayMember = "Names";                
                 MostrarBotonesOcultos(false);
                 verificarFilasSeleccionada();
             }
@@ -73,6 +52,30 @@ namespace libreria.forms
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
+        }
+
+        public void RefreshData()
+        {
+            //Carga los libros de la db                
+            dt = DatabaseCon.Instancia.GetData($"Select * from view_Libros");
+            //var ds = CLibro.GetAll();                
+            //dt = ds.Tables[0];
+            dgvDBR.DataSource = dt;            
+            //Carga las categorias de la db
+            var d = DatabaseCon.Instancia.GetData($"Select Id, Genero from [dbo].[CategoriasSet]");
+            cbxGenero.DataSource = d;
+            cbxGenero.ValueMember = "Id";
+            cbxGenero.DisplayMember = "Genero";
+            if (dt.Rows.Count > 0) //Muesta u oculta el label de la grilla
+            {
+                dgvDBR.ForeColor = Color.Black;
+                dgvDBR.Columns["ISBN"].Width = 200;
+                dgvDBR.Columns["Titulo"].Width = 300;
+                dgvDBR.Columns["CategoriaId"].Visible = false;
+                lblDatosNoEncontrados.Visible = false;
+                dgvDBR_CellClick(null, null);
+            }
+            else lblDatosNoEncontrados.Visible = true;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -94,7 +97,7 @@ namespace libreria.forms
                         {
                             MessageBox.Show("Datos Actualizados Correctamente");
                             UPDATE.AllForms(false);
-                            Form_Load(null, null);
+                            RefreshData();
                         }//*/MessageBox.Show("Actualizado " + dgvDBR.CurrentRow);
                     }
                     else //Nuevo registro
@@ -110,7 +113,7 @@ namespace libreria.forms
                         {
                             MessageBox.Show("Datos Insertados Correctamente");
                             UPDATE.AllForms(false);
-                            Form_Load(null, null);
+                            RefreshData();
                         }//*/MessageBox.Show("Insertado");
                     }
                 }
@@ -123,6 +126,8 @@ namespace libreria.forms
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
+            MostrarBotonesOcultos(false);
+            verificarFilasSeleccionada();
         }
 
         public string validarDatos()
@@ -167,19 +172,23 @@ namespace libreria.forms
             if (nudStock.Enabled) nudStock.Enabled = false;
         }
 
-        private void btnSeleccionar_Click(object sender, EventArgs e)
-        {
-            dgvDBR_CellContentDoubleClick(null, null);
-        }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Add Categoria");
+            var fg = Generos.Instancia;
+            fg.Flag = true;
+            fg.ShowDialog();
         }
 
         private void cbxGenero_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtIdCategoria.Text = cbxGenero.SelectedValue.ToString();
+        }
+
+        public void SetGenero(string value)
+        {            
+            //int index = cbxGenero.FindString(value);
+            //MessageBox.Show($"The value: '{value}' is on index: {index}");
+            cbxGenero.SelectedIndex = cbxGenero.FindString(value);
         }
 
         public void MostrarBotonesOcultos(bool si)
@@ -189,6 +198,7 @@ namespace libreria.forms
             btnCancelar.Visible = si;
             btnNuevo.Visible = !si;
             btnEditar.Visible = !si;
+            btnMore.Enabled = si;
             dgvDBR.Enabled = !si;
             //Revertir cambios            
             txtTitulo.Enabled = si;
@@ -242,13 +252,15 @@ namespace libreria.forms
                             UPDATE.AllForms(false); //froce others forms to update                            
                         }
                     }
-                    Form_Load(null, null);
+                    RefreshData();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
+            MostrarBotonesOcultos(false);
+            verificarFilasSeleccionada();
         }
 
         private void verificarFilasSeleccionada()
@@ -330,7 +342,7 @@ namespace libreria.forms
 
         private void Form_Enter(object sender, EventArgs e)
         {
-            if (!UPDATE.IsUpdated(this.Name)) Form_Load(null, null);
+            if (!UPDATE.IsUpdated(this.Name)) RefreshData();
         }
     }
 }
