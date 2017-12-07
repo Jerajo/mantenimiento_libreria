@@ -14,15 +14,15 @@ public class DatabaseCon
 
     public static DatabaseCon Instancia
     {
+        set { _Instance = value; }
         get
         {
-            if (_Instance == null)
-                _Instance = new DatabaseCon();
+            if (_Instance == null) _Instance = new DatabaseCon();
             return _Instance;
         }
     }   
 
-    private DatabaseCon()
+    public DatabaseCon()
     {
         Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["LibreriaHCConnectionString"].ConnectionString);
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using libreria.entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -90,8 +91,9 @@ namespace libreria.forms
             BtnShow(true);
         }
 
-        private void FrmAutor_Load(object sender, EventArgs e)
+        private void Form_Load(object sender, EventArgs e)
         {
+            UPDATE.State(this.Name, true); //se the form stated to updated
             CargarGrid();
 
         }
@@ -114,6 +116,7 @@ namespace libreria.forms
             txtApellidoNew.Clear();
             txtNombreNew.Clear();
             CargarGrid();
+            UPDATE.AllForms(false); //froce others forms to update
         }
 
         private void btnClearNew_Click(object sender, EventArgs e)
@@ -129,6 +132,17 @@ namespace libreria.forms
 
             CargarListView();
 
+        }
+
+        // update the form if isn't updated
+        private void Form_Enter(object sender, EventArgs e)
+        {
+            if (!UPDATE.IsUpdated(this.Name)) Form_Load(null, null);
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            //UPDATE.AllForms(false); //froce others forms to update
         }
     }
 }

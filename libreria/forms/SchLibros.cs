@@ -1,4 +1,5 @@
-﻿using System;
+﻿using libreria.entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -224,7 +225,8 @@ namespace libreria.Busquedas
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "SchLibros";
-            this.Load += new System.EventHandler(this.SchLibros_Load);
+            this.Load += new System.EventHandler(this.Form_Load);
+            this.Enter += new System.EventHandler(this.Form_Enter);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -234,9 +236,10 @@ namespace libreria.Busquedas
 
         }
 
-        private void SchLibros_Load(object sender, EventArgs e)
+        private void Form_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'libreriaHCDataSet.vwListadoLibrosNormal' table. You can move, or remove it, as needed.
+            UPDATE.State(this.Name, true); //se the form stated to updated
             dt = new DataTable();
             CheckedChanged(null, null);
             dataGridView1.Columns["Titulo"].Width = 400;
@@ -313,5 +316,10 @@ namespace libreria.Busquedas
             dataGridView1.DataSource = dt;
         }
 
+        // update the form if isn't updated
+        private void Form_Enter(object sender, EventArgs e)
+        {
+            if (!UPDATE.IsUpdated(this.Name)) Form_Load(null, null);
+        }
     }
 }

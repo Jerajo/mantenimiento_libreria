@@ -207,6 +207,7 @@
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Visible = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // txtApellidoEdit
             // 
@@ -286,7 +287,8 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmAutor";
             this.Text = "FrmAutor";
-            this.Load += new System.EventHandler(this.FrmAutor_Load);
+            this.Load += new System.EventHandler(this.Form_Load);
+            this.Enter += new System.EventHandler(this.Form_Enter);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

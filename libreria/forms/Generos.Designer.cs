@@ -54,7 +54,8 @@
             this.Listado1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Listado1.Size = new System.Drawing.Size(352, 150);
             this.Listado1.TabIndex = 2;
-            this.Listado1.SelectionChanged += new System.EventHandler(this.Listado1_SelectionChanged);
+            this.Listado1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Listado1_CellClick);
+            this.Listado1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Listado1_CellDoubleClick);
             // 
             // label1
             // 
@@ -65,7 +66,6 @@
             this.label1.Size = new System.Drawing.Size(131, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Lista de Generos";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // groupBox1
             // 
@@ -78,7 +78,6 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nuevo";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // txtNew
             // 
@@ -149,7 +148,9 @@
             this.Name = "Generos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generos";
-            this.Load += new System.EventHandler(this.Generos_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Generos_FormClosing);
+            this.Load += new System.EventHandler(this.Form_Load);
+            this.Enter += new System.EventHandler(this.Form_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.Listado1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

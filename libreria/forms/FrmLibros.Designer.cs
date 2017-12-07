@@ -37,7 +37,7 @@
             this.txtIdCategoria = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.nudStock = new System.Windows.Forms.NumericUpDown();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnMore = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cbxGenero = new System.Windows.Forms.ComboBox();
@@ -64,7 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDBR)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudStock)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMore)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -113,6 +113,7 @@
             this.dgvDBR.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Eliminar});
             this.dgvDBR.Location = new System.Drawing.Point(10, 31);
+            this.dgvDBR.MultiSelect = false;
             this.dgvDBR.Name = "dgvDBR";
             this.dgvDBR.ReadOnly = true;
             this.dgvDBR.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -133,19 +134,19 @@
             // btnEliminar
             // 
             this.btnEliminar.BackColor = System.Drawing.Color.Red;
+            this.btnEliminar.Enabled = false;
             this.btnEliminar.Location = new System.Drawing.Point(685, 291);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(121, 53);
             this.btnEliminar.TabIndex = 4;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
-            this.btnEliminar.Visible = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // txtIdCategoria
             // 
             this.txtIdCategoria.Enabled = false;
-            this.txtIdCategoria.Location = new System.Drawing.Point(314, 186);
+            this.txtIdCategoria.Location = new System.Drawing.Point(314, 183);
             this.txtIdCategoria.Name = "txtIdCategoria";
             this.txtIdCategoria.ReadOnly = true;
             this.txtIdCategoria.Size = new System.Drawing.Size(63, 29);
@@ -155,7 +156,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.nudStock);
-            this.groupBox2.Controls.Add(this.pictureBox1);
+            this.groupBox2.Controls.Add(this.btnMore);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.txtIdCategoria);
             this.groupBox2.Controls.Add(this.groupBox4);
@@ -182,21 +183,23 @@
             // 
             // nudStock
             // 
+            this.nudStock.Enabled = false;
             this.nudStock.Location = new System.Drawing.Point(99, 184);
             this.nudStock.Name = "nudStock";
             this.nudStock.Size = new System.Drawing.Size(203, 29);
             this.nudStock.TabIndex = 8;
             // 
-            // pictureBox1
+            // btnMore
             // 
-            this.pictureBox1.Image = global::libreria.Properties.Resources.untitled14;
-            this.pictureBox1.Location = new System.Drawing.Point(314, 297);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(63, 62);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.btnMore.Enabled = false;
+            this.btnMore.Image = global::libreria.Properties.Resources.untitled14;
+            this.btnMore.Location = new System.Drawing.Point(314, 297);
+            this.btnMore.Name = "btnMore";
+            this.btnMore.Size = new System.Drawing.Size(63, 62);
+            this.btnMore.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnMore.TabIndex = 6;
+            this.btnMore.TabStop = false;
+            this.btnMore.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label9
             // 
@@ -249,7 +252,7 @@
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.Red;
-            this.btnCancelar.Location = new System.Drawing.Point(205, 384);
+            this.btnCancelar.Location = new System.Drawing.Point(205, 383);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(93, 53);
             this.btnCancelar.TabIndex = 7;
@@ -422,13 +425,14 @@
             this.Text = "Mantenimiento de Libros";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmLibros_FormClosing);
             this.Load += new System.EventHandler(this.Form_Load);
+            this.Enter += new System.EventHandler(this.Form_Enter);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDBR)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudStock)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMore)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -467,7 +471,7 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ComboBox cbxGenero;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox btnMore;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Eliminar;
         private System.Windows.Forms.TextBox txtIdCategoria;
         private System.Windows.Forms.NumericUpDown nudStock;
