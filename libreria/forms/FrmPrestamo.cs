@@ -38,7 +38,7 @@ namespace libreria.forms
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             DateTime Now = (sender as DateTimePicker).Value;
-            dtFin.MinDate = Now;
+            dtFin.MinDate = Now.AddDays(2);
             dtFin.Value = Now.AddDays(30);
         }
 
@@ -77,7 +77,7 @@ namespace libreria.forms
         private void PutDatePicker(DateTime Fecha)
         {
             dtPicker1.MinDate = Fecha.AddMonths(-1);
-            dtFin.MinDate = Fecha;
+            dtFin.MinDate = Fecha.AddDays(2);
             dtFin.Value = Fecha.AddDays(30);
         }
 
