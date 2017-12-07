@@ -35,7 +35,8 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnSelect = new System.Windows.Forms.Button();
             this.lbFecha = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnFC = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cbCliente = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -46,7 +47,7 @@
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFC)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvList
@@ -75,7 +76,7 @@
             this.groupBox1.Controls.Add(this.btnGuardar);
             this.groupBox1.Controls.Add(this.btnSelect);
             this.groupBox1.Controls.Add(this.lbFecha);
-            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.btnFC);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.cbCliente);
             this.groupBox1.Controls.Add(this.label4);
@@ -95,17 +96,19 @@
             // 
             // btnUpd
             // 
-            this.btnUpd.Location = new System.Drawing.Point(460, 118);
+            this.btnUpd.Enabled = false;
+            this.btnUpd.Location = new System.Drawing.Point(560, 116);
             this.btnUpd.Name = "btnUpd";
             this.btnUpd.Size = new System.Drawing.Size(96, 35);
             this.btnUpd.TabIndex = 15;
             this.btnUpd.Text = "Actualizar";
             this.btnUpd.UseVisualStyleBackColor = true;
+            this.btnUpd.Visible = false;
             this.btnUpd.Click += new System.EventHandler(this.btnUpd_Click);
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(608, 118);
+            this.btnClear.Location = new System.Drawing.Point(686, 116);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(96, 35);
             this.btnClear.TabIndex = 14;
@@ -115,7 +118,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(460, 118);
+            this.btnGuardar.Location = new System.Drawing.Point(560, 116);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(96, 35);
             this.btnGuardar.TabIndex = 13;
@@ -136,54 +139,65 @@
             // lbFecha
             // 
             this.lbFecha.AutoSize = true;
-            this.lbFecha.Location = new System.Drawing.Point(213, 53);
+            this.lbFecha.Location = new System.Drawing.Point(331, 60);
             this.lbFecha.Name = "lbFecha";
             this.lbFecha.Size = new System.Drawing.Size(0, 20);
             this.lbFecha.TabIndex = 11;
             // 
-            // pictureBox1
+            // button1
             // 
-            this.pictureBox1.Image = global::libreria.Properties.Resources.untitled14;
-            this.pictureBox1.Location = new System.Drawing.Point(608, 45);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(41, 29);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.button1.Location = new System.Drawing.Point(631, 241);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(87, 44);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Aceptar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.btnPrestar_Click);
+            // 
+            // btnFC
+            // 
+            this.btnFC.Image = global::libreria.Properties.Resources.untitled14;
+            this.btnFC.Location = new System.Drawing.Point(745, 47);
+            this.btnFC.Name = "btnFC";
+            this.btnFC.Size = new System.Drawing.Size(37, 28);
+            this.btnFC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnFC.TabIndex = 10;
+            this.btnFC.TabStop = false;
+            this.btnFC.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(428, 22);
+            this.label5.Location = new System.Drawing.Point(569, 24);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 20);
             this.label5.TabIndex = 9;
             this.label5.Text = "Clientes";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // cbCliente
             // 
             this.cbCliente.FormattingEnabled = true;
-            this.cbCliente.Location = new System.Drawing.Point(432, 45);
+            this.cbCliente.Location = new System.Drawing.Point(573, 47);
             this.cbCliente.Name = "cbCliente";
-            this.cbCliente.Size = new System.Drawing.Size(173, 28);
+            this.cbCliente.Size = new System.Drawing.Size(166, 28);
             this.cbCliente.TabIndex = 8;
-            this.cbCliente.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(213, 104);
+            this.label4.Location = new System.Drawing.Point(309, 22);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(137, 20);
+            this.label4.Size = new System.Drawing.Size(148, 20);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Fecha de Entrega";
+            this.label4.Text = "Fecha de Prestamo";
             // 
             // dtFin
             // 
             this.dtFin.CustomFormat = "     dd MMM yyyy";
             this.dtFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtFin.Location = new System.Drawing.Point(217, 127);
+            this.dtFin.Location = new System.Drawing.Point(313, 125);
             this.dtFin.Name = "dtFin";
             this.dtFin.Size = new System.Drawing.Size(200, 26);
             this.dtFin.TabIndex = 6;
@@ -191,12 +205,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(213, 24);
+            this.label3.Location = new System.Drawing.Point(309, 102);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 20);
+            this.label3.Size = new System.Drawing.Size(158, 20);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Fecha Inicio";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.label3.Text = "Fecha de Devolución";
             // 
             // label2
             // 
@@ -213,7 +226,7 @@
             this.cbEjemplares.FormattingEnabled = true;
             this.cbEjemplares.Location = new System.Drawing.Point(22, 125);
             this.cbEjemplares.Name = "cbEjemplares";
-            this.cbEjemplares.Size = new System.Drawing.Size(149, 28);
+            this.cbEjemplares.Size = new System.Drawing.Size(193, 28);
             this.cbEjemplares.TabIndex = 2;
             // 
             // label1
@@ -221,9 +234,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(18, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 20);
+            this.label1.Size = new System.Drawing.Size(111, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Libros disponibles";
+            this.label1.Text = "Titulo del Libro";
             // 
             // FrmPrestamo
             // 
@@ -232,16 +245,18 @@
             this.ClientSize = new System.Drawing.Size(857, 497);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvList);
+            this.Controls.Add(this.button1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmPrestamo";
             this.Text = "FrmPrestamo";
-            this.Load += new System.EventHandler(this.FrmPrestamo_Load);
+            this.Load += new System.EventHandler(this.Form_Load);
+            this.Enter += new System.EventHandler(this.Form_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFC)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -257,12 +272,13 @@
         private System.Windows.Forms.DateTimePicker dtFin;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbCliente;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox btnFC;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lbFecha;
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnUpd;
+        private System.Windows.Forms.Button button1;
     }
 }

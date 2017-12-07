@@ -1,4 +1,7 @@
-﻿using System;
+﻿using libreria.Busquedas;
+using libreria.entidades;
+using libreria.Mantenimientos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +19,8 @@ namespace libreria.forms
         private static FrmPrestamo _instance = null;
         private int IDpres = 0;
         private string codLi = "";
+        private string[] _dataLibro = new string[2];
+        
         public static FrmPrestamo Instance
         {
             get {
@@ -24,7 +29,7 @@ namespace libreria.forms
                 return _instance;
             }
         }
-
+        
         private FrmPrestamo()
         {
             InitializeComponent();
@@ -43,17 +48,18 @@ namespace libreria.forms
         //    dtFin.Value = Now.AddDays(30);
         //}
 
-        private void FrmPrestamo_Load(object sender, EventArgs e)
+        private void Form_Load(object sender, EventArgs e)
         {
             PutDatePicker(DateTime.Today);
             FillGrid();
             //FillCbLibros();
             FillCbCliente();
-
+            UPDATE.State(this.Name, true); //se the form stated to updated
         }
 
-        private void FillCbCliente()
+        public void FillCbCliente()
         {
+            //cbCliente.Items.Insert(0, new { id = 0, NombreCliente = "Default" });
             cbCliente.DataSource = DatabaseCon.Instancia.GetData("select Identificacion as Id,CONCAT(Nombre, ' ', Apellido) as NombreCliente from ClientesSet");
             cbCliente.DisplayMember = "NombreCliente";
             cbCliente.ValueMember = "Id";
@@ -91,40 +97,29 @@ namespace libreria.forms
             dtFin.Value = Fecha.AddMonths(1);
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             FrnEst.Instance.ShowDialog();
             FillCbCliente();
-
         }
+        
 
         private void cbLibros_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var val = (sender as ComboBox).SelectedValue.ToString();
-            
+            var val = (sender as ComboBox).SelectedValue.ToString();            
             FillCbEjemplares(Value: val);
-
         }
 
         private void FillCbEjemplares(string Value)
         {
-            string q = $"select * from fxTraeEjemplaresDisponibles('{Value}')";
+            //string q = $"select * from fxTraeEjemplaresDisponibles('{Value}')";
+            string q = $"select * from [dbo].[LibroEjemplarSet] where LibroISBN='{Value}'";
             cbEjemplares.DataSource = DatabaseCon.Instancia.GetData(q);
             cbEjemplares.DisplayMember = "Numero";
             cbEjemplares.ValueMember = "Codigo";
             cbEjemplares.Enabled = true;
         }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
             var pList = new PopUp.LibroDis();
@@ -191,14 +186,13 @@ namespace libreria.forms
         {
            
             var cr = (sender as DataGridView).CurrentRow;
-            IDpres = (int)cr.Cells["Id"].Value;
             if (e.ColumnIndex == dgvList.Columns["btnCol"].Index)
             {
                 if (MessageBox.Show("Desea devolver este libro?", "Devolver Ejemplar",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                 {
                     DatabaseCon.Instancia.ExecCommand(
-                        $"Update HistorialPrestamoSet set Estado = {0} where Id = {IDpres}"
+                        $"Update HistorialPrestamoSet set Estado = {0} where Id = {(int)cr.Cells["Id"].Value}"
                         );
                     FillGrid();
                     btnClear.PerformClick();
@@ -207,6 +201,7 @@ namespace libreria.forms
             else
             {
 
+                IDpres = (int)cr.Cells["Id"].Value;
                 string cod = cr.Cells["ISBN"].Value.ToString();
                 codLi = cod + "#" + cr.Cells["Numero_Ejemplar"].Value;
                 FillCbEjemplares(cod);
@@ -217,6 +212,24 @@ namespace libreria.forms
         private void cbEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
+        
+        private void Form_Enter(object sender, EventArgs e)
+        {
+            if (!UPDATE.IsUpdated(this.Name)) Form_Load(null, null);
+        }
 
+        private void btnPrestar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTitulo_TextChanged(object sender, EventArgs e)
+        {
+                    }
     }
 }

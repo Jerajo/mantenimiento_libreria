@@ -1,4 +1,6 @@
-﻿using System;
+﻿using libreria.entidades;
+using libreria.forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -37,7 +39,11 @@ namespace libreria.Busquedas
 
                 return _instance;
             }
-        }
+        }        
+
+        private static bool _flag = false;
+        public bool Flag { get => _flag; set => _flag = value; }
+
         private SchLibros()
         {
             InitializeComponent();
@@ -136,6 +142,7 @@ namespace libreria.Busquedas
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RowClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // listView1
             // 
@@ -220,7 +227,9 @@ namespace libreria.Busquedas
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "SchLibros";
-            this.Load += new System.EventHandler(this.SchLibros_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SchLibros_FormClosing);
+            this.Load += new System.EventHandler(this.Form_Load);
+            this.Enter += new System.EventHandler(this.Form_Enter);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -230,9 +239,10 @@ namespace libreria.Busquedas
 
         }
 
-        private void SchLibros_Load(object sender, EventArgs e)
+        private void Form_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'libreriaHCDataSet.vwListadoLibrosNormal' table. You can move, or remove it, as needed.
+            UPDATE.State(this.Name, true); //se the form stated to updated
             dt = new DataTable();
             CheckedChanged(null, null);
             dataGridView1.Columns["Titulo"].Width = 400;
@@ -309,5 +319,30 @@ namespace libreria.Busquedas
             dataGridView1.DataSource = dt;
         }
 
+        // update the form if isn't updated
+        private void Form_Enter(object sender, EventArgs e)
+        {
+            if (!UPDATE.IsUpdated(this.Name)) Form_Load(null, null);
+        }
+
+        private void SchLibros_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Flag = false;
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Flag)
+            {
+                var fl = FrmPrestamo.Instance;
+                if (dataGridView1.CurrentRow != null)
+                {
+                    string isbn = dataGridView1.CurrentRow.Cells["ISBN"].Value.ToString();
+                    string titulo = dataGridView1.CurrentRow.Cells["Titulo"].Value.ToString();
+                    fl.FillCbCliente();
+                    Close();
+                }
+            }
+        }
     }
 }

@@ -510,9 +510,10 @@ go
 Create PROCEDURE usp_Data_Ejemplares_Actualizar
 	@ISBN nvarchar(20), 
 	@Cod nvarchar(30), 
-	@numero int
+	@newN int,
+	@oldN int
 AS	
-	UPDATE LibroEjemplarSet SET Codigo=@cod, Numero=@numero where LibroISBN=@ISBN;
+	UPDATE LibroEjemplarSet SET Codigo=@cod, Numero=@newN where Codigo=concat(@ISBN, '#', @oldN);
 
 	select @@ROWCOUNT as CantidadAfectada;
 go
@@ -566,7 +567,7 @@ CREATE VIEW vwGenerosLibrosCount
 CREATE VIEW vwListadoLibrosNormal
 	AS 
 
-	Select ISBN, Titulo, Genero From LibrosSet lb inner join CategoriasSet C on lb.CategoriaId = C.Id;
+	Select ISBN, Titulo, Genero, Stock From LibrosSet lb inner join CategoriasSet C on lb.CategoriaId = C.Id;
 	go
 -----Prestamos actuales
 CREATE VIEW vwVerPrestamos

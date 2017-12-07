@@ -1,4 +1,6 @@
-﻿using System;
+﻿using libreria.entidades;
+using libreria.forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,9 +28,11 @@ namespace libreria.Mantenimientos
             }
         }
 
-
+        public bool Flag { get => _flag; set => _flag = value; }
 
         public int ID = 0;
+        private static bool _flag = false;
+
         private Generos()
         {
             InitializeComponent();
@@ -40,35 +44,16 @@ namespace libreria.Mantenimientos
             _instance = null;         
         }
 
-        private void Generos_Load(object sender, EventArgs e)
+        private void Form_Load(object sender, EventArgs e)
         {
             FillDataGrid();
+            UPDATE.State(this.Name, true); //se the form stated to updated
         }
 
         private void FillDataGrid()
         {
             Listado1.DataSource = DatabaseCon.Instancia.GetData("select * from vwGenerosLibrosCount");
             
-        }
-
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Listado1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var idd = Listado1.CurrentCell.RowIndex;
-            var row = Listado1.Rows[idd].Cells[1].Value.ToString();
-            //txtEdit.Text = Listado1.Rows[idd].Cells["Genero"].Value.ToString();
-            txtEdit.Text = row;
-            Int32.TryParse(Listado1.Rows[idd].Cells[0].Value.ToString(), out ID);
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -79,6 +64,7 @@ namespace libreria.Mantenimientos
             });
             
             FillDataGrid();
+            UPDATE.AllForms(false); //froce others forms to update
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -93,15 +79,8 @@ namespace libreria.Mantenimientos
                 );
             txtNew.Clear();
             FillDataGrid();
-        }
-
-        private void Listado1_SelectionChanged(object sender, EventArgs e)
-        {
-            var idRow = (sender as DataGridView).CurrentRow.Index;
-            string ss = Listado1.Rows[idRow].Cells["Genero"].Value.ToString();
-            txtEdit.Text = ss;
-            int.TryParse(Listado1.Rows[idRow].Cells["Id"].Value.ToString(), out ID);
-        }
+            UPDATE.AllForms(false); //froce others forms to update
+        }        
 
         private void t_Click(object sender, EventArgs e)
         {
@@ -115,6 +94,49 @@ namespace libreria.Mantenimientos
                 );
             txtEdit.Clear();
             FillDataGrid();
+        }
+
+        // update the form if isn't updated
+        private void Form_Enter(object sender, EventArgs e)
+        {
+            if (!UPDATE.IsUpdated(this.Name)) Form_Load(null, null);
+        }
+
+        private void Listado1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Flag)
+            {
+                var fl = FrmLibros.GetInstance();
+                if (Listado1.CurrentRow != null)
+                {
+                    string genero = Listado1.CurrentRow.Cells["Genero"].Value.ToString();
+                    fl.RefreshData();
+                    fl.SetGenero(genero);
+                    Close();
+                }
+            }
+        }
+
+        private void Listado1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var idd = Listado1.CurrentCell.RowIndex;
+            var row = Listado1.Rows[idd].Cells[1].Value.ToString();
+            //txtEdit.Text = Listado1.Rows[idd].Cells["Genero"].Value.ToString();
+            txtEdit.Text = row;
+            Int32.TryParse(Listado1.Rows[idd].Cells[0].Value.ToString(), out ID);
+        }
+
+        private void Listado1_SelectionChanged(object sender, EventArgs e)
+        {
+            var idRow = (sender as DataGridView).CurrentRow.Index;
+            string ss = Listado1.Rows[idRow].Cells["Genero"].Value.ToString();
+            txtEdit.Text = ss;
+            int.TryParse(Listado1.Rows[idRow].Cells["Id"].Value.ToString(), out ID);
+        }
+
+        private void Generos_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Flag = false;
         }
     }
 }

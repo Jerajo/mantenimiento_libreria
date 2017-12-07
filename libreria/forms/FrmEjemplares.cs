@@ -23,6 +23,7 @@ namespace libreria.forms
 
         private void Form_Load(object sender, EventArgs e)
         {
+            UPDATE.State(this.Name, true);
             try
             {
                 //carga los ejemplares al datagrivew
@@ -50,6 +51,8 @@ namespace libreria.forms
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
+            MostrarBotonesOcultos(false);
+            verificarFilasSeleccionada();
         }
 
         private static FrmEjemplares _instancia = null;
@@ -73,23 +76,24 @@ namespace libreria.forms
                 {
                     if (dgvDBR.SelectedRows.Count > 0) //Actualizar registro
                     {
-                        if (CEjemplares.Actualizar(ej) > 0)
+                        var oldN = System.Convert.ToInt32(dgvDBR.CurrentRow.Cells["Numero"].Value);
+                        if (CEjemplares.Actualizar(ej, oldN) > 0)
                         {
                             MessageBox.Show("Datos Actualizados Correctamente");
+                            UPDATE.AllForms(false);
                             Form_Load(null, null);
                         }
-                        /*DatabaseCon.Instancia.ExecCommand($"update [dbo].[LibroEjemplarSet] set Codigo='{code}', Numero={numero} where Codigo='{code}'");                                                
-                        MessageBox.Show("Actualizado " + dgvDBR.CurrentRow);//*/
+                        else MessageBox.Show("Datos no insertados");
                     }
                     else //Nuevo registro
                     {
                         if (CEjemplares.Insertar(ej) > 0)
                         {
                             MessageBox.Show("Datos Insertados Correctamente");
+                            UPDATE.AllForms(false);
                             Form_Load(null, null);
                         }
-                        /*DatabaseCon.Instancia.ExecCommand($"Insert into [dbo].[LibroEjemplarSet] values ( '{code}', '{isbn}', '{numero}')");                        
-                        MessageBox.Show("Insertado");//*/
+                        else MessageBox.Show("Datos no insertados");
                     }
                 }
                 else
@@ -173,14 +177,15 @@ namespace libreria.forms
                         if (Convert.ToBoolean(row.Cells["Eliminar"].Value))
                         {
                             string code = txtCodigo.Text;
+                            string isbn = cbxISBN.Text;
                             DatabaseCon.Instancia.ExecCommand($"delete from [dbo].[LibroEjemplarSet] where Codigo='{code}'");
+                            DatabaseCon.Instancia.ExecCommand($"update [dbo].[LibrosSet] set Stock=(Stock-1) where ISBN='{isbn}'");
                             MessageBox.Show("Registro Eliminado Correctamente");
+                            UPDATE.AllForms(false); //froce others forms to update
                         }
                     }
                     Form_Load(null, null);
                 }
-                else if (!verificarFilasSeleccionada()) MessageBox.Show("Debe selecionar un Registro primero",
-                  "Eliminacion de Registro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
@@ -188,16 +193,21 @@ namespace libreria.forms
             }
         }
 
-        private bool verificarFilasSeleccionada()
+        private void verificarFilasSeleccionada()
         {
+            bool value = false;
             foreach (DataGridViewRow rows in dgvDBR.Rows)
             {
                 if (Convert.ToBoolean(rows.Cells["Eliminar"].Value))
                 {
-                    return true;
+                    value = true;
                 }
             }
-            return false;
+            btnEliminar.Enabled = value;
+            btnEditar.Enabled = btnNuevo.Enabled = !value;
+            btnEliminar.BackColor = (value) ? Color.Red : Color.Gray;
+            btnEditar.BackColor = (!value) ? Color.Turquoise : Color.Gray;
+            btnNuevo.BackColor = (!value) ? Color.LawnGreen : Color.Gray;
         }
 
         private void dgvDBR_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -218,12 +228,17 @@ namespace libreria.forms
                     (DataGridViewCheckBoxCell)dgvDBR.Rows[e.RowIndex].Cells["Eliminar"];
                 chkEliminar.Value = !Convert.ToBoolean(chkEliminar.Value);
             }
-            btnEliminar.Visible = verificarFilasSeleccionada();
+            verificarFilasSeleccionada();
         }
 
         private void generateCode(object sender, EventArgs e)
         {
             txtCodigo.Text =  String.Concat(cbxISBN.Text, '#', nudNumero.Value);
+        }
+
+        private void Form_Enter(object sender, EventArgs e)
+        {
+            if (!UPDATE.IsUpdated(this.Name)) Form_Load(null, null);
         }
     }
 }

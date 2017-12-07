@@ -83,6 +83,7 @@
     <Compile Include="conexión\Utiliy.cs" />
     <Compile Include="entidades\Ejemplares.cs" />
     <Compile Include="entidades\Prestamo.cs" />
+    <Compile Include="entidades\Update.cs" />
     <Compile Include="entidades\Usuarios.cs" />
     <Compile Include="forms\FrmAutor.cs">
       <SubType>Form</SubType>
