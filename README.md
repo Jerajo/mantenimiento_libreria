@@ -24,7 +24,7 @@
 * [ ] Mantenimiento Usuarios `Yerlin`
 * [X] Mantenimiento Ejemplares `Jesse` Este es Opcional
 * [X] Mantenimiento Estudiantes `Jesus`
-* [ ] Mantenimiento Prestamo/Devolución `Jesus`
+* [X] Mantenimiento Prestamo/Devolución `Jesus`
 * [X] Mantenimiento Autores `Jesus`
 
 **Busquedas/Estored procedures**
