@@ -133,13 +133,13 @@
             // btnEliminar
             // 
             this.btnEliminar.BackColor = System.Drawing.Color.Red;
+            this.btnEliminar.Enabled = false;
             this.btnEliminar.Location = new System.Drawing.Point(685, 291);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(121, 53);
             this.btnEliminar.TabIndex = 4;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
-            this.btnEliminar.Visible = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // txtIdCategoria
@@ -182,6 +182,7 @@
             // 
             // nudStock
             // 
+            this.nudStock.Enabled = false;
             this.nudStock.Location = new System.Drawing.Point(99, 184);
             this.nudStock.Name = "nudStock";
             this.nudStock.Size = new System.Drawing.Size(203, 29);
@@ -249,7 +250,7 @@
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.Red;
-            this.btnCancelar.Location = new System.Drawing.Point(205, 384);
+            this.btnCancelar.Location = new System.Drawing.Point(205, 383);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(93, 53);
             this.btnCancelar.TabIndex = 7;
@@ -422,6 +423,7 @@
             this.Text = "Mantenimiento de Libros";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmLibros_FormClosing);
             this.Load += new System.EventHandler(this.Form_Load);
+            this.Enter += new System.EventHandler(this.Form_Enter);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDBR)).EndInit();
