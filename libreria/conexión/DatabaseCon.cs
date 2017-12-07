@@ -21,7 +21,7 @@ public class DatabaseCon
         }
     }   
 
-    public DatabaseCon()
+    private DatabaseCon()
     {
         Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["LibreriaHCConnectionString"].ConnectionString);
     }
