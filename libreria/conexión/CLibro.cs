@@ -47,7 +47,6 @@ namespace Sistema_de_punto_de_ventas.Datos
                     DatabaseCon.MakeParam("@ISBN",SqlDbType.VarChar, libro.ISBN),
                     DatabaseCon.MakeParam("@Titulo",SqlDbType.VarChar, libro.Titulo),
                     DatabaseCon.MakeParam("@Pais",SqlDbType.VarChar, libro.Pais),
-                    DatabaseCon.MakeParam("@Stock",SqlDbType.Int, libro.Stock),
                     DatabaseCon.MakeParam("@Editorial",SqlDbType.VarChar, libro.Editorial),
                     DatabaseCon.MakeParam("@CategoriaId",SqlDbType.Int, libro.CategoriaId),
                 };
