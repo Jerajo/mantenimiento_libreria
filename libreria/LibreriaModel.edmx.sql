@@ -115,7 +115,7 @@ GO
 
 -- Creating table 'CredencialesSet'
 CREATE TABLE [dbo].[CredencialesSet] (
-	[Codigo] nvarchar(50)  NOT NULL,
+	[Codigo] nvarchar(250)  NOT NULL,
 	[Nombre] nvarchar(50)  NOT NULL,
 	[Password] nvarchar(250)  NOT NULL
 );
@@ -637,7 +637,16 @@ RETURNS TABLE AS RETURN
 	where le.LibroISBN = @ISBN and (Estado is null or Estado = 0)
 )
 go
-
+----Trae ISBN por Autor
+CREATE FUNCTION fxTraeLibroPorAutor
+(
+	@idAutor int
+)
+RETURNS TABLE AS RETURN
+(
+	select LibroISBN from LibroAutorSet where AutorId = @idAutor
+)
+go
 -- --------------------------------------------------
 -- Script has ended
 -- --------------------------------------------------
