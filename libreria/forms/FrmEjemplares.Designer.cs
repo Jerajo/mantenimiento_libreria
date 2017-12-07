@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.nudNumero = new System.Windows.Forms.NumericUpDown();
+            this.cbxISBN = new System.Windows.Forms.ComboBox();
             this.btnEditar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.btnNuevo = new System.Windows.Forms.Button();
@@ -44,12 +46,10 @@
             this.lblDatosNoEncontrados = new System.Windows.Forms.Label();
             this.dgvDBR = new System.Windows.Forms.DataGridView();
             this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.cbxISBN = new System.Windows.Forms.ComboBox();
-            this.nudNumero = new System.Windows.Forms.NumericUpDown();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudNumero)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDBR)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudNumero)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -73,6 +73,35 @@
             this.groupBox2.Size = new System.Drawing.Size(386, 227);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
+            // 
+            // nudNumero
+            // 
+            this.nudNumero.Enabled = false;
+            this.nudNumero.Location = new System.Drawing.Point(98, 129);
+            this.nudNumero.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudNumero.Name = "nudNumero";
+            this.nudNumero.Size = new System.Drawing.Size(133, 29);
+            this.nudNumero.TabIndex = 9;
+            this.nudNumero.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudNumero.ValueChanged += new System.EventHandler(this.generateCode);
+            // 
+            // cbxISBN
+            // 
+            this.cbxISBN.Enabled = false;
+            this.cbxISBN.FormattingEnabled = true;
+            this.cbxISBN.Location = new System.Drawing.Point(98, 78);
+            this.cbxISBN.Name = "cbxISBN";
+            this.cbxISBN.Size = new System.Drawing.Size(279, 32);
+            this.cbxISBN.TabIndex = 8;
+            this.cbxISBN.SelectedIndexChanged += new System.EventHandler(this.generateCode);
             // 
             // btnEditar
             // 
@@ -108,13 +137,13 @@
             // btnEliminar
             // 
             this.btnEliminar.BackColor = System.Drawing.Color.Red;
+            this.btnEliminar.Enabled = false;
             this.btnEliminar.Location = new System.Drawing.Point(247, 145);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(121, 53);
             this.btnEliminar.TabIndex = 4;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
-            this.btnEliminar.Visible = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // label1
@@ -239,35 +268,6 @@
             this.Eliminar.ReadOnly = true;
             this.Eliminar.Width = 80;
             // 
-            // cbxISBN
-            // 
-            this.cbxISBN.Enabled = false;
-            this.cbxISBN.FormattingEnabled = true;
-            this.cbxISBN.Location = new System.Drawing.Point(98, 78);
-            this.cbxISBN.Name = "cbxISBN";
-            this.cbxISBN.Size = new System.Drawing.Size(279, 32);
-            this.cbxISBN.TabIndex = 8;
-            this.cbxISBN.SelectedIndexChanged += new System.EventHandler(this.generateCode);
-            // 
-            // nudNumero
-            // 
-            this.nudNumero.Enabled = false;
-            this.nudNumero.Location = new System.Drawing.Point(98, 129);
-            this.nudNumero.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudNumero.Name = "nudNumero";
-            this.nudNumero.Size = new System.Drawing.Size(133, 29);
-            this.nudNumero.TabIndex = 9;
-            this.nudNumero.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudNumero.ValueChanged += new System.EventHandler(this.generateCode);
-            // 
             // FrmEjemplares
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -282,12 +282,13 @@
             this.Text = "Mantenimiento Ejemplares";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmEjemplares_FormClosing);
             this.Load += new System.EventHandler(this.Form_Load);
+            this.Enter += new System.EventHandler(this.Form_Enter);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudNumero)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDBR)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudNumero)).EndInit();
             this.ResumeLayout(false);
 
         }
