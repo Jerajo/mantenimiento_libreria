@@ -149,7 +149,8 @@
             this.Name = "Generos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generos";
-            this.Load += new System.EventHandler(this.Generos_Load);
+            this.Load += new System.EventHandler(this.Form_Load);
+            this.Enter += new System.EventHandler(this.Form_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.Listado1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using libreria.entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -40,9 +41,10 @@ namespace libreria.Mantenimientos
             _instance = null;         
         }
 
-        private void Generos_Load(object sender, EventArgs e)
+        private void Form_Load(object sender, EventArgs e)
         {
             FillDataGrid();
+            UPDATE.State(this.Name, true); //se the form stated to updated
         }
 
         private void FillDataGrid()
@@ -79,6 +81,7 @@ namespace libreria.Mantenimientos
             });
             
             FillDataGrid();
+            UPDATE.AllForms(false); //froce others forms to update
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -93,6 +96,7 @@ namespace libreria.Mantenimientos
                 );
             txtNew.Clear();
             FillDataGrid();
+            UPDATE.AllForms(false); //froce others forms to update
         }
 
         private void Listado1_SelectionChanged(object sender, EventArgs e)
@@ -115,6 +119,12 @@ namespace libreria.Mantenimientos
                 );
             txtEdit.Clear();
             FillDataGrid();
+        }
+
+        // update the form if isn't updated
+        private void Form_Enter(object sender, EventArgs e)
+        {
+            if (!UPDATE.IsUpdated(this.Name)) Form_Load(null, null);
         }
     }
 }

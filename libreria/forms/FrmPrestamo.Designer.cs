@@ -202,7 +202,8 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmPrestamo";
             this.Text = "FrmPrestamo";
-            this.Load += new System.EventHandler(this.FrmPrestamo_Load);
+            this.Load += new System.EventHandler(this.Form_Load);
+            this.Enter += new System.EventHandler(this.Form_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

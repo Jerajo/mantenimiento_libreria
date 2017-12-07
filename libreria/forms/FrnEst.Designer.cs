@@ -30,20 +30,20 @@
         {
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtIde = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.txtApe = new System.Windows.Forms.TextBox();
-            this.txtPhone = new System.Windows.Forms.MaskedTextBox();
-            this.txtCor = new System.Windows.Forms.TextBox();
-            this.btnDir = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnDir = new System.Windows.Forms.Button();
+            this.txtCor = new System.Windows.Forms.TextBox();
+            this.txtPhone = new System.Windows.Forms.MaskedTextBox();
+            this.txtApe = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtIde = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -88,106 +88,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos";
             // 
-            // btnSave
+            // btnActualizar
             // 
-            this.btnSave.Location = new System.Drawing.Point(7, 237);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(104, 46);
-            this.btnSave.TabIndex = 0;
-            this.btnSave.Text = "Guardar";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.Guardar);
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(523, 237);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(104, 46);
-            this.btnClear.TabIndex = 1;
-            this.btnClear.Text = "Limpiar";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Identificacion";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 97);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 20);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Nombre";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 160);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 20);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Apellido";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(359, 97);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 20);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Telefono";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(359, 160);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 20);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Correo";
-            // 
-            // txtIde
-            // 
-            this.txtIde.Location = new System.Drawing.Point(150, 53);
-            this.txtIde.Name = "txtIde";
-            this.txtIde.Size = new System.Drawing.Size(178, 26);
-            this.txtIde.TabIndex = 7;
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(26, 131);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(261, 26);
-            this.txtName.TabIndex = 8;
-            // 
-            // txtApe
-            // 
-            this.txtApe.Location = new System.Drawing.Point(26, 183);
-            this.txtApe.Name = "txtApe";
-            this.txtApe.Size = new System.Drawing.Size(261, 26);
-            this.txtApe.TabIndex = 10;
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.Location = new System.Drawing.Point(363, 131);
-            this.txtPhone.Mask = "(999)000-0000";
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(122, 26);
-            this.txtPhone.TabIndex = 11;
-            // 
-            // txtCor
-            // 
-            this.txtCor.Location = new System.Drawing.Point(363, 183);
-            this.txtCor.Name = "txtCor";
-            this.txtCor.Size = new System.Drawing.Size(261, 26);
-            this.txtCor.TabIndex = 12;
+            this.btnActualizar.Location = new System.Drawing.Point(7, 237);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(104, 46);
+            this.btnActualizar.TabIndex = 14;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Visible = false;
+            this.btnActualizar.Click += new System.EventHandler(this.Actualizar);
             // 
             // btnDir
             // 
@@ -200,16 +110,106 @@
             this.btnDir.Visible = false;
             this.btnDir.Click += new System.EventHandler(this.btnDir_Click);
             // 
-            // btnActualizar
+            // txtCor
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(7, 237);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(104, 46);
-            this.btnActualizar.TabIndex = 14;
-            this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.UseVisualStyleBackColor = true;
-            this.btnActualizar.Visible = false;
-            this.btnActualizar.Click += new System.EventHandler(this.Actualizar);
+            this.txtCor.Location = new System.Drawing.Point(363, 183);
+            this.txtCor.Name = "txtCor";
+            this.txtCor.Size = new System.Drawing.Size(261, 26);
+            this.txtCor.TabIndex = 12;
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(363, 131);
+            this.txtPhone.Mask = "(999)000-0000";
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(122, 26);
+            this.txtPhone.TabIndex = 11;
+            // 
+            // txtApe
+            // 
+            this.txtApe.Location = new System.Drawing.Point(26, 183);
+            this.txtApe.Name = "txtApe";
+            this.txtApe.Size = new System.Drawing.Size(261, 26);
+            this.txtApe.TabIndex = 10;
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(26, 131);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(261, 26);
+            this.txtName.TabIndex = 8;
+            // 
+            // txtIde
+            // 
+            this.txtIde.Location = new System.Drawing.Point(150, 53);
+            this.txtIde.Name = "txtIde";
+            this.txtIde.Size = new System.Drawing.Size(178, 26);
+            this.txtIde.TabIndex = 7;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(359, 160);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 20);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Correo";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(359, 97);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(71, 20);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Telefono";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(22, 160);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 20);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Apellido";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(22, 97);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 20);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Nombre";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(22, 38);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(103, 20);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Identificacion";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(523, 237);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(104, 46);
+            this.btnClear.TabIndex = 1;
+            this.btnClear.Text = "Limpiar";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(7, 237);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(104, 46);
+            this.btnSave.TabIndex = 0;
+            this.btnSave.Text = "Guardar";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.Guardar);
             // 
             // FrnEst
             // 
@@ -222,7 +222,8 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrnEst";
             this.Text = "FrnEst";
-            this.Load += new System.EventHandler(this.FrnEst_Load);
+            this.Load += new System.EventHandler(this.Form_Load);
+            this.Enter += new System.EventHandler(this.Form_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

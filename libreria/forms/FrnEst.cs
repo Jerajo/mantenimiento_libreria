@@ -1,4 +1,5 @@
-﻿using System;
+﻿using libreria.entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -36,7 +37,7 @@ namespace libreria.forms
 			this.Disposed += DisposedObject;
 		}
 
-		private void FrnEst_Load(object sender, EventArgs e)
+		private void Form_Load(object sender, EventArgs e)
 		{
 			DataGridLoad();
 		}
@@ -70,7 +71,8 @@ namespace libreria.forms
 		{
 			ManageData("U");
 			DataGridLoad();
-		}
+            UPDATE.AllForms(false); //froce others forms to update
+        }
 
 		private void Guardar(object sender, EventArgs e)
 		{
@@ -155,5 +157,10 @@ namespace libreria.forms
 			}
 		}
 
-	}
+        // update the form if isn't updated
+        private void Form_Enter(object sender, EventArgs e)
+        {
+            if (!UPDATE.IsUpdated(this.Name)) Form_Load(null, null);
+        }
+    }
 }

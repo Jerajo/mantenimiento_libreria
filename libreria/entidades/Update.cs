@@ -10,21 +10,52 @@ namespace libreria.entidades
 {
     public static class UPDATE
     {
+        private static Dictionary<string, bool> _formsList = new Dictionary<string, bool>();
+
+        public static Dictionary<string, bool> FormsList
+        {
+            get => _formsList;
+            set => _formsList = value;
+        }
+        
+        public static bool IsUpdated(string key)
+        {
+            //MessageBox.Show($"El formulario {key} pregunta si esta actualizdo.");
+            return _formsList[key];
+        }
+
+        public static void State(string key, bool value)
+        {
+            //MessageBox.Show($"El formulario {key} se ha actualizado.");
+            _formsList[key] = value;
+        }
+
         public static void AllForms(bool value)
         {
-            List<Form> forms = GetForms();
-            string names = "";
-            foreach(Form fr in forms)
+            //List<Form> forms = GetForms();            
+            GetFormList(ref _formsList);            
+            for (int index = 0; index < _formsList.Count; index++)
             {
-                names += $" {fr.Name},";
+                var state = _formsList.ElementAt(index);
+                var Key = state.Key;
+                _formsList[Key] = value;              
             }
-            MessageBox.Show(names);
+        }
+
+        private static void GetFormList(ref Dictionary<string, bool> lista)
+        {                   
+            lista["FrmLibros"]     = false;
+            lista["Generos"]       = false;
+            lista["SchLibros"]     = false;
+            lista["FrmAutor"]      = false;
+            lista["FrnEst"]        = false;
+            lista["FrmEjemplares"] = false;
+            lista["FrmPrestamo"]   = false;
+            //lista["hola"] = false;
         }
 
         public static List<Form> GetForms()
-        {
-            //Form[] instancias = new Form[10];
-            //instancias[0] = FrmLibros.GetInstance();
+        {            
             List<Form> instancias = new List<Form>();
             instancias.Add(FrmLibros.GetInstance());            //Libros   
             instancias.Add(Mantenimientos.Generos.Instancia);   //Generos
@@ -33,9 +64,6 @@ namespace libreria.entidades
             instancias.Add(FrnEst.Instance);                    //Estudiantes
             instancias.Add(FrmEjemplares.GetInstance());        //Ejemplares
             instancias.Add(FrmPrestamo.Instance);               //Prestamos
-            //instancias.Add();
-            //instancias.Add();
-            //instancias.Add();
             //instancias.Add();
             return instancias;
         }
