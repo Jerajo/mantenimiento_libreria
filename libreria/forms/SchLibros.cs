@@ -18,10 +18,6 @@ namespace libreria.Busquedas
         private RadioButton rbGen;
         private RadioButton rbName;
         private DataGridView dataGridView1;
-        private IContainer components;
-        private DataGridViewTextBoxColumn iSBNDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn tituloDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn generoDataGridViewTextBoxColumn;
         private static SchLibros _instance;
         private ListView listView1;
         private ColumnHeader columnHeader1;

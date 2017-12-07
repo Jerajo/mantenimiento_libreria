@@ -34,10 +34,11 @@
             this.generosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.autorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estudiantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ejemplaresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.busquedasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.librosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.prestamosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ejemplaresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +46,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mantenimientosToolStripMenuItem,
-            this.busquedasToolStripMenuItem});
+            this.busquedasToolStripMenuItem,
+            this.acercaDeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(914, 24);
@@ -68,30 +70,37 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
             this.toolStripMenuItem1.Text = "Libros";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // generosToolStripMenuItem
             // 
             this.generosToolStripMenuItem.Name = "generosToolStripMenuItem";
-            this.generosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.generosToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.generosToolStripMenuItem.Text = "Generos";
             this.generosToolStripMenuItem.Click += new System.EventHandler(this.generosToolStripMenuItem_Click);
             // 
             // autorToolStripMenuItem
             // 
             this.autorToolStripMenuItem.Name = "autorToolStripMenuItem";
-            this.autorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.autorToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.autorToolStripMenuItem.Text = "Autor";
             this.autorToolStripMenuItem.Click += new System.EventHandler(this.autorToolStripMenuItem_Click);
             // 
             // estudiantesToolStripMenuItem
             // 
             this.estudiantesToolStripMenuItem.Name = "estudiantesToolStripMenuItem";
-            this.estudiantesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.estudiantesToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.estudiantesToolStripMenuItem.Text = "Estudiantes";
             this.estudiantesToolStripMenuItem.Click += new System.EventHandler(this.estudiantesToolStripMenuItem_Click);
+            // 
+            // ejemplaresToolStripMenuItem
+            // 
+            this.ejemplaresToolStripMenuItem.Name = "ejemplaresToolStripMenuItem";
+            this.ejemplaresToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.ejemplaresToolStripMenuItem.Text = "Ejemplares";
+            this.ejemplaresToolStripMenuItem.Click += new System.EventHandler(this.ejemplaresToolStripMenuItem_Click);
             // 
             // busquedasToolStripMenuItem
             // 
@@ -117,12 +126,12 @@
             this.prestamosToolStripMenuItem.Text = "Prestamos";
             this.prestamosToolStripMenuItem.Click += new System.EventHandler(this.prestamosToolStripMenuItem_Click);
             // 
-            // ejemplaresToolStripMenuItem
+            // acercaDeToolStripMenuItem
             // 
-            this.ejemplaresToolStripMenuItem.Name = "ejemplaresToolStripMenuItem";
-            this.ejemplaresToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.ejemplaresToolStripMenuItem.Text = "Ejemplares";
-            this.ejemplaresToolStripMenuItem.Click += new System.EventHandler(this.ejemplaresToolStripMenuItem_Click);
+            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
+            this.acercaDeToolStripMenuItem.Text = "Acerca de ";
+            this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
             // 
             // Box
             // 
@@ -157,5 +166,6 @@
         private System.Windows.Forms.ToolStripMenuItem autorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem estudiantesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ejemplaresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
     }
 }

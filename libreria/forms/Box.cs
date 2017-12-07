@@ -86,5 +86,11 @@ namespace libreria
             Box.MdiParent = this;
             Box.Show();
         }
+
+        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var about = new forms.PopUp.About();
+            about.ShowDialog();
+        }
     }
 }

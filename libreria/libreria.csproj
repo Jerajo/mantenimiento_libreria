@@ -82,6 +82,7 @@
     <Compile Include="conexión\CEjemplares.cs" />
     <Compile Include="conexión\Utiliy.cs" />
     <Compile Include="entidades\Ejemplares.cs" />
+    <Compile Include="entidades\Prestamo.cs" />
     <Compile Include="entidades\Usuarios.cs" />
     <Compile Include="forms\FrmAutor.cs">
       <SubType>Form</SubType>
@@ -106,6 +107,18 @@
     </Compile>
     <Compile Include="forms\FrnEst.Designer.cs">
       <DependentUpon>FrnEst.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\PopUp\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\PopUp\About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\PopUp\LibroDis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\PopUp\LibroDis.Designer.cs">
+      <DependentUpon>LibroDis.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\PopUp\LibroToAutor.cs">
       <SubType>Form</SubType>
@@ -174,6 +187,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\FrnEst.resx">
       <DependentUpon>FrnEst.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\PopUp\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\PopUp\LibroDis.resx">
+      <DependentUpon>LibroDis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\PopUp\LibroToAutor.resx">
       <DependentUpon>LibroToAutor.cs</DependentUpon>
