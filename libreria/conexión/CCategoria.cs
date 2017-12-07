@@ -16,7 +16,7 @@ namespace Sistema_de_punto_de_ventas.Datos
             }
         }
 
-        public static DataSet GetAll(string procedure = "")
+        public DataSet GetAll(string procedure = "")
         {
             SqlParameter[] dbParams = new SqlParameter[]
                 {
