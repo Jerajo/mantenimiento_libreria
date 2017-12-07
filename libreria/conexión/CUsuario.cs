@@ -16,6 +16,7 @@ namespace libreria.conexión
         {
             this._code = codigo;
             this._nombre = nombre;
+            //codigo encriptacion
             this._password = password;
         }
 
@@ -26,17 +27,37 @@ namespace libreria.conexión
 
         internal bool Actualizar()
         {
-            throw new NotImplementedException();
+            try
+            {
+                if(Password != "")
+                    DatabaseCon.Instancia.ExecCommand($"update [dbo].[CredencialesSet] set Nombre='{Nombre}', Password='{Password}' where Codigo={Code}");
+                else
+                    DatabaseCon.Instancia.ExecCommand($"update [dbo].[CredencialesSet] set Nombre='{Nombre}' where Codigo={Code}");
+                return true;
+            }
+            catch (Exception) { return false; }
         }
 
         internal bool Insertar()
         {
-            throw new NotImplementedException();
+            try
+            {
+                DatabaseCon.Instancia.ExecCommand($"Insert into [dbo].[CredencialesSet](Nombre, Password) values('{Nombre}', '{Password}')");
+                return true;
+            }
+            catch (Exception) { return false; }            
         }
 
-        internal string ValidarUsuario()
+        internal string ValidarUsuario(int row)
         {
-            throw new NotImplementedException();
+            int r;
+            var resoult = "";
+            if (row == 0)
+            {
+                r = DatabaseCon.Instancia.ExecuteQScalar($"Select Nombre where Nombre='{Nombre}'");
+                if (r > 0) resoult = $"El usuario: '{Nombre}' Ya existe.\n";
+            }                     
+            return resoult;
         }
     }
 }
