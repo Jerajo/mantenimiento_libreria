@@ -36,14 +36,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.txtOPassword = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblDatosNoEncontrados = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.dgvDBR = new System.Windows.Forms.DataGridView();
             this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.txtNPassword1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtNPassword2 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDBR)).BeginInit();
@@ -51,7 +56,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.lblDatosNoEncontrados);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.dgvDBR);
@@ -59,7 +63,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBox1.Size = new System.Drawing.Size(407, 507);
+            this.groupBox1.Size = new System.Drawing.Size(407, 278);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
@@ -68,25 +72,30 @@
             this.groupBox2.Controls.Add(this.btnEditar);
             this.groupBox2.Controls.Add(this.btnNuevo);
             this.groupBox2.Controls.Add(this.btnEliminar);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.btnCancelar);
             this.groupBox2.Controls.Add(this.btnGuardar);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.txtNPassword2);
+            this.groupBox2.Controls.Add(this.txtNPassword1);
+            this.groupBox2.Controls.Add(this.txtOPassword);
             this.groupBox2.Controls.Add(this.txtCodigo);
+            this.groupBox2.Controls.Add(this.txtNombre);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(10, 284);
+            this.groupBox2.Location = new System.Drawing.Point(12, 299);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBox2.Size = new System.Drawing.Size(386, 214);
+            this.groupBox2.Size = new System.Drawing.Size(407, 241);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             // 
             // btnEditar
             // 
             this.btnEditar.BackColor = System.Drawing.Color.Turquoise;
-            this.btnEditar.Location = new System.Drawing.Point(130, 145);
+            this.btnEditar.Location = new System.Drawing.Point(129, 179);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(93, 53);
             this.btnEditar.TabIndex = 4;
@@ -97,7 +106,7 @@
             // btnNuevo
             // 
             this.btnNuevo.BackColor = System.Drawing.Color.LawnGreen;
-            this.btnNuevo.Location = new System.Drawing.Point(13, 146);
+            this.btnNuevo.Location = new System.Drawing.Point(12, 180);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(93, 53);
             this.btnNuevo.TabIndex = 4;
@@ -109,7 +118,7 @@
             // 
             this.btnEliminar.BackColor = System.Drawing.Color.Red;
             this.btnEliminar.Enabled = false;
-            this.btnEliminar.Location = new System.Drawing.Point(247, 145);
+            this.btnEliminar.Location = new System.Drawing.Point(246, 179);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(121, 53);
             this.btnEliminar.TabIndex = 4;
@@ -120,16 +129,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 94);
+            this.label1.Location = new System.Drawing.Point(8, 65);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 24);
+            this.label1.Size = new System.Drawing.Size(127, 24);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Password";
+            this.label1.Text = "Old Password";
             // 
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.Red;
-            this.btnCancelar.Location = new System.Drawing.Point(130, 145);
+            this.btnCancelar.Location = new System.Drawing.Point(129, 179);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(93, 53);
             this.btnCancelar.TabIndex = 7;
@@ -141,7 +150,7 @@
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.LawnGreen;
-            this.btnGuardar.Location = new System.Drawing.Point(13, 146);
+            this.btnGuardar.Location = new System.Drawing.Point(12, 180);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(93, 53);
             this.btnGuardar.TabIndex = 6;
@@ -150,26 +159,26 @@
             this.btnGuardar.Visible = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // textBox1
+            // txtOPassword
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(106, 91);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(271, 29);
-            this.textBox1.TabIndex = 2;
+            this.txtOPassword.Enabled = false;
+            this.txtOPassword.Location = new System.Drawing.Point(150, 62);
+            this.txtOPassword.Name = "txtOPassword";
+            this.txtOPassword.Size = new System.Drawing.Size(246, 29);
+            this.txtOPassword.TabIndex = 2;
             // 
-            // txtCodigo
+            // txtNombre
             // 
-            this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(106, 41);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(271, 29);
-            this.txtCodigo.TabIndex = 2;
+            this.txtNombre.Enabled = false;
+            this.txtNombre.Location = new System.Drawing.Point(150, 27);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(246, 29);
+            this.txtNombre.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 44);
+            this.label2.Location = new System.Drawing.Point(9, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 24);
             this.label2.TabIndex = 2;
@@ -222,6 +231,8 @@
             this.dgvDBR.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDBR.Size = new System.Drawing.Size(386, 244);
             this.dgvDBR.TabIndex = 5;
+            this.dgvDBR.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDBR_CellClick);
+            this.dgvDBR.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDBR_CellContentClick);
             // 
             // Eliminar
             // 
@@ -231,18 +242,63 @@
             this.Eliminar.ReadOnly = true;
             this.Eliminar.Width = 80;
             // 
+            // txtNPassword1
+            // 
+            this.txtNPassword1.Enabled = false;
+            this.txtNPassword1.Location = new System.Drawing.Point(150, 97);
+            this.txtNPassword1.Name = "txtNPassword1";
+            this.txtNPassword1.Size = new System.Drawing.Size(246, 29);
+            this.txtNPassword1.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 100);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(136, 24);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "New Password";
+            // 
+            // txtNPassword2
+            // 
+            this.txtNPassword2.Enabled = false;
+            this.txtNPassword2.Location = new System.Drawing.Point(150, 132);
+            this.txtNPassword2.Name = "txtNPassword2";
+            this.txtNPassword2.Size = new System.Drawing.Size(246, 29);
+            this.txtNPassword2.TabIndex = 2;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 135);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(136, 24);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "New Password";
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Enabled = false;
+            this.txtCodigo.Location = new System.Drawing.Point(89, 27);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(46, 29);
+            this.txtCodigo.TabIndex = 2;
+            this.txtCodigo.Visible = false;
+            // 
             // Usuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(427, 530);
+            this.ClientSize = new System.Drawing.Size(427, 555);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Usuarios";
             this.Text = "Mnteniiento de Usuarios";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Usuarios_FormClosing);
             this.Load += new System.EventHandler(this.Form_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -263,13 +319,18 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblDatosNoEncontrados;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView dgvDBR;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Eliminar;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtOPassword;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtNPassword2;
+        private System.Windows.Forms.TextBox txtNPassword1;
+        private System.Windows.Forms.TextBox txtCodigo;
     }
 }

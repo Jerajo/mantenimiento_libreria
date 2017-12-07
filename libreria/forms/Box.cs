@@ -94,5 +94,12 @@ namespace libreria
             var about = new forms.PopUp.About();
             about.ShowDialog();
         }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var Box = forms.Usuarios.Instance;
+            Box.MdiParent = this;
+            Box.Show();
+        }
     }
 }

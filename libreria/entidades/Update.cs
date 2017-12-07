@@ -51,6 +51,7 @@ namespace libreria.entidades
             lista["FrnEst"]        = false;
             lista["FrmEjemplares"] = false;
             lista["FrmPrestamo"]   = false;
+            lista["Usuarios"] = false;
             //lista["hola"] = false;
         }
 
