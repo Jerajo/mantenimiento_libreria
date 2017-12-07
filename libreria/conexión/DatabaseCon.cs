@@ -23,7 +23,7 @@ public class DatabaseCon
 
     private DatabaseCon()
     {
-        Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["LibreriaHCConnectionString"].ConnectionString);
+        Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["conexionLocal"].ConnectionString);
     }
     /// <summary>
     /// Devuelte datos en forma de <see cref="DataTable"/> mediante una <paramref name="query"/>
