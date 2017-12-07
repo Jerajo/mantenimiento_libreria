@@ -9,12 +9,11 @@ using System.Windows.Forms;
 
 public class DatabaseCon
 {
-    private static DatabaseCon _Instance;
-    private static SqlConnection Connection;
+    private static DatabaseCon _Instance = null;
+    private  SqlConnection Connection;
 
     public static DatabaseCon Instancia
     {
-        set { _Instance = value; }
         get
         {
             if (_Instance == null) _Instance = new DatabaseCon();
@@ -22,7 +21,7 @@ public class DatabaseCon
         }
     }   
 
-    public DatabaseCon()
+    private DatabaseCon()
     {
         Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["LibreriaHCConnectionString"].ConnectionString);
     }
@@ -158,7 +157,7 @@ public class DatabaseCon
         return param;
     }
 
-    public static DataSet ExecuteDataSet(string sqlSpName, SqlParameter[] dbParams)
+    public  DataSet ExecuteDataSet(string sqlSpName, SqlParameter[] dbParams)
     {
         DataSet ds = null;
         ds = new DataSet();
@@ -179,7 +178,7 @@ public class DatabaseCon
         return ds;
     }
 
-    public static object ExecuteScalar(string sqlSpName, SqlParameter[] dbParams)
+    public  object ExecuteScalar(string sqlSpName, SqlParameter[] dbParams)
     {
         object retVal = null;
         SqlCommand cmd = new SqlCommand(sqlSpName, Connection);
@@ -208,7 +207,7 @@ public class DatabaseCon
         return retVal;
     }
 
-    public static int ExecuteQScalar(string query)
+    public  int ExecuteQScalar(string query)
     {
         SqlCommand comando = new SqlCommand(query, Connection);
         Int32 count = 0;
@@ -228,7 +227,7 @@ public class DatabaseCon
         return count;
     }
 
-    internal static DataSet GetColumnNames(string colunmName)
+    internal  DataSet GetColumnNames(string colunmName)
     {
         SqlParameter[] dbParams = new SqlParameter[]
             {
@@ -237,7 +236,7 @@ public class DatabaseCon
         return ExecuteDataSet("usp_Data_GetColumnNames", dbParams);
     }
 
-    public static string VerificarSiExiste(string tabla, string[] campo, string[] value)
+    public  string VerificarSiExiste(string tabla, string[] campo, string[] value)
     {
         string q = $"SELECT COUNT({campo[0]}) FROM {tabla} WHERE {campo[0]}='{value[0]}'";
         if (campo.Length > 1)

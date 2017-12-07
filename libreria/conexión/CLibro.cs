@@ -22,7 +22,7 @@ namespace Sistema_de_punto_de_ventas.Datos
             {
                 DatabaseCon.MakeParam("@tabla",SqlDbType.VarChar, "[dbo].[LibrosSet]")
             };
-            return DatabaseCon.ExecuteDataSet("usp_Data_CCategoria_GetColumnNames", dbParams);
+            return DatabaseCon.Instancia.ExecuteDataSet("usp_Data_CCategoria_GetColumnNames", dbParams);
         }
 
         public static int Insertar(Libro libro)
@@ -37,7 +37,7 @@ namespace Sistema_de_punto_de_ventas.Datos
                     DatabaseCon.MakeParam("@Editorial",SqlDbType.VarChar, libro.Editorial),
                     DatabaseCon.MakeParam("@CategoriaId",SqlDbType.Int, libro.CategoriaId),                
                 };
-            return Convert.ToInt32(DatabaseCon.ExecuteScalar("usp_Data_CLibro_Insertar", dbParams));
+            return Convert.ToInt32(DatabaseCon.Instancia.ExecuteScalar("usp_Data_CLibro_Insertar", dbParams));
         }
 
         public static int Actualizar(Libro libro)
@@ -50,7 +50,7 @@ namespace Sistema_de_punto_de_ventas.Datos
                     DatabaseCon.MakeParam("@Editorial",SqlDbType.VarChar, libro.Editorial),
                     DatabaseCon.MakeParam("@CategoriaId",SqlDbType.Int, libro.CategoriaId),
                 };
-            return Convert.ToInt32(DatabaseCon.ExecuteScalar("usp_Data_CLibro_Actualizar", dbParams));
+            return Convert.ToInt32(DatabaseCon.Instancia.ExecuteScalar("usp_Data_CLibro_Actualizar", dbParams));
         }
 
         public static int Eliminar(Libro libro)
@@ -59,7 +59,7 @@ namespace Sistema_de_punto_de_ventas.Datos
                 {
                     DatabaseCon.MakeParam("@ISBN",SqlDbType.VarChar, libro.ISBN),
                 };
-            return Convert.ToInt32(DatabaseCon.ExecuteScalar("usp_Data_CLibro_Eliminar", dbParams));
+            return Convert.ToInt32(DatabaseCon.Instancia.ExecuteScalar("usp_Data_CLibro_Eliminar", dbParams));
         }
 
         public static int VerificarStock(decimal dni)
@@ -68,7 +68,7 @@ namespace Sistema_de_punto_de_ventas.Datos
                 {
                     DatabaseCon.MakeParam("@Stock",SqlDbType.Int, dni),
                 };
-            return Convert.ToInt32(DatabaseCon.ExecuteScalar("usp_Data_CLibro_VerificarStock", dbParams));
+            return Convert.ToInt32(DatabaseCon.Instancia.ExecuteScalar("usp_Data_CLibro_VerificarStock", dbParams));
         }
 
     } 

@@ -20,7 +20,7 @@ namespace libreria
 
         private void Box_Load(object sender, EventArgs e)
         {
-            DatabaseCon.Instancia = new DatabaseCon();
+            
             UPDATE.AllForms(true);
         }
 
@@ -87,6 +87,12 @@ namespace libreria
             var Box = forms.FrmPrestamo.Instance;
             Box.MdiParent = this;
             Box.Show();
+        }
+
+        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var about = new forms.PopUp.About();
+            about.ShowDialog();
         }
     }
 }

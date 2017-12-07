@@ -20,10 +20,6 @@ namespace libreria.Busquedas
         private RadioButton rbGen;
         private RadioButton rbName;
         private DataGridView dataGridView1;
-        private IContainer components;
-        private DataGridViewTextBoxColumn iSBNDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn tituloDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn generoDataGridViewTextBoxColumn;
         private static SchLibros _instance;
         private ListView listView1;
         private ColumnHeader columnHeader1;
@@ -344,7 +340,6 @@ namespace libreria.Busquedas
                     string isbn = dataGridView1.CurrentRow.Cells["ISBN"].Value.ToString();
                     string titulo = dataGridView1.CurrentRow.Cells["Titulo"].Value.ToString();
                     fl.FillCbCliente();
-                    fl.DataLibro = new string[] { isbn, titulo };
                     Close();
                 }
             }

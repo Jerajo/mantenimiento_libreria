@@ -60,12 +60,10 @@ namespace libreria.forms
             dt = DatabaseCon.Instancia.GetData($"Select * from view_Libros");
             //var ds = CLibro.GetAll();                
             //dt = ds.Tables[0];
-            dgvDBR.DataSource = dt;            
+            dgvDBR.DataSource = dt;
             //Carga las categorias de la db
-            var d = DatabaseCon.Instancia.GetData($"Select Id, Genero from [dbo].[CategoriasSet]");
-            cbxGenero.DataSource = d;
-            cbxGenero.ValueMember = "Id";
-            cbxGenero.DisplayMember = "Genero";
+            FillCbCategorias();
+
             if (dt.Rows.Count > 0) //Muesta u oculta el label de la grilla
             {
                 dgvDBR.ForeColor = Color.Black;
@@ -76,6 +74,14 @@ namespace libreria.forms
                 dgvDBR_CellClick(null, null);
             }
             else lblDatosNoEncontrados.Visible = true;
+        }
+
+        private void FillCbCategorias()
+        {
+            var d = DatabaseCon.Instancia.GetData($"Select Id, Genero from [dbo].[CategoriasSet]");
+            cbxGenero.DataSource = d;
+            cbxGenero.ValueMember = "Id";
+            cbxGenero.DisplayMember = "Genero";
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -177,6 +183,7 @@ namespace libreria.forms
             var fg = Generos.Instancia;
             fg.Flag = true;
             fg.ShowDialog();
+            FillCbCategorias();
         }
 
         private void cbxGenero_SelectedIndexChanged(object sender, EventArgs e)

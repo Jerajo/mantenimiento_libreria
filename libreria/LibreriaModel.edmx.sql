@@ -7,8 +7,12 @@
 -- --------------------------------------------------
 
 --SET QUOTED_IDENTIFIER OFF;
---GO
---USE [LibreriaHC];
+--Drop DATABASE [LibreriaHC.mdf]
+--go
+--Create DATABASE [LibreriaHC.mdf]
+--go
+
+--USE [LibreriaHC.mdf];
 --GO
 --IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHE	MA [dbo]');
 --GO
@@ -405,7 +409,29 @@ if @Accion = 'U'
 else
 if @Accion = 'D'
 	delete from ClientesSet where Identificacion = @IDE
-;
+go
+------Trabajo del Historial PRestamo------
+CREATE PROCEDURE spH_Prestamos
+(	@id int = 0,
+	@Cod varchar(35) = '',
+	@Cli varchar(35) = '' ,
+	@Fi datetime = null,
+	@FF datetime = null,
+	@Est int = 1,
+	@Accion varchar(2) = 'I'
+	)
+AS
+	set @Fi =ISNULL(@Fi,GETDATE())
+	set @FF = ISNULL(@FF,DATEADD(MONTH, 1, @Fi))
+
+if @Accion = 'I'
+	insert into HistorialPrestamoSet values(@Cod, @Cli, @Fi, @FF, @Est)
+else
+if @Accion = 'U'
+	update HistorialPrestamoSet set
+	LibroEjemplarCodigo = @Cod, ClientesIdentificacion = @Cli,
+	Fecha_Ini = @Fi, Fecha_Fin =@FF, Estado = @Est
+	where Id = @id
 go
 -----getAll from categorias
 CREATE PROCEDURE [dbo].[usp_Data_CCategoria_GetAll]
@@ -559,39 +585,44 @@ end,
 h.Fecha_Ini as Fecha_Inicial,
 h.Fecha_Fin as Fecha_Entrega,
 CONCAT(cl.Nombre, ' ', cl.Apellido) as NombreCliente,
-h.Id, le.Numero as Numero_Ejemplar
+h.Id, le.Numero as Numero_Ejemplar,
+cl.Identificacion as DNI
 
 from LibroEjemplarSet as le inner join LibrosSet as l on le.LibroISBN = l.ISBN
 left join HistorialPrestamoSet as h on h.LibroEjemplarCodigo = le.Codigo
 inner join ClientesSet as cl on cl.Identificacion = h.ClientesIdentificacion
-; go
+go
 
 -----------Libros sin Historial activo
-Create view vwLibrosFaltantes
-as
-select distinct l.ISBN, l.Titulo from LibrosSet as l inner join LibroEjemplarSet as lb on lb.LibroISBN = l.ISBN
+CREATE VIEW vwLibrosFaltantes
+	as
+select  l.ISBN, l.Titulo, Count(*) as Disponibles from LibrosSet as l inner join LibroEjemplarSet as lb on lb.LibroISBN = l.ISBN
 left join HistorialPrestamoSet  on LibroEjemplarCodigo = lb.Codigo
-where Estado is null or estado = 0;
+
+where Estado is null or Estado = 0
+group by l.ISBN, l.Titulo
 go
 -- crear vista libros 
 CREATE VIEW view_Libros
 AS
 SELECT        dbo.LibrosSet.ISBN, dbo.LibrosSet.Titulo, dbo.LibrosSet.Pais, dbo.LibrosSet.Stock, dbo.LibrosSet.Editorial, dbo.LibrosSet.CategoriaId, dbo.CategoriasSet.Genero
 FROM            dbo.CategoriasSet INNER JOIN
-                         dbo.LibrosSet ON dbo.CategoriasSet.Id = dbo.LibrosSet.CategoriaId
+						 dbo.LibrosSet ON dbo.CategoriasSet.Id = dbo.LibrosSet.CategoriaId
 go
 
 ----Inserte Categorias
 Insert into CategoriasSet(Genero) values ('Ficcion')
 Insert into CategoriasSet(Genero) values ('Aventuras')
 Insert into CategoriasSet(Genero) values ('Drama')
-;
+Insert into CategoriasSet(Genero) values ('Programacion')
+
 go
 ------INSERTANDO Libros
-exec spInsertLibro '9788484417552', 'La Piramide Roja, Las Cronicas de Kane Vol. 1', 'Espa�a', 5, 'Montena', 1
-
-
-;go
+exec spInsertLibro '9788484417552', 'La Piramide Roja, Las Cronicas de Kane Vol. 1', 'España', 5, 'Montena', 1
+exec spInsertLibro N'0470277947', N'LINQ for Dummies', N'Estados Unidos', 2, N'Wiley Publishing, Inc.', 1
+insert into AutoresSet values (N'John Paul', N'Mueller');
+insert into AutoresSet values (N'Rick', N'Riordan');
+go
 
 -----FUNCIONES-----------
 ---Trae ejemplares
@@ -605,7 +636,7 @@ RETURNS TABLE AS RETURN
 	on LibroEjemplarCodigo = le.Codigo
 	where le.LibroISBN = @ISBN and (Estado is null or Estado = 0)
 )
-;go
+go
 
 -- --------------------------------------------------
 -- Script has ended
