@@ -115,7 +115,7 @@ GO
 
 -- Creating table 'CredencialesSet'
 CREATE TABLE [dbo].[CredencialesSet] (
-	[Codigo] nvarchar(50)  NOT NULL,
+	[Codigo] nvarchar(250)  NOT NULL,
 	[Nombre] nvarchar(50)  NOT NULL,
 	[Password] nvarchar(250)  NOT NULL
 );
