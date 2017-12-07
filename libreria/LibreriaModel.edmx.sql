@@ -544,7 +544,7 @@ CREATE VIEW vwGenerosLibrosCount
 CREATE VIEW vwListadoLibrosNormal
 	AS 
 
-	Select ISBN, Titulo, Genero From LibrosSet lb inner join CategoriasSet C on lb.CategoriaId = C.Id;
+	Select ISBN, Titulo, Genero, Stock From LibrosSet lb inner join CategoriasSet C on lb.CategoriaId = C.Id;
 	go
 -----Prestamos actuales
 CREATE VIEW vwVerPrestamos
