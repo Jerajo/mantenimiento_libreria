@@ -67,11 +67,12 @@ namespace libreria.forms
                 CUsuario usr = new CUsuario(Convert.ToInt32(txtCodigo.Text), txtNombre.Text,
                     txtNPassword1.Text);
                 string sResultado = validarDatos(usr);
+                int row = dgvDBR.SelectedRows.Count;
                 if (sResultado == "")
                 {
-                    if (dgvDBR.SelectedRows.Count > 0) //Actualizar registro
-                    {
-                        var oldN = System.Convert.ToInt32(dgvDBR.CurrentRow.Cells["Numero"].Value);
+                    if (row > 0) //Actualizar registro
+                    {                                              
+                        //var oldN = System.Convert.ToInt32(dgvDBR.CurrentRow.Cells["Numero"].Value);
                         if (usr.Actualizar())
                         {
                             MessageBox.Show("Datos Actualizados Correctamente");
@@ -103,12 +104,24 @@ namespace libreria.forms
         private string validarDatos(CUsuario urs)
         {
             string resultado = "";
-            if (txtNombre.Text == "") resultado += "El campo: Nombre.\n";
-            if (txtOPassword.Text == "") resultado += "El campo: Old Password.\n";
-            if (txtNPassword1.Text == "") resultado += "El campo: New Password 1.\n";
-            if (txtNPassword2.Text == "") resultado += "El campo: New Password 2.\n";
-            if (txtNPassword1.Text != txtNPassword2.Text) resultado += "Contraseñas no coinsiden.\n";
-            resultado += urs.ValidarUsuario();
+            bool newPas = false;
+            if (txtNPassword1.Text != "" || txtNPassword2.Text != "") newPas = true;
+            if (dgvDBR.SelectedRows.Count > 0 && newPas)
+            {
+                if (txtOPassword.Text == "") resultado += "El campo: Old Password.\n";
+                if (txtNPassword1.Text == "") resultado += "El campo: New Password 1.\n";
+                if (txtNPassword2.Text == "") resultado += "El campo: New Password 2.\n";
+                if (txtOPassword.Text == txtNPassword1.Text) resultado += "La nueva contraseña es la misma anterior.\n";
+                if (txtNPassword1.Text != txtNPassword2.Text) resultado += "Contraseñas no coinsiden.\n";
+            }
+            else if (dgvDBR.SelectedRows.Count == 0)
+            {
+                if (txtNPassword1.Text == "") resultado += "El campo: New Password 1.\n";
+                if (txtNPassword2.Text == "") resultado += "El campo: New Password 2.\n";
+                if (txtNPassword1.Text != txtNPassword2.Text) resultado += "Contraseñas no coinsiden.\n";
+            }            
+            if (txtNombre.Text == "") resultado += "El campo: Nombre.\n";            
+            resultado += urs.ValidarUsuario(dgvDBR.SelectedRows.Count);
             return resultado;
         }
 
@@ -120,11 +133,17 @@ namespace libreria.forms
             btnEditar.Visible = !si;
             dgvDBR.Enabled = !si;
             //Revertir cambios            
-            txtNombre.Enabled = si;
-            txtOPassword.Enabled = si;
+            txtNombre.Enabled = si;            
             txtNPassword1.Enabled = si;
-            txtNPassword2.Enabled = si;
+            txtNPassword2.Enabled = si;       
             if (si == true) this.ActiveControl = txtNombre;
+            if (si == false)
+            {
+                txtOPassword.Enabled = si;
+                txtOPassword.Clear();
+                txtNPassword1.Clear();
+                txtNPassword2.Clear();
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -140,7 +159,7 @@ namespace libreria.forms
             txtNombre.Clear();
             txtOPassword.Clear();
             txtNPassword1.Clear();
-            txtNPassword2.Clear();
+            txtNPassword2.Clear();            
             //Disable DataGriView
             dgvDBR.ClearSelection();
             dgvDBR.Enabled = false;
@@ -149,6 +168,7 @@ namespace libreria.forms
         private void btnEditar_Click(object sender, EventArgs e)
         {
             MostrarBotonesOcultos(true);
+            txtOPassword.Enabled = true;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
