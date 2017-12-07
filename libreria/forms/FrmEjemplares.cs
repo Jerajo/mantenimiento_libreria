@@ -177,7 +177,9 @@ namespace libreria.forms
                         if (Convert.ToBoolean(row.Cells["Eliminar"].Value))
                         {
                             string code = txtCodigo.Text;
+                            string isbn = cbxISBN.Text;
                             DatabaseCon.Instancia.ExecCommand($"delete from [dbo].[LibroEjemplarSet] where Codigo='{code}'");
+                            DatabaseCon.Instancia.ExecCommand($"update [dbo].[LibrosSet] set Stock=(Stock-1) where ISBN='{isbn}'");
                             MessageBox.Show("Registro Eliminado Correctamente");
                             UPDATE.AllForms(false); //froce others forms to update
                         }

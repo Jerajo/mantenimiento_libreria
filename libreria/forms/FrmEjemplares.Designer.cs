@@ -126,7 +126,7 @@
             // btnNuevo
             // 
             this.btnNuevo.BackColor = System.Drawing.Color.LawnGreen;
-            this.btnNuevo.Location = new System.Drawing.Point(13, 168);
+            this.btnNuevo.Location = new System.Drawing.Point(13, 167);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(93, 53);
             this.btnNuevo.TabIndex = 4;
