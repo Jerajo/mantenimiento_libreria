@@ -243,7 +243,7 @@
             this.dgvDBR.AllowUserToAddRows = false;
             this.dgvDBR.AllowUserToDeleteRows = false;
             this.dgvDBR.AllowUserToResizeRows = false;
-            this.dgvDBR.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvDBR.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDBR.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.dgvDBR.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvDBR.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
