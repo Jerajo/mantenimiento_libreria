@@ -55,16 +55,55 @@ namespace libreria.forms
                 textBox1.Clear();
                 textBox2.Clear();
             }
+            else MessageBox.Show("Usuario o Contraseña incorrectos.");
         }
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-
+            this.ActiveControl = button1;
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "USUARIO")
+            {
+                textBox1.Clear();
+                textBox1.ForeColor = Color.Black;
+            }          
+        }
+
+        private void textBox2_Enter(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "CONTRASEÑA")
+            {
+                textBox2.Clear();
+                textBox2.ForeColor = Color.Black;
+                textBox2.UseSystemPasswordChar = true;
+            }            
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                textBox1.Text = "USUARIO";
+                textBox1.ForeColor = Color.Gray;
+            }
+        }
+
+        private void textBox2_Leave(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "")
+            {
+                textBox2.Text = "CONTRASEÑA";
+                textBox2.ForeColor = Color.Gray;
+                textBox2.UseSystemPasswordChar = false;
+            }            
         }
     }
 }
