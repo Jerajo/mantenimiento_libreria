@@ -51,3 +51,6 @@ Temporary Items
 /node_modules
 /.vs/libreria/v15
 *.htm
+packages
+webLibreria
+obj
