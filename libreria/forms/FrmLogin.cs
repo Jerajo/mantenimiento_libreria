@@ -35,11 +35,14 @@ namespace libreria.forms
             var data = DatabaseCon.Instancia.GetData("Select * from CredencialesSet");
             foreach(DataRow row in data.Rows)
             {
-                string uDb = Encriptador.Desencriptar(row.Field<String>("Codigo"), Encriptador.KEY);
-                string pDb = Encriptador.Desencriptar(row.Field<String>("Password"), Encriptador.KEY);
-                if( user.Equals(uDb) && pass.Equals(pDb))
+                string uDb = row.Field<String>("Nombre");
+                if (user.Equals(uDb))
                 {
-                    valid = true;
+                    string pDb = Encriptador.Desencriptar(row.Field<String>("Password"), Encriptador.KEY);
+                    if (pass.Equals(pDb))
+                    {
+                        valid = true;
+                    } 
                 }
             }
 
@@ -52,6 +55,16 @@ namespace libreria.forms
                 textBox1.Clear();
                 textBox2.Clear();
             }
+        }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

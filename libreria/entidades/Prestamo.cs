@@ -81,6 +81,14 @@ namespace libreria.entidades
             list.Add(DatabaseCon.MakeParam("@FF", System.Data.SqlDbType.DateTime, me.Fin.Date));
             list.Add(DatabaseCon.MakeParam("@Est", System.Data.SqlDbType.Int, (int)me.Estado));
             DatabaseCon.Instancia.ExecProcedure(storedP, list);
+
+            DatabaseCon.Instancia.ExecProcedure("spStockWork",
+                new List<SqlParameter>() {
+                    DatabaseCon.MakeParam("@Accion", System.Data.SqlDbType.VarChar, "-"),
+                    DatabaseCon.MakeParam("@CodEjemplar", System.Data.SqlDbType.VarChar, me.CodigoL)
+                }
+                );
+
         }
     }
 }

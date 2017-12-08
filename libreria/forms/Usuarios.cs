@@ -63,8 +63,9 @@ namespace libreria.forms
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
-            {                
-                CUsuario usr = new CUsuario(Convert.ToInt32(txtCodigo.Text), txtNombre.Text,
+            {
+                int id = string.IsNullOrEmpty(txtCodigo.Text)? 0 : Convert.ToInt32(txtCodigo.Text);
+                CUsuario usr = new CUsuario(id, txtNombre.Text,
                     txtNPassword1.Text);
                 string sResultado = validarDatos(usr);
                 int row = dgvDBR.SelectedRows.Count;

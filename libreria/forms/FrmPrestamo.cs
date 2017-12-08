@@ -112,8 +112,8 @@ namespace libreria.forms
 
         private void FillCbEjemplares(string Value)
         {
-            //string q = $"select * from fxTraeEjemplaresDisponibles('{Value}')";
-            string q = $"select * from [dbo].[LibroEjemplarSet] where LibroISBN='{Value}'";
+            string q = $"select * from fxTraeEjemplaresDisponibles('{Value}')";
+            //string q = $"select * from [dbo].[LibroEjemplarSet] where LibroISBN='{Value}'";
             cbEjemplares.DataSource = DatabaseCon.Instancia.GetData(q);
             cbEjemplares.DisplayMember = "Numero";
             cbEjemplares.ValueMember = "Codigo";
@@ -194,6 +194,8 @@ namespace libreria.forms
                     DatabaseCon.Instancia.ExecCommand(
                         $"Update HistorialPrestamoSet set Estado = {0} where Id = {(int)cr.Cells["Id"].Value}"
                         );
+
+                    DatabaseCon.Instancia.ExecCommand($"update LibrosSet set Stock = Stock + 1 where ISBN = '{cr.Cells["ISBN"].Value.ToString()}'");
                     FillGrid();
                     btnClear.PerformClick();
                 }

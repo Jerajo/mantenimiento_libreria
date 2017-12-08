@@ -41,7 +41,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(310, 29);
             this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "USER NAME";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
@@ -54,6 +53,7 @@
             this.label1.Size = new System.Drawing.Size(237, 73);
             this.label1.TabIndex = 1;
             this.label1.Text = "LOGIN";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button1
             // 
@@ -70,7 +70,7 @@
             this.button2.Location = new System.Drawing.Point(9, 308);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(310, 34);
-            this.button2.TabIndex = 2;
+            this.button2.TabIndex = 3;
             this.button2.Text = "CANCELAR";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -81,7 +81,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(310, 29);
-            this.textBox2.TabIndex = 0;
+            this.textBox2.TabIndex = 1;
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // FrmLogin
@@ -107,6 +107,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "login";
+            this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

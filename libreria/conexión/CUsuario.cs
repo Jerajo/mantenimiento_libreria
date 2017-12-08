@@ -17,13 +17,19 @@ namespace libreria.conexión
             this._code = codigo;
             this._nombre = nombre;
             //codigo encriptacion
-            this._password = password;
+            this._password = Encriptador.Encriptar(password, Encriptador.KEY);
         }
 
         public int Code { get => _code; set => _code = value; }
         public string Nombre { get => _nombre; set => _nombre = value; }
         //codigo de encriptacion aqui...
-        public string Password { get => _password; set => _password = value; }
+        public string Password
+        {
+            get => _password;
+            set {
+                _password = Encriptador.Encriptar(value, Encriptador.KEY);
+            }
+        }
 
         internal bool Actualizar()
         {
@@ -54,7 +60,7 @@ namespace libreria.conexión
             var resoult = "";
             if (row == 0)
             {
-                r = DatabaseCon.Instancia.ExecuteQScalar($"Select Nombre where Nombre='{Nombre}'");
+                r = DatabaseCon.Instancia.ExecuteQScalar($"Select Nombre from [dbo].[CredencialesSet] where Nombre='{Nombre}'");
                 if (r > 0) resoult = $"El usuario: '{Nombre}' Ya existe.\n";
             }                     
             return resoult;

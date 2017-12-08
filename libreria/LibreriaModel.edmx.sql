@@ -438,6 +438,27 @@ if @Accion = 'U'
 	Fecha_Ini = @Fi, Fecha_Fin =@FF, Estado = @Est
 	where Id = @id
 go
+
+--------------
+----Stock Manager
+CREATE PROCEDURE spStockWork
+@CodEjemplar varchar(35),
+@Accion varchar(2) = '+'
+AS
+BEGIN
+	declare @isbn varchar(30)
+	select @isbn = LibroISBN from LibroEjemplarSet where Codigo = @CodEjemplar
+
+	if @Accion = '+'
+		update LibrosSet set Stock = Stock + 1 where ISBN = @isbn
+	else 
+	if @Accion = '-'
+		update LibrosSet set Stock = Stock - 1 where ISBN = @isbn
+
+
+END
+GO
+
 -----getAll from categorias
 CREATE PROCEDURE [dbo].[usp_Data_CCategoria_GetAll]
 	AS

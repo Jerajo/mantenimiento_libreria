@@ -17,7 +17,7 @@ namespace libreria
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-			//Application.Run(FrmLogin.GetInstance());
+            //Application.Run(FrmLogin.GetInstance());
             Application.Run(new FrmLogin());
             //Application.Run(new Box());
         }
