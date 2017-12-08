@@ -57,3 +57,5 @@ packages
 webLibreria
 obj
 App_Data
+obj
+bin
